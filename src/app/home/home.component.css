@@ -1,0 +1,36 @@
+.cf-fire-bg {
+  background: url(https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/timothy-meinberg-206976-unsplash.jpg?alt=media&token=e5cb98c5-c855-4400-8d0d-317f97e990b5);
+  background-size: 100%;
+  background-position: center;
+}
+
+.cf-circular-pfp {
+  background: white;
+  border-radius: 100%;
+  width: 300px;
+}
+
+.cf-eight {
+  font-weight: 800;
+}
+
+.nomarg {
+  margin: 0;
+}
+
+hr.thin {
+  height: 1px;
+  width: 10%;
+  margin: auto;
+}
+
+
+.cf-displayInfo {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.cf-displayInfo img {
+  margin: auto;
+}
