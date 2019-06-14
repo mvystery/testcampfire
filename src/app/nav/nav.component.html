@@ -3,7 +3,13 @@
     <div class="navbar-brand">
       <img
         src="https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/Campfire_Wordmark.png?alt=media&token=7ad8007c-7068-47c1-ae34-92ca12402fc5"
-        alt="Campfire" width="190px">
+        alt="Campfire" width="190" height="28">
+      <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="campfireMenu" role="button"
+        (click)="expand()">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
     <div class="navbar-menu" id="campfireMenu">
       <div class="navbar-start">
