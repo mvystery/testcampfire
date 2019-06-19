@@ -11,6 +11,7 @@ import { LoggedInComponent } from './nav/logged-in/logged-in.component';
 import { SettingsComponent } from './commands/settings/settings.component';
 import { ModerationComponent } from './commands/moderation/moderation.component';
 import { FunComponent } from './commands/fun/fun.component';
+import { CommandsIndexComponent } from './commands/commands-index/commands-index.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FunComponent } from './commands/fun/fun.component';
     LoggedInComponent,
     SettingsComponent,
     ModerationComponent,
-    FunComponent
+    FunComponent,
+    CommandsIndexComponent
   ],
   imports: [
     BrowserModule,
