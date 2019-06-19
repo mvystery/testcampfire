@@ -1,9 +1,10 @@
-<nav class="navbar is-white is-spaced cf-nav-bg">
+<nav class="navbar is-white is-spaced cf-nav-bg animated">
   <div class="container">
     <div class="navbar-brand">
-      <img
-        src="https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/Campfire_Wordmark_Nav.png?alt=media&token=2b6a59ae-8cbc-49cf-9557-86e0aea90fe5"
-        alt="Campfire">
+      <a class="navbar-item" routerLink="/"><img
+          src="https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/Campfire_Wordmark_Nav.png?alt=media&token=2b6a59ae-8cbc-49cf-9557-86e0aea90fe5"
+          alt="Campfire">
+      </a>
       <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="campfireMenu" role="button"
         (click)="expand()">
         <span aria-hidden="true"></span>
@@ -69,10 +70,12 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <p class="control">
-            <a href="" class="button is-dark is-outlined is-rounded"><i class="fas fa-paper-plane"
-                style="margin-right: 5px;"></i>Invite</a>
+            <a href="https://campfirebot.xyz/links/invite" class="button is-dark is-outlined is-rounded"><i
+                class="fas fa-paper-plane" style="margin-right: 5px;"></i>Invite</a>
           </p>
         </div>
+        <a class="navbar-item">Dashboard</a>
+        <div app-logged-in class="navbar-item has-dropdown is-hoverable"></div>
       </div>
     </div>
   </div>

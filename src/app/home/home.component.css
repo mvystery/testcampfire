@@ -24,11 +24,21 @@ hr.thin {
   margin: auto;
 }
 
+hr.justthin {
+  height: 1px;
+  width: 80%;
+  margin: 50px auto;
+}
+
+hr.lighter {
+  background-color: #bbbbbb;
+}
+
 
 .cf-displayInfo {
   display: flex;
   flex-direction: column;
-  height: 400px;
+  min-height: 400px;
 }
 
 .cf-displayInfo img {
