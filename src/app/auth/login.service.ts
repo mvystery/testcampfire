@@ -36,7 +36,6 @@ export class LoginService {
   }
 
   pushToken(tokenData) {
-    console.log(tokenData);
     return new Promise<any>((resolve, reject) => {
       this.userToken = tokenData.token;
       this.afAuth.auth.signInWithCustomToken(tokenData.auth).then(
