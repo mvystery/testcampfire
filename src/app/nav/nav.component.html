@@ -74,8 +74,8 @@
                 class="fas fa-paper-plane" style="margin-right: 5px;"></i>Invite</a>
           </p>
         </div>
-        <a class="navbar-item">Dashboard</a>
-        <div app-logged-in class="navbar-item has-dropdown is-hoverable"></div>
+        <a *ngIf="!user" (click)="login()" class="navbar-item">Dashboard</a>
+        <div *ngIf="user" app-logged-in class="navbar-item has-dropdown is-hoverable"></div>
       </div>
     </div>
   </div>
