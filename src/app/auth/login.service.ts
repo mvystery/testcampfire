@@ -3,12 +3,27 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
+
+interface UserData {
+  username: string;
+  id: string;
+  discriminator: string;
+  avatar: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   userToken: string;
+  discordAuthUsername: string;
+  discordAuthId: string;
+  discordAuthDiscriminator: string;
+
+  private userSource = new BehaviorSubject('');
+  currentUser = this.userSource.asObservable();
+
   constructor(private afAuth: AngularFireAuth, private http: HttpClient) {}
 
   login() {
@@ -26,13 +41,16 @@ export class LoginService {
       this.userToken = tokenData.token;
       this.afAuth.auth.signInWithCustomToken(tokenData.auth).then(
         res => {
+          localStorage.setItem('auth', tokenData.token);
           this.http
-            .get('http://discordapp.com/api/users/@me', {
+            .get<UserData>('https://api.campfirebot.xyz/users/me', {
               headers: {
-                Authorization: `Bearer ${tokenData.token}`
+                Authorization: `${tokenData.token}`
               }
             })
-            .subscribe();
+            .subscribe(data => {
+              this.userSource.next(data.username);
+            });
           resolve(res);
         },
         err => reject(err)
@@ -46,9 +64,22 @@ export class LoginService {
 
   logout() {
     this.afAuth.auth.signOut();
+    localStorage.removeItem('auth');
   }
 
   getToken() {
     return this.userToken;
+  }
+
+  updateUser(token: string) {
+    this.http
+      .get<UserData>('https://api.campfirebot.xyz/users/me', {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      .subscribe(data => {
+        this.userSource.next(data.username);
+      });
   }
 }

@@ -8,13 +8,20 @@ import { LoginService } from 'src/app/auth/login.service';
 })
 export class LoggedInComponent implements OnInit {
   user: firebase.User;
+  DiscordUser: string;
 
   constructor(private service: LoginService) {}
 
   ngOnInit() {
     this.service.getLoggedInUser().subscribe(user => {
       this.user = user;
+      if (user) {
+        const token = localStorage.getItem('auth');
+        this.service.updateUser(token);
+      }
     });
+
+    this.service.currentUser.subscribe(user => (this.DiscordUser = user));
   }
 
   logout() {
