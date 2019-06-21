@@ -29,7 +29,7 @@ export class LoginService {
   login() {
     window.open(
       // tslint:disable-next-line: max-line-length
-      'https://discordapp.com/oauth2/authorize?client_id=579415199979798539&redirect_uri=https%3A%2F%2Fapi.campfirebot.xyz%2Flogin&response_type=code&scope=identify%20email%20guilds',
+      'https://discordapp.com/oauth2/authorize?client_id=579415199979798539&redirect_uri=https%3A%2F%2Fapi.campfirebot.xyz%2Flogin&response_type=code&scope=identify%20guilds',
       'Campfire',
       'menubar=no,width=500,height=720,location=no,resizable=no,scrollbars=yes,status=no'
     );
