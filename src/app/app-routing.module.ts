@@ -7,6 +7,7 @@ import { SettingsComponent } from './commands/settings/settings.component';
 import { ModerationComponent } from './commands/moderation/moderation.component';
 import { FunComponent } from './commands/fun/fun.component';
 import { CommandsIndexComponent } from './commands/commands-index/commands-index.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'commands/utilities', component: UtilitiesComponent },
   { path: 'commands/settings', component: SettingsComponent },
   { path: 'commands/moderation', component: ModerationComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'commands/fun', component: FunComponent }
 ];
 

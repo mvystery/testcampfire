@@ -18,6 +18,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { environment } from '../environments/environment';
     SettingsComponent,
     ModerationComponent,
     FunComponent,
-    CommandsIndexComponent
+    CommandsIndexComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
