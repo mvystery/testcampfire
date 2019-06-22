@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler, Injectable } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +24,20 @@ import { UpdatesComponent } from './updates/updates.component';
 import { DashboardProfileComponent } from './dashboard/dashboard-profile/dashboard-profile.component';
 
 import { ColorPickerModule } from 'ngx-color-picker';
+import * as Sentry from '@sentry/browser';
+
+Sentry.init({
+  dsn: 'https://d1da4184595a45159753da7531546696@sentry.io/1488124'
+});
+
+@Injectable()
+export class SentryErrorHandler implements ErrorHandler {
+  constructor() {}
+  handleError(error) {
+    const eventId = Sentry.captureException(error.originalError || error);
+    Sentry.showReportDialog({ eventId });
+  }
+}
 
 @NgModule({
   declarations: [
@@ -49,9 +63,10 @@ import { ColorPickerModule } from 'ngx-color-picker';
     HttpClientModule,
     AngularFirestoreModule,
     ColorPickerModule,
-    FormsModule
+    FormsModule,
+    BrowserModule
   ],
-  providers: [],
+  providers: [{ provide: ErrorHandler, useClass: SentryErrorHandler }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
