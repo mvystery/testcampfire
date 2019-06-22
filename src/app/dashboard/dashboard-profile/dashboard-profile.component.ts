@@ -98,7 +98,6 @@ export class DashboardProfileComponent implements OnInit {
         }
       })
       .subscribe();
-    document.getElementById('profileForm').reset();
-    document.getElementById('updateProfile').classList.remove('is-active');
+    location.reload();
   }
 }
