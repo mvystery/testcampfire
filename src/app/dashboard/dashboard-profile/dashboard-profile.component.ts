@@ -85,8 +85,8 @@ export class DashboardProfileComponent implements OnInit {
     }
 
     const packagedData = {
-      nationality: nationality,
-      bio: bio,
+      nationality: data.value.nationality,
+      bio: data.value.bio,
       color: this.color
     };
     console.log('posting');
@@ -97,7 +97,9 @@ export class DashboardProfileComponent implements OnInit {
           'Content-Type': 'application/json'
         }
       })
-      .subscribe();
+      .subscribe(dse => {
+        console.log(dse);
+      });
     location.reload();
   }
 }
