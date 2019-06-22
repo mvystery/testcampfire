@@ -17,8 +17,13 @@ import { CommandsIndexComponent } from './commands/commands-index/commands-index
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { NgForm, FormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UpdatesComponent } from './updates/updates.component';
+import { DashboardProfileComponent } from './dashboard/dashboard-profile/dashboard-profile.component';
+
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ModerationComponent,
     FunComponent,
     CommandsIndexComponent,
-    DashboardComponent
+    DashboardComponent,
+    UpdatesComponent,
+    DashboardProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +47,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     HttpClientModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ColorPickerModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11748,3 +11748,11 @@ print {
 hr.dark {
   background-color: #4a4a4a;
 }
+
+img.is-rounded {
+  border-radius: 100%;
+}
+
+.hex-text {
+  display: none;
+}

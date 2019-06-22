@@ -1,28 +1,66 @@
-<div class="container has-text-centered">
-  <br><br><br>
-  <div class="box">
-    <figure class="avatar">
-      <img src="https://identicon-api.herokuapp.com/u1KO3nydeScSosNzc8pADlXPqtg1/100?format=png" alt="">
-    </figure>
-    <h1 class="subtitle is-size-3 nomarg"><strong>Good evening, Sam;!</strong></h1>
-    <p>Welcome to your Campfire account!</p>
+<section class="hero is-primary is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-2 has-text-right avatarHolder">
+          <img src="{{ avatar }}" class="is-rounded">
+        </div>
+        <div class="column">
+          <h1 class="title is-size-1">{{ greeting }}, {{ name }}!</h1>
+          <p class="subtitle is-size-4">Welcome to the Campfire Dashboard!</p>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column has-text-centered">
+          <h1 class="subtitle is-size-1 nomarg animated fadedInUp"><i class="fas fa-ticket-alt"></i></h1>
+          <h1 class="subtitle is-size-3 animated fadeInUp nomarg">{{ balance }}</h1>
+          <h1 class="subtitle is-size-4 animated fadeInUp">Tickets</h1>
+        </div>
+
+        <div class="column has-text-centered">
+          <h1 class="subtitle is-size-1 nomarg animated fadedInUp"><i class="fas fa-trophy"></i></h1>
+          <h1 class="subtitle is-size-3 animated fadeInUp nomarg">{{ level }}</h1>
+          <h1 class="subtitle is-size-4 animated fadeInUp">Level</h1>
+        </div>
+
+        <div class="column has-text-centered">
+          <h1 class="subtitle is-size-1 nomarg animated fadedInUp"><i class="fas fa-poo"></i></h1>
+          <h1 class="subtitle is-size-3 animated fadeInUp nomarg">{{ bubbles }}</h1>
+          <h1 class="subtitle is-size-4 animated fadeInUp">Bubbles Popped</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<div class="container">
   <div class="columns">
     <div class="column">
-      <div class="box">
-        <h1 class="is-size-1 nomarg greyfont"><i class="fas fa-ticket-alt"></i></h1>
-        <h1 class="is-size-3 nomarg greyfont">{{ balance }}</h1>
+      <div class="box has-text-centered">
+        <h1 class="is-size-1 nomarg"><i class="far fa-id-card"></i></h1>
+        <h1 class="is-size-3">Profile</h1><br>
+        <a routerLink="profile" class="button is-dark is-rounded">Edit ></a>
       </div>
     </div>
     <div class="column">
-      <div class="box">
-        <h1 class="is-size-1 nomarg greyfont"><i class="fas fa-ticket-alt"></i></h1>
+      <div class="box has-text-centered">
+        <h1 class="is-size-1 nomarg"><i class="fas fa-server"></i></h1>
+        <h1 class="is-size-3">Guilds</h1><br>
+        <a class="button is-dark is-rounded" disabled>Manage ></a>
       </div>
     </div>
     <div class="column">
-      <div class="box">
-        <h1 class="is-size-1 nomarg greyfont"><i class="fas fa-ticket-alt"></i></h1>
+      <div class="box has-text-centered">
+        <h1 class="is-size-1 nomarg"><i class="fas fa-tachometer-alt"></i></h1>
+        <h1 class="is-size-3">Bot stats</h1><br>
+        <a class="button is-dark is-rounded" disabled>View ></a>
       </div>
     </div>
   </div>

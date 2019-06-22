@@ -17,9 +17,7 @@ interface UserData {
 })
 export class LoginService {
   userToken: string;
-  discordAuthUsername: string;
-  discordAuthId: string;
-  discordAuthDiscriminator: string;
+  userAvatar: string;
 
   private userSource = new BehaviorSubject('');
   currentUser = this.userSource.asObservable();

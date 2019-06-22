@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/auth/login.service';
+import { HttpClient } from '@angular/common/http';
+
+interface UserData {
+  username: string;
+  id: string;
+  discriminator: string;
+  avatar: string;
+}
 
 @Component({
   selector: '[app-logged-in]',
@@ -9,8 +17,9 @@ import { LoginService } from 'src/app/auth/login.service';
 export class LoggedInComponent implements OnInit {
   user: firebase.User;
   DiscordUser: string;
+  DiscordAvatar: string;
 
-  constructor(private service: LoginService) {}
+  constructor(private service: LoginService, private http: HttpClient) {}
 
   ngOnInit() {
     this.service.getLoggedInUser().subscribe(user => {
@@ -18,6 +27,24 @@ export class LoggedInComponent implements OnInit {
       if (user) {
         const token = localStorage.getItem('auth');
         this.service.updateUser(token);
+
+        this.http
+          .get<UserData>('https://api.campfirebot.xyz/users/me', {
+            headers: {
+              Authorization: `${localStorage.getItem('auth')}`
+            }
+          })
+          .subscribe(data => {
+            localStorage.setItem('id', data.id);
+            localStorage.setItem(
+              'avatar',
+              `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`
+            );
+            localStorage.setItem('username', data.username);
+            this.DiscordAvatar = `https://cdn.discordapp.com/avatars/${
+              data.id
+            }/${data.avatar}.png`;
+          });
       }
     });
 
