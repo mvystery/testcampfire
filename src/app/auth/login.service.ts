@@ -62,6 +62,9 @@ export class LoginService {
   logout() {
     this.afAuth.auth.signOut();
     localStorage.removeItem('auth');
+    localStorage.removeItem('username');
+    localStorage.removeItem('avatar');
+    localStorage.removeItem('id');
   }
 
   getToken() {
