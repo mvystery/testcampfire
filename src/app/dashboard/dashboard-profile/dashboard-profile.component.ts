@@ -100,6 +100,5 @@ export class DashboardProfileComponent implements OnInit {
       .subscribe(dse => {
         console.log(dse);
       });
-    // location.reload();
   }
 }

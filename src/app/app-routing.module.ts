@@ -10,6 +10,7 @@ import { CommandsIndexComponent } from './commands/commands-index/commands-index
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardProfileComponent } from './dashboard/dashboard-profile/dashboard-profile.component';
 import { DashboardGuildsComponent } from './dashboard/dashboard-guilds/dashboard-guilds.component';
+import { DashboardGuildManageComponent } from './dashboard/dashboard-guild-manage/dashboard-guild-manage.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'dashboard/profile', component: DashboardProfileComponent },
   { path: 'dashboard/guilds', component: DashboardGuildsComponent },
-  { path: 'commands/fun', component: FunComponent }
+  { path: 'commands/fun', component: FunComponent },
+  { path: 'dashboard/guilds/:id', component: DashboardGuildManageComponent }
 ];
 
 @NgModule({

@@ -38,12 +38,12 @@ export class LoggedInComponent implements OnInit {
             localStorage.setItem('id', data.id);
             localStorage.setItem(
               'avatar',
-              `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`
+              `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}`
             );
             localStorage.setItem('username', data.username);
             this.DiscordAvatar = `https://cdn.discordapp.com/avatars/${
               data.id
-            }/${data.avatar}.png`;
+            }/${data.avatar}`;
           });
       }
     });

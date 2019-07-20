@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../auth/login.service';
+import { Router, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -9,7 +10,13 @@ import { LoginService } from '../auth/login.service';
 export class NavComponent implements OnInit {
   user: firebase.User;
 
-  constructor(private service: LoginService) {}
+  constructor(private service: LoginService, private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        document.getElementById('campfireMenu').classList.remove('is-active');
+      }
+    });
+  }
 
   ngOnInit() {
     this.service.getLoggedInUser().subscribe(user => {
