@@ -27,6 +27,9 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import * as Sentry from '@sentry/browser';
 import { DashboardGuildsComponent } from './dashboard/dashboard-guilds/dashboard-guilds.component';
 import { DashboardGuildManageComponent } from './dashboard/dashboard-guild-manage/dashboard-guild-manage.component';
+import { SettingsHandlerComponent } from './dashboard/dashboard-guild-manage/settings-handler/settings-handler.component';
+import { SetPrefixComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-prefix/set-prefix.component';
+import { SetWelcomerComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-welcomer/set-welcomer.component';
 
 Sentry.init({
   dsn: 'https://d1da4184595a45159753da7531546696@sentry.io/1488124'
@@ -57,7 +60,10 @@ export class SentryErrorHandler implements ErrorHandler {
     UpdatesComponent,
     DashboardProfileComponent,
     DashboardGuildsComponent,
-    DashboardGuildManageComponent
+    DashboardGuildManageComponent,
+    SettingsHandlerComponent,
+    SetPrefixComponent,
+    SetWelcomerComponent
   ],
   imports: [
     BrowserModule,

@@ -34,17 +34,11 @@ export class DashboardGuildManageComponent implements OnInit {
     });
 
     this.http
-      .post<GuildData>(
-        `https://api.campfirebot.xyz/guilds/data`,
-        {
-          id: this.id
-        },
-        {
-          headers: {
-            Authorization: localStorage.getItem('auth')
-          }
+      .get<GuildData>(`https://api.campfirebot.xyz/settings/${this.id}/data`, {
+        headers: {
+          Authorization: localStorage.getItem('auth')
         }
-      )
+      })
       .subscribe(data => {
         if (data.auth) {
           this.id = data.id;
@@ -52,5 +46,9 @@ export class DashboardGuildManageComponent implements OnInit {
           this.icon = data.icon;
         }
       });
+  }
+
+  getServerId() {
+    return this.id;
   }
 }

@@ -1,0 +1,33 @@
+<div class="columns">
+  <div class="column has-text-centered">
+    <nav class="panel">
+      <p class="panel-heading">Options</p>
+
+      <p class="panel-tabs">
+        <a class="is-active">general</a>
+        <a>moderator</a>
+      </p>
+
+      <a class="panel-block" [class.is-active]="prefix" (click)="changeTab('prefix')">
+        <span class="panel-icon">
+          <i class="fas fa-exclamation" aria-hidden="true"></i>
+        </span>
+        prefix
+      </a>
+
+      <a class="panel-block" [class.is-active]="welcomer" (click)="changeTab('welcomer')">
+        <span class="panel-icon">
+          <i class="fas fa-handshake" aria-hidden="true"></i>
+        </span>
+        welcomer
+      </a>
+    </nav>
+
+  </div>
+  <div class="column is-9">
+    <div class="box">
+      <app-set-prefix *ngIf="prefix"></app-set-prefix>
+      <app-set-welcomer *ngIf="welcomer"></app-set-welcomer>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div *ngIf="loaded">
+  <h1 class="subtitle is-size-5 has-text-weight-bold">The prefix for Campfire is currently set to:</h1>
+  <div class="field has-addons">
+    <div class="control">
+      <input id="prefix" class="input" type="text" placeholder="Prefix" value="{{ prefix }}">
+    </div>
+    <div class="control">
+      <a id="setButton" class="button is-primary" (click)="setPrefix()">
+        Set
+      </a>
+    </div>
+  </div>
+</div>
