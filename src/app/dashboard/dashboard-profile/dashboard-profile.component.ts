@@ -8,6 +8,10 @@ import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../../auth/login.service';
 import { Router } from '@angular/router';
 
+interface CallbackData {
+  status: string;
+}
+
 @Component({
   selector: 'app-dashboard-profile',
   templateUrl: './dashboard-profile.component.html',
@@ -91,14 +95,20 @@ export class DashboardProfileComponent implements OnInit {
     };
     console.log('posting');
     this.http
-      .post('https://api.campfirebot.xyz/update/me', packagedData, {
-        headers: {
-          Authorization: localStorage.getItem('auth'),
-          'Content-Type': 'application/json'
+      .post<CallbackData>(
+        'https://api.campfirebot.xyz/update/me',
+        packagedData,
+        {
+          headers: {
+            Authorization: localStorage.getItem('auth'),
+            'Content-Type': 'application/json'
+          }
         }
-      })
+      )
       .subscribe(dse => {
-        console.log(dse);
+        if (dse.status === 'success') {
+          window.location.reload();
+        }
       });
   }
 }
