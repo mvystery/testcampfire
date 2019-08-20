@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  randomMessage: string;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-  }
+    const messageArray = [
+      'social-ing',
+      'community',
+      'magic',
+      'activity',
+      'power'
+    ];
 
+    this.randomMessage =
+      messageArray[Math.floor(Math.random() * messageArray.length)];
+  }
 }

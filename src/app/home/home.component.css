@@ -1,8 +1,8 @@
 .cf-fire-bg {
-  background: url(https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/timothy-meinberg-206976-unsplash.jpg?alt=media&token=e5cb98c5-c855-4400-8d0d-317f97e990b5);
-  background-size: 100%;
-  background-position: center;
-  background-attachment: fixed;
+  background: url(../../assets/campfire-hero-bg.svg);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
 }
 
 .cf-circular-pfp {
@@ -17,6 +17,10 @@
 
 .nomarg {
   margin: 0;
+}
+
+.is-quite-big {
+  font-size: 8rem;
 }
 
 hr.thin {
