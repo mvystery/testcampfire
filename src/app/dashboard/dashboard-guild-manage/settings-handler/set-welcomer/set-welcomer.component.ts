@@ -32,7 +32,7 @@ export class SetWelcomerComponent implements OnInit {
   ngOnInit() {
     this.http
       .get<WelcomeData>(
-        `http://api.campfirebot.xyz/settings/${this.guildMan.getServerId()}/welcomer`,
+        `https://api.campfirebot.xyz/settings/${this.guildMan.getServerId()}/welcomer`,
         {
           headers: {
             Authorization: localStorage.getItem('auth')
