@@ -49,3 +49,30 @@ hr.lighter {
 .cf-displayInfo img {
   margin: auto;
 }
+
+.cf-economy-box {
+  background: linear-gradient(90deg, rgba(151, 89, 153, 0.513) 0%, rgba(89, 133, 153, 0.376) 100%), url(../../assets/svg-savings.svg) #824485;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  min-height: 200px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+}
+
+.cf-moderator-box {
+  background: linear-gradient(90deg, rgba(89, 153, 132, 0.918) 0%, rgba(195, 179, 33, 0.719) 100%), url(../../assets/svg-moderator.svg) #7c3080;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  min-height: 200px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+}
+
+.cf-bg-primary-dark {
+  background: linear-gradient(90deg, rgba(223, 28, 109, 0.431) 0%, rgba(238, 119, 7, 0.418) 100%), url(../../assets/svg-fun.svg) #452745;
+  background-size: cover;
+  background-position: top;
+  color: white;
+  min-height: 200px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+}
