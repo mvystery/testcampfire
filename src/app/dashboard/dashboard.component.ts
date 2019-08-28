@@ -52,8 +52,8 @@ export class DashboardComponent implements OnInit {
           .doc(this.user.uid)
           .ref.onSnapshot(doc => {
             if (doc.exists) {
-              this.balance = doc.data().balance;
-              this.bubbles = doc.data().bubbles_popped;
+              this.balance = doc.data().balance.toLocaleString();
+              this.bubbles = doc.data().bubbles_popped.toLocaleString();
               this.level = doc.data().level;
             }
           });
