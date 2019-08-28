@@ -6,10 +6,7 @@
   src: url(assets/NickyLaatz-ErnestandEmilySlanted.otf);
 }
 
-@font-face {
-  font-family: "Circular";
-  src: url(assets/VMCircularShout.ttf);
-}
+@import url("https://fonts.googleapis.com/css?family=DM+Sans");
 
 /*! bulma.io v0.7.5 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
@@ -11763,5 +11760,6 @@ img.is-rounded {
 }
 
 .circ {
-  font-family: "Circular", sans-serif;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
 }

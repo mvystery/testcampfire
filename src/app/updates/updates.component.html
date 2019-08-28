@@ -1,3 +1,26 @@
 <img
   src="https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/bongo.png?alt=media&token=12eb1893-bee7-4fee-adfb-f98d0b15a009"
-  alt="Updates!" class="bongo">
+  alt="Updates!" class="bongo" title="New update" (click)="openModal()">
+
+<div class="modal is-active" *ngIf="open">
+  <div class="modal-background" (click)="closeModal()"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Updates to Campfire</p>
+      <button class="delete" aria-label="close" (click)="closeModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+    </section>
+    <footer class="modal-card-foot">
+      <div class="container has-text-centered">
+        <p style="margin-bottom: 10px;">Do you like this update?</p>
+        <a class="button is-rounded is-success" (click)="feedback('yes')"><i class="far fa-smile"></i></a>
+        <a class="button is-rounded has-text-white" style="background-color: #ff8657" (click)="feedback('meh')"><i
+            class=" far fa-meh"></i></a>
+        <a class="button is-rounded is-danger" (click)="feedback('no')"><i class="far fa-frown"></i></a>
+        <p>{{ response }}</p>
+      </div>
+    </footer>
+  </div>
+</div>
