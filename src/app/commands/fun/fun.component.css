@@ -1,0 +1,55 @@
+.has-text-outlined {
+  color: transparent;
+  -webkit-text-stroke: #ffffff 1px;
+}
+
+.cf-8ball-box {
+  background: linear-gradient(90deg, rgba(151, 89, 153, .513) 0, rgba(89, 133, 153, .376) 100%) center/cover, url(../../../assets/commands/svg-8ball.svg) center/cover #824485;
+}
+
+.cf-pop-box {
+  background: linear-gradient(90deg, rgba(231, 124, 24, 0.698) 0, rgba(153, 76, 136, 0.897) 100%) center/cover, url(../../../assets/commands/svg-pop.svg) center/cover #bfebb4;
+}
+
+.cf-coin-box {
+  background: linear-gradient(90deg, rgba(231, 24, 24, 0.698) 0, rgba(99, 76, 153, 0.897) 100%) center/cover, url(../../../assets/commands/svg-coin.svg) center 100% no-repeat #51a9cc;
+}
+
+.cf-dog-box {
+  background: linear-gradient(90deg, rgba(24, 62, 231, 0.698) 0, rgba(108, 230, 165, 0.897) 100%) center/cover, url(../../../assets/commands/svg-dog.svg) top/cover #ebe7b4;
+}
+
+.cf-cat-box {
+  background: linear-gradient(90deg, rgba(231, 24, 93, 0.452) 0, rgba(230, 218, 108, 0.466) 100%) center/cover, url(../../../assets/commands/svg-cat.svg) top/cover #ebb4b4;
+}
+
+.cf-nf-box {
+  background: linear-gradient(90deg, rgba(107, 199, 137, 0.781) 0, rgba(82, 53, 136, 0.89) 100%) center/cover, url(../../../assets/commands/svg-nf.svg) top/cover #b4ebdb;
+}
+
+.cf-roll-box {
+  background: linear-gradient(90deg, rgba(221, 69, 201, 0.781) 0, rgba(22, 104, 255, 0.89) 100%) center/cover, url(../../../assets/commands/svg-roll.svg) center/cover #b4ebdb;
+}
+
+.cf-rps-box {
+  background: linear-gradient(90deg, rgba(199, 196, 49, 0.781) 0, rgba(69, 255, 22, 0.589) 100%) center/cover, url(../../../assets/commands/svg-rps.svg) center/cover #e1ebb4;
+}
+
+.cf-pizza-box {
+  background: linear-gradient(90deg, rgba(157, 210, 241, 0.781) 0, rgba(114, 102, 214, 0.589) 100%) center/cover, url(../../../assets/commands/svg-pizza.svg) center/cover #dd9c83;
+}
+
+.cf-command-box {
+  min-height: 180px;
+}
+
+.cf-command-box:hover {
+  animation: pulse 0.8s;
+}
+
+.tooltip-holder {
+  position: relative;
+  top: 40px;
+  height: 20px;
+  width: 20px;
+}

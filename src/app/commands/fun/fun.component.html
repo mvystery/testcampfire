@@ -1,11 +1,11 @@
-<section class="hero is-small is-dark">
+<section class="hero is-small is-primary">
   <div class="hero-body">
     <div class="container">
-      <h1 class="is-size-2">Commands</h1>
+      <h1 class="title is-size-1">Commands</h1>
     </div>
   </div>
 
-  <div class="hero-foot">
+  <div class="hero-foot has-background-dark">
     <nav class="tabs is-boxed is-fullwidth">
       <div class="container">
         <ul>
@@ -22,81 +22,99 @@
 
 <br>
 <div class="container">
-  <div class="box">
-    <h1 class="is-size-3">Fun</h1>
-    <table class="table is-fullwidth is-striped is-bordered">
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Descriptor</th>
-          <th>Example Usage</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>c!8ball (question)</td>
-          <td>Asks the magic 8ball a question.</td>
-          <td>
-            <code>c!8ball Is Campfire a good bot?</code>
-          </td>
-        </tr>
+  <div class="columns">
+    <div class="column">
+      <div class="box cf-8ball-box cf-command-box">
+        <h1 class="circ title is-size-3 has-text-white"><span class="has-text-outlined">c!</span>8ball</h1>
+        <h1 class="subtitle is-size-6 has-text-white">Ask the magic 8ball a question</h1>
+        <div class="tooltip-holder tooltip" data-tooltip="Usage: c!8ball (question)">
+          <i class="fas fa-info-circle has-text-white expand-icon"></i>
+        </div>
+      </div>
+    </div>
 
-        <tr>
-          <td>c!pop</td>
-          <td>Pops bubblewrap</td>
-          <td>
-            <code>c!pop</code>
-          </td>
-        </tr>
+    <div class="column">
+      <div class="box cf-pop-box cf-command-box">
+        <h1 class="circ title is-size-3 has-text-white"><span class="has-text-outlined">c!</span>pop</h1>
+        <h1 class="subtitle is-size-6 has-text-white">Pops a bubble</h1>
+        <div class="tooltip-holder tooltip" data-tooltip="Usage: c!pop">
+          <i class="fas fa-info-circle has-text-white expand-icon"></i>
+        </div>
+      </div>
+    </div>
 
-        <tr>
-          <td>c!flip</td>
-          <td>Flips a coin</td>
-          <td>
-            <code>c!flip</code>
-          </td>
-        </tr>
+    <div class="column">
+      <div class="box cf-coin-box cf-command-box">
+        <h1 class="circ title is-size-3 has-text-white"><span class="has-text-outlined">c!</span>flip</h1>
+        <h1 class="subtitle is-size-6 has-text-white">Flip a coin</h1>
+        <div class="tooltip-holder tooltip" data-tooltip="Usage: c!flip">
+          <i class="fas fa-info-circle has-text-white expand-icon"></i>
+        </div>
+      </div>
+    </div>
 
-        <tr>
-          <td>c!dog</td>
-          <td>Sends a random picture of a dog</td>
-          <td>
-            <code>c!dog</code>
-          </td>
-        </tr>
+    <div class="column">
+      <div class="box cf-dog-box cf-command-box">
+        <h1 class="circ title is-size-3 has-text-white"><span class="has-text-outlined">c!</span>dog</h1>
+        <h1 class="subtitle is-size-6 has-text-white">Cute dogs!</h1>
+        <div class="tooltip-holder tooltip" data-tooltip="Usage: c!dog">
+          <i class="fas fa-info-circle has-text-white expand-icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <tr>
-          <td>c!cat</td>
-          <td>Sends a random picture of a cat</td>
-          <td>
-            <code>c!cat</code>
-          </td>
-        </tr>
+  <div class="columns">
+    <div class="column">
+      <div class="box cf-cat-box cf-command-box">
+        <h1 class="circ title is-size-3 has-text-white"><span class="has-text-outlined">c!</span>cat</h1>
+        <h1 class="subtitle is-size-6 has-text-white">Meowww!</h1>
+        <div class="tooltip-holder tooltip" data-tooltip="Usage: c!cat">
+          <i class="fas fa-info-circle has-text-white expand-icon"></i>
+        </div>
+      </div>
+    </div>
 
-        <tr>
-          <td>c!numberfact (number)</td>
-          <td>Gets a fact about the given number</td>
-          <td>
-            <code>c!numberfact 43</code>
-          </td>
-        </tr>
+    <div class="column">
+      <div class="box cf-nf-box cf-command-box">
+        <h1 class="circ title is-size-3 has-text-white"><span class="has-text-outlined">c!</span>numberfact</h1>
+        <h1 class="subtitle is-size-6 has-text-white">Get facts about the given number</h1>
+        <div class="tooltip-holder tooltip" data-tooltip="Usage: c!numberfact (number)">
+          <i class="fas fa-info-circle has-text-white expand-icon"></i>
+        </div>
+      </div>
+    </div>
 
-        <tr>
-          <td>c!roll (sides?)</td>
-          <td>Rolls a die - Optional Argument: Number of sides.</td>
-          <td>
-            <code>c!roll 12</code>
-          </td>
-        </tr>
+    <div class="column">
+      <div class="box cf-roll-box cf-command-box">
+        <h1 class="circ title is-size-3 has-text-white"><span class="has-text-outlined">c!</span>roll</h1>
+        <h1 class="subtitle is-size-6 has-text-white">Roll a die</h1>
+        <div class="tooltip-holder tooltip" data-tooltip="Usage: c!roll (sides?)">
+          <i class="fas fa-info-circle has-text-white expand-icon"></i>
+        </div>
+      </div>
+    </div>
 
-        <tr>
-          <td>c!rps (rock/paper/scissors)</td>
-          <td>Plays rock, paper, scissors with the bot.</td>
-          <td>
-            <code>c!rps rock</code>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="column">
+      <div class="box cf-rps-box cf-command-box">
+        <h1 class="circ title is-size-3 has-text-white"><span class="has-text-outlined">c!</span>rps</h1>
+        <h1 class="subtitle is-size-6 has-text-white">Play Rock, Paper, Scissors</h1>
+        <div class="tooltip-holder tooltip" data-tooltip="Usage: c!rps (rock/paper/scissors)">
+          <i class="fas fa-info-circle has-text-white expand-icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column is-3">
+      <div class="box cf-pizza-box cf-command-box">
+        <h1 class="circ title is-size-3 has-text-white"><span class="has-text-outlined">c!</span>pizza</h1>
+        <h1 class="subtitle is-size-6 has-text-white">Mmm pizza!</h1>
+        <div class="tooltip-holder tooltip" data-tooltip="Usage: c!pizza">
+          <i class="fas fa-info-circle has-text-white expand-icon"></i>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
