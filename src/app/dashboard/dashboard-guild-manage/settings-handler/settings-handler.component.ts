@@ -9,6 +9,10 @@ export class SettingsHandlerComponent implements OnInit {
   prefix = true;
   welcomer = false;
 
+  general = true;
+  roblox = false;
+  verify = false;
+
   constructor() {}
 
   ngOnInit() {}
@@ -22,6 +26,26 @@ export class SettingsHandlerComponent implements OnInit {
     if (tabName === 'prefix') {
       this.welcomer = false;
       this.prefix = true;
+    }
+  }
+
+  changeSection(sectionName) {
+    if (sectionName === 'general') {
+      this.general = true;
+      this.roblox = false;
+
+      this.welcomer = false;
+      this.verify = false;
+      this.prefix = true;
+    }
+
+    if (sectionName === 'roblox') {
+      this.roblox = true;
+      this.general = false;
+
+      this.prefix = false;
+      this.welcomer = false;
+      this.verify = true;
     }
   }
 }

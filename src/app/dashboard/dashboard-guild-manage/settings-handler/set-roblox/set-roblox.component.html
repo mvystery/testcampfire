@@ -1,0 +1,26 @@
+<div *ngIf="loaded">
+  <h1 class="subtitle is-size-5 has-text-weight-bold">Verification</h1>
+
+  <div class="control">
+    <a (click)="toggleVerify()" class="button" [class.is-danger]="!enabled" [class.is-success]="enabled"
+      title="Click to enable" id="welcomer-status"><i class="fas fa-power-off"></i> {{status}}</a>
+  </div>
+  <br>
+  <div *ngIf="enabled">
+    <div class="field">
+      <label class="label">Verified Role Name</label>
+      <div class="control">
+        <input type="text" class="input" placeholder="Verified" value="{{ role }}" id="roleName">
+
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Group ID</label>
+      <div class="control">
+        <input type="number" class="input" placeholder="3141352" value="{{ groupId }}" id="groupId">
+      </div>
+    </div>
+    <a (click)="saveData()" class="button is-primary" id="saveButton"><i class="fas fa-save"></i> Save</a>
+  </div>
+</div>

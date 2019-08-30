@@ -4,23 +4,34 @@
       <p class="panel-heading">Options</p>
 
       <p class="panel-tabs">
-        <a class="is-active">general</a>
-        <a>moderator</a>
+        <a [class.is-active]="general" (click)="changeSection('general')">general</a>
+        <a [class.is-active]="roblox" (click)="changeSection('roblox')">roblox</a>
       </p>
 
-      <a class="panel-block" [class.is-active]="prefix" (click)="changeTab('prefix')">
-        <span class="panel-icon">
-          <i class="fas fa-exclamation" aria-hidden="true"></i>
-        </span>
-        prefix
-      </a>
+      <div *ngIf="general">
+        <a class="panel-block" [class.is-active]="prefix" (click)="changeTab('prefix')">
+          <span class="panel-icon">
+            <i class="fas fa-exclamation" aria-hidden="true"></i>
+          </span>
+          prefix
+        </a>
 
-      <a class="panel-block" [class.is-active]="welcomer" (click)="changeTab('welcomer')">
-        <span class="panel-icon">
-          <i class="fas fa-handshake" aria-hidden="true"></i>
-        </span>
-        welcomer
-      </a>
+        <a class="panel-block" [class.is-active]="welcomer" (click)="changeTab('welcomer')">
+          <span class="panel-icon">
+            <i class="fas fa-handshake" aria-hidden="true"></i>
+          </span>
+          welcomer
+        </a>
+      </div>
+
+      <div *ngIf="roblox">
+        <a class="panel-block" [class.is-active]="verify" (click)="changeTab('verify')">
+          <span class="panel-icon">
+            <i class="fas fa-check" aria-hidden="true"></i>
+          </span>
+          verification
+        </a>
+      </div>
     </nav>
 
   </div>
@@ -28,6 +39,7 @@
     <div class="box">
       <app-set-prefix *ngIf="prefix"></app-set-prefix>
       <app-set-welcomer *ngIf="welcomer"></app-set-welcomer>
+      <app-set-roblox *ngIf="verify"></app-set-roblox>
     </div>
   </div>
 </div>
