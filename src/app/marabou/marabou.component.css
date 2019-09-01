@@ -1,0 +1,15 @@
+.cf-interview-center {
+  background: linear-gradient(90deg, rgba(170, 138, 70, 0.513) 0, rgba(89, 122, 153, 0.376) 100%) center/cover, url(../../assets/marabou/ic.png) center/cover no-repeat;
+}
+
+.cf-cafe {
+  background: linear-gradient(90deg, rgba(170, 138, 70, 0.513) 0, rgba(89, 122, 153, 0.376) 100%) center/cover, url(../../assets/marabou/cafe.png) center/cover no-repeat;
+}
+
+.cf-training-center {
+  background: linear-gradient(90deg, rgba(170, 138, 70, 0.513) 0, rgba(89, 122, 153, 0.376) 100%) center/cover, url(../../assets/marabou/tc.png) center/cover no-repeat;
+}
+
+.cf-yellow-box {
+  background: #e8b325;
+}

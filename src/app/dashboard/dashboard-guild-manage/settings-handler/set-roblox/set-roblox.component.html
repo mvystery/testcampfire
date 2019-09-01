@@ -21,6 +21,10 @@
         <input type="number" class="input" placeholder="3141352" value="{{ groupId }}" id="groupId">
       </div>
     </div>
+
+    <li *ngFor="let bind of binds">
+      {{ bind.name }}
+    </li>
     <a (click)="saveData()" class="button is-primary" id="saveButton"><i class="fas fa-save"></i> Save</a>
   </div>
 </div>

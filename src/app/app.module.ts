@@ -31,19 +31,7 @@ import { SettingsHandlerComponent } from './dashboard/dashboard-guild-manage/set
 import { SetPrefixComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-prefix/set-prefix.component';
 import { SetWelcomerComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-welcomer/set-welcomer.component';
 import { SetRobloxComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-roblox/set-roblox.component';
-
-Sentry.init({
-  dsn: 'https://d1da4184595a45159753da7531546696@sentry.io/1488124'
-});
-
-@Injectable()
-export class SentryErrorHandler implements ErrorHandler {
-  constructor() {}
-  handleError(error) {
-    const eventId = Sentry.captureException(error.originalError || error);
-    Sentry.showReportDialog({ eventId });
-  }
-}
+import { MarabouComponent } from './marabou/marabou.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +53,8 @@ export class SentryErrorHandler implements ErrorHandler {
     SettingsHandlerComponent,
     SetPrefixComponent,
     SetWelcomerComponent,
-    SetRobloxComponent
+    SetRobloxComponent,
+    MarabouComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +67,7 @@ export class SentryErrorHandler implements ErrorHandler {
     FormsModule,
     BrowserModule
   ],
-  providers: [{ provide: ErrorHandler, useClass: SentryErrorHandler }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

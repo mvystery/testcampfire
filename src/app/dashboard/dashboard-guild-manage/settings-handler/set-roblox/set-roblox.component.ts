@@ -6,6 +6,8 @@ interface VerifyData {
   enabled: boolean;
   groupId: number;
   verifiedRole: string;
+  bindsOn: boolean;
+  binds: object;
 }
 
 interface Callback {
@@ -23,6 +25,7 @@ export class SetRobloxComponent implements OnInit {
   status = 'Disabled';
   role: string;
   groupId: number;
+  binds: object;
 
   constructor(
     private http: HttpClient,
@@ -47,6 +50,11 @@ export class SetRobloxComponent implements OnInit {
           this.status = 'Enabled';
           this.groupId = data.groupId;
           this.role = data.verifiedRole;
+          this.binds = data.binds;
+
+          Object.keys(data.binds).forEach(bind => {
+            console.log(data.binds[bind]);
+          });
         } else {
           this.enabled = false;
           this.status = 'Disabled';
