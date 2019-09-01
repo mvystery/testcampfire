@@ -33,3 +33,13 @@
   background: #7289da;
   color: white;
 }
+
+.cta {
+  border-radius: 0;
+  background: white;
+}
+
+.is-sticky {
+  position: sticky;
+  top: 0;
+}

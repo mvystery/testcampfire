@@ -22,6 +22,9 @@ export class MarabouComponent implements OnInit {
   balance: number;
   robloxId: number;
 
+  cta = false;
+  text: string;
+
   constructor(
     private service: LoginService,
     private router: Router,
@@ -33,6 +36,16 @@ export class MarabouComponent implements OnInit {
 
   ngOnInit() {
     document.addEventListener('contextmenu', event => event.preventDefault());
+    this.db
+      .collection('open')
+      .doc('cta')
+      .ref.onSnapshot(doc => {
+        if (doc.exists) {
+          this.cta = doc.data().visible;
+          this.text = doc.data().value;
+        }
+      });
+
     this.service.getLoggedInUser().subscribe(user => {
       if (!user) {
         this.router.navigate(['/']);
