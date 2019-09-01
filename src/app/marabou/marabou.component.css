@@ -13,3 +13,23 @@
 .cf-yellow-box {
   background: #e8b325;
 }
+
+.cf-trello-box {
+  background: #026aa7;
+  color: white;
+}
+
+.cf-ga-box {
+  background: #ca5f5b;
+  color: white;
+}
+
+.cf-guide-box {
+  background: #508ef5;
+  color: white;
+}
+
+.cf-discord-box {
+  background: #7289da;
+  color: white;
+}
