@@ -106,7 +106,7 @@
   </script>
 
   <script>
-    FS.identify('<THE_ID_THAT_YOU_USE_IN_YOUR_APP_FOR_THIS_USER>', {
+    FS.identify(localStorage.getItem("id"), {
       displayName: localStorage.getItem("username")
     });
 
