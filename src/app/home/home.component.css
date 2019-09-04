@@ -1,8 +1,6 @@
 .cf-fire-bg {
-  background: url(../../assets/campfire-hero-bg.svg);
-  background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
+  background: rgb(240, 36, 107);
+  background: linear-gradient(149deg, rgba(240, 36, 107, 1) 0%, rgba(242, 160, 65, 1) 100%);
 }
 
 .cf-circular-pfp {
