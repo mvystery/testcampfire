@@ -146,18 +146,29 @@ export class MarabouComponent implements OnInit {
                     });
                   });
 
-                this.http
-                  .get<any>('https://api.campfirebot.xyz/marabou/group')
-                  .subscribe(data => {
-                    const parsed = JSON.parse(data);
-                    // const memberCountMT = parsed.roles[9].memberCount;
-                    // const memberCountAT = parsed.roles[10].memberCount;
-                    const memberCountMT = 12;
-                    const memberCountAT = 8;
-                    const base = 4 * 5;
+                this.db
+                  .collection('open')
+                  .doc('tokens')
+                  .ref.onSnapshot(tokenSystem => {
+                    if (tokenSystem.exists) {
+                      const difficulty = tokenSystem.data().difficulty;
 
-                    this.STtoMT = Math.floor((base * memberCountMT) / 1.2);
-                    this.MTtoAT = Math.floor((base * memberCountAT) / 1.2);
+                      this.http
+                        .get<any>('https://api.campfirebot.xyz/marabou/group')
+                        .subscribe(data => {
+                          const parsed = JSON.parse(data);
+                          const memberCountMT = parsed.roles[9].memberCount;
+                          const memberCountAT = parsed.roles[10].memberCount;
+                          const base = 4 * 5;
+
+                          this.STtoMT = Math.floor(
+                            (base * memberCountMT) / 1.2
+                          );
+                          this.MTtoAT = Math.floor(
+                            (base * memberCountAT) / 1.2
+                          );
+                        });
+                    }
                   });
               }
             }
