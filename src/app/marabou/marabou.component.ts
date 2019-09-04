@@ -169,6 +169,14 @@ export class MarabouComponent implements OnInit {
                           this.MTtoAT = Math.floor(
                             (baseAT * memberCountAT) / 1.2
                           );
+
+                          if (this.STtoMT === 0) {
+                            this.STtoMT = 4;
+                          }
+
+                          if (this.MTtoAT === 0) {
+                            this.MTtoAT = 4;
+                          }
                         });
                     }
                   });
