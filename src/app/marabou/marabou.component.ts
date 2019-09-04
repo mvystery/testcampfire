@@ -151,7 +151,8 @@ export class MarabouComponent implements OnInit {
                   .doc('tokens')
                   .ref.onSnapshot(tokenSystem => {
                     if (tokenSystem.exists) {
-                      const difficulty = tokenSystem.data().difficulty;
+                      const difficultyMT = tokenSystem.data().difficultyMT;
+                      const difficultyAT = tokenSystem.data().difficultyAT;
 
                       this.http
                         .get<any>('https://api.campfirebot.xyz/marabou/group')
@@ -159,13 +160,14 @@ export class MarabouComponent implements OnInit {
                           const parsed = JSON.parse(data);
                           const memberCountMT = parsed.roles[9].memberCount;
                           const memberCountAT = parsed.roles[10].memberCount;
-                          const base = 4 * 5;
+                          const baseMT = 4 * difficultyMT;
+                          const baseAT = 4 * difficultyMT;
 
                           this.STtoMT = Math.floor(
-                            (base * memberCountMT) / 1.2
+                            (baseMT * memberCountMT) / 1.2
                           );
                           this.MTtoAT = Math.floor(
-                            (base * memberCountAT) / 1.2
+                            (baseAT * memberCountAT) / 1.2
                           );
                         });
                     }
