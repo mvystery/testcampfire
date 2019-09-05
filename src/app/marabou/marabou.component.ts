@@ -275,7 +275,7 @@ export class MarabouComponent implements OnInit {
                           const memberCountMT = parsed.roles[9].memberCount;
                           const memberCountAT = parsed.roles[10].memberCount;
                           const baseMT = 4 * difficultyMT;
-                          const baseAT = 4 * difficultyMT;
+                          const baseAT = 4 * difficultyAT;
 
                           this.STtoMT = Math.floor(
                             (baseMT * memberCountMT) / 1.2
