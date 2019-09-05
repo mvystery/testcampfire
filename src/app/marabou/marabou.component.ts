@@ -34,7 +34,9 @@ export class MarabouComponent implements OnInit {
     private http: HttpClient
   ) {}
 
-  LineChart: any;
+  sessionTimes: any;
+  sessionDays: any;
+  inactiveDays: any;
 
   ngOnInit() {
     document.addEventListener('contextmenu', event => event.preventDefault());
@@ -80,7 +82,7 @@ export class MarabouComponent implements OnInit {
                   )
                   .subscribe(data => {
                     this.balance = data.balance;
-                    this.LineChart = new Chart('lineChart', {
+                    this.sessionTimes = new Chart('sessionTimes', {
                       type: 'doughnut',
                       data: {
                         labels: [
@@ -119,7 +121,119 @@ export class MarabouComponent implements OnInit {
                       },
                       options: {
                         legend: {
-                          display: true,
+                          display: false,
+                          position: 'bottom'
+                        },
+                        title: {
+                          text: 'Line Chart',
+                          display: false
+                        },
+                        scales: {
+                          yAxes: [
+                            {
+                              ticks: {
+                                display: false
+                              },
+                              gridLines: {
+                                zeroLineColor: 'transparent',
+                                zeroLineWidth: 2,
+                                drawTicks: false,
+                                drawBorder: false,
+                                color: 'transparent'
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    });
+
+                    this.sessionDays = new Chart('sessionDays', {
+                      type: 'doughnut',
+                      data: {
+                        labels: [
+                          'Monday',
+                          'Tuesday',
+                          'Wednesday',
+                          'Thursday',
+                          'Friday',
+                          'Saturday',
+                          'Sunday'
+                        ],
+                        datasets: [
+                          {
+                            label: 'Number attended lifetime',
+                            data: [
+                              data.days_attended.monday,
+                              data.days_attended.tuesday,
+                              data.days_attended.wednesday,
+                              data.days_attended.thursday,
+                              data.days_attended.friday,
+                              data.days_attended.saturday,
+                              data.days_attended.sunday
+                            ],
+                            fill: false,
+                            lineTension: 0.1,
+                            backgroundColor: [
+                              '#e8b325',
+                              '#e86025',
+                              '#e83925',
+                              '#e82569',
+                              '#9325e8',
+                              '#25e8ba',
+                              '#e8253c'
+                            ],
+                            borderWidth: 3,
+                            pointRadius: 0
+                          }
+                        ]
+                      },
+                      options: {
+                        legend: {
+                          display: false,
+                          position: 'bottom'
+                        },
+                        title: {
+                          text: 'Line Chart',
+                          display: false
+                        },
+                        scales: {
+                          yAxes: [
+                            {
+                              ticks: {
+                                display: false
+                              },
+                              gridLines: {
+                                zeroLineColor: 'transparent',
+                                zeroLineWidth: 2,
+                                drawTicks: false,
+                                drawBorder: false,
+                                color: 'transparent'
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    });
+
+                    this.inactiveDays = new Chart('inactiveDays', {
+                      type: 'doughnut',
+                      data: {
+                        labels: ['Inactive', 'Remaining inactive days'],
+                        datasets: [
+                          {
+                            label: 'Number attended lifetime',
+                            data: [data.inactive_days, 50 - data.inactive_days],
+                            fill: false,
+                            lineTension: 0.1,
+                            backgroundColor: ['#e82525', '#25e85c'],
+                            borderWidth: 3,
+                            pointRadius: 0
+                          }
+                        ]
+                      },
+                      options: {
+                        legend: {
+                          display: false,
                           position: 'bottom'
                         },
                         title: {
