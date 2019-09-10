@@ -53,7 +53,6 @@ export class MarabouComponent implements OnInit {
     this.service.getLoggedInUser().subscribe(user => {
       if (!user) {
         this.router.navigate(['/']);
-        window.alert('You must login!');
       }
       this.user = user;
       if (user) {
@@ -62,238 +61,246 @@ export class MarabouComponent implements OnInit {
           .doc(localStorage.getItem('id'))
           .ref.onSnapshot(doc => {
             if (doc.exists) {
-              if (doc.data().robloxId === undefined) {
+              if (doc.data().maraSecure === undefined) {
                 this.router.navigate(['/']);
-              } else {
-                const robloxId = doc.data().robloxId;
-                this.robloxId = doc.data().robloxId;
-                this.http
-                  .get<any>(
-                    `https://api.campfirebot.xyz/roblox/username/${robloxId}`
-                  )
-                  .subscribe(data => {
-                    const parsed = JSON.parse(data);
-                    this.name = parsed.Username;
-                  });
-
-                this.http
-                  .get<any>(
-                    `https://api.campfirebot.xyz/marabou/tokens/${this.robloxId}`
-                  )
-                  .subscribe(data => {
-                    this.balance = data.balance;
-                    this.sessionTimes = new Chart('sessionTimes', {
-                      type: 'doughnut',
-                      data: {
-                        labels: [
-                          '13:00 BST',
-                          '15:00 BST',
-                          '17:00 BST',
-                          '19:00 BST',
-                          '21:00 BST',
-                          '23:00 BST'
-                        ],
-                        datasets: [
-                          {
-                            label: 'Number attended lifetime',
-                            data: [
-                              data.sessions_attended[13],
-                              data.sessions_attended[15],
-                              data.sessions_attended[17],
-                              data.sessions_attended[19],
-                              data.sessions_attended[21],
-                              data.sessions_attended[23]
-                            ],
-                            fill: false,
-                            lineTension: 0.1,
-                            backgroundColor: [
-                              '#e8b325',
-                              '#e86025',
-                              '#e83925',
-                              '#e82569',
-                              '#9325e8',
-                              '#25e8ba'
-                            ],
-                            borderWidth: 3,
-                            pointRadius: 0
-                          }
-                        ]
-                      },
-                      options: {
-                        legend: {
-                          display: false,
-                          position: 'bottom'
-                        },
-                        title: {
-                          text: 'Line Chart',
-                          display: false
-                        },
-                        scales: {
-                          yAxes: [
-                            {
-                              ticks: {
-                                display: false
-                              },
-                              gridLines: {
-                                zeroLineColor: 'transparent',
-                                zeroLineWidth: 2,
-                                drawTicks: false,
-                                drawBorder: false,
-                                color: 'transparent'
-                              }
-                            }
-                          ]
-                        }
-                      }
+              }
+              if (doc.data().maraSecure === 'S8UfH') {
+                if (doc.data().robloxId === undefined) {
+                  this.router.navigate(['/']);
+                } else {
+                  const robloxId = doc.data().robloxId;
+                  this.robloxId = doc.data().robloxId;
+                  this.http
+                    .get<any>(
+                      `https://api.campfirebot.xyz/roblox/username/${robloxId}`
+                    )
+                    .subscribe(data => {
+                      const parsed = JSON.parse(data);
+                      this.name = parsed.Username;
                     });
 
-                    this.sessionDays = new Chart('sessionDays', {
-                      type: 'doughnut',
-                      data: {
-                        labels: [
-                          'Monday',
-                          'Tuesday',
-                          'Wednesday',
-                          'Thursday',
-                          'Friday',
-                          'Saturday',
-                          'Sunday'
-                        ],
-                        datasets: [
-                          {
-                            label: 'Number attended lifetime',
-                            data: [
-                              data.days_attended.monday,
-                              data.days_attended.tuesday,
-                              data.days_attended.wednesday,
-                              data.days_attended.thursday,
-                              data.days_attended.friday,
-                              data.days_attended.saturday,
-                              data.days_attended.sunday
-                            ],
-                            fill: false,
-                            lineTension: 0.1,
-                            backgroundColor: [
-                              '#e8b325',
-                              '#e86025',
-                              '#e83925',
-                              '#e82569',
-                              '#9325e8',
-                              '#25e8ba',
-                              '#e8253c'
-                            ],
-                            borderWidth: 3,
-                            pointRadius: 0
-                          }
-                        ]
-                      },
-                      options: {
-                        legend: {
-                          display: false,
-                          position: 'bottom'
-                        },
-                        title: {
-                          text: 'Line Chart',
-                          display: false
-                        },
-                        scales: {
-                          yAxes: [
+                  this.http
+                    .get<any>(
+                      `https://api.campfirebot.xyz/marabou/tokens/${this.robloxId}`
+                    )
+                    .subscribe(data => {
+                      this.balance = data.balance;
+                      this.sessionTimes = new Chart('sessionTimes', {
+                        type: 'doughnut',
+                        data: {
+                          labels: [
+                            '13:00 BST',
+                            '15:00 BST',
+                            '17:00 BST',
+                            '19:00 BST',
+                            '21:00 BST',
+                            '23:00 BST'
+                          ],
+                          datasets: [
                             {
-                              ticks: {
-                                display: false
-                              },
-                              gridLines: {
-                                zeroLineColor: 'transparent',
-                                zeroLineWidth: 2,
-                                drawTicks: false,
-                                drawBorder: false,
-                                color: 'transparent'
-                              }
+                              label: 'Number attended lifetime',
+                              data: [
+                                data.sessions_attended[13],
+                                data.sessions_attended[15],
+                                data.sessions_attended[17],
+                                data.sessions_attended[19],
+                                data.sessions_attended[21],
+                                data.sessions_attended[23]
+                              ],
+                              fill: false,
+                              lineTension: 0.1,
+                              backgroundColor: [
+                                '#e8b325',
+                                '#e86025',
+                                '#e83925',
+                                '#e82569',
+                                '#9325e8',
+                                '#25e8ba'
+                              ],
+                              borderWidth: 3,
+                              pointRadius: 0
                             }
                           ]
-                        }
-                      }
-                    });
-
-                    this.inactiveDays = new Chart('inactiveDays', {
-                      type: 'doughnut',
-                      data: {
-                        labels: ['Inactive', 'Remaining inactive days'],
-                        datasets: [
-                          {
-                            label: 'Number attended lifetime',
-                            data: [data.inactive_days, 50 - data.inactive_days],
-                            fill: false,
-                            lineTension: 0.1,
-                            backgroundColor: ['#e82525', '#25e85c'],
-                            borderWidth: 3,
-                            pointRadius: 0
-                          }
-                        ]
-                      },
-                      options: {
-                        legend: {
-                          display: false,
-                          position: 'bottom'
                         },
-                        title: {
-                          text: 'Line Chart',
-                          display: false
-                        },
-                        scales: {
-                          yAxes: [
-                            {
-                              ticks: {
-                                display: false
-                              },
-                              gridLines: {
-                                zeroLineColor: 'transparent',
-                                zeroLineWidth: 2,
-                                drawTicks: false,
-                                drawBorder: false,
-                                color: 'transparent'
+                        options: {
+                          legend: {
+                            display: false,
+                            position: 'bottom'
+                          },
+                          title: {
+                            text: 'Line Chart',
+                            display: false
+                          },
+                          scales: {
+                            yAxes: [
+                              {
+                                ticks: {
+                                  display: false
+                                },
+                                gridLines: {
+                                  zeroLineColor: 'transparent',
+                                  zeroLineWidth: 2,
+                                  drawTicks: false,
+                                  drawBorder: false,
+                                  color: 'transparent'
+                                }
                               }
+                            ]
+                          }
+                        }
+                      });
+
+                      this.sessionDays = new Chart('sessionDays', {
+                        type: 'doughnut',
+                        data: {
+                          labels: [
+                            'Monday',
+                            'Tuesday',
+                            'Wednesday',
+                            'Thursday',
+                            'Friday',
+                            'Saturday',
+                            'Sunday'
+                          ],
+                          datasets: [
+                            {
+                              label: 'Number attended lifetime',
+                              data: [
+                                data.days_attended.monday,
+                                data.days_attended.tuesday,
+                                data.days_attended.wednesday,
+                                data.days_attended.thursday,
+                                data.days_attended.friday,
+                                data.days_attended.saturday,
+                                data.days_attended.sunday
+                              ],
+                              fill: false,
+                              lineTension: 0.1,
+                              backgroundColor: [
+                                '#e8b325',
+                                '#e86025',
+                                '#e83925',
+                                '#e82569',
+                                '#9325e8',
+                                '#25e8ba',
+                                '#e8253c'
+                              ],
+                              borderWidth: 3,
+                              pointRadius: 0
                             }
                           ]
+                        },
+                        options: {
+                          legend: {
+                            display: false,
+                            position: 'bottom'
+                          },
+                          title: {
+                            text: 'Line Chart',
+                            display: false
+                          },
+                          scales: {
+                            yAxes: [
+                              {
+                                ticks: {
+                                  display: false
+                                },
+                                gridLines: {
+                                  zeroLineColor: 'transparent',
+                                  zeroLineWidth: 2,
+                                  drawTicks: false,
+                                  drawBorder: false,
+                                  color: 'transparent'
+                                }
+                              }
+                            ]
+                          }
                         }
+                      });
+
+                      this.inactiveDays = new Chart('inactiveDays', {
+                        type: 'doughnut',
+                        data: {
+                          labels: ['Inactive', 'Remaining inactive days'],
+                          datasets: [
+                            {
+                              label: 'Number attended lifetime',
+                              data: [
+                                data.inactive_days,
+                                50 - data.inactive_days
+                              ],
+                              fill: false,
+                              lineTension: 0.1,
+                              backgroundColor: ['#e82525', '#25e85c'],
+                              borderWidth: 3,
+                              pointRadius: 0
+                            }
+                          ]
+                        },
+                        options: {
+                          legend: {
+                            display: false,
+                            position: 'bottom'
+                          },
+                          title: {
+                            text: 'Line Chart',
+                            display: false
+                          },
+                          scales: {
+                            yAxes: [
+                              {
+                                ticks: {
+                                  display: false
+                                },
+                                gridLines: {
+                                  zeroLineColor: 'transparent',
+                                  zeroLineWidth: 2,
+                                  drawTicks: false,
+                                  drawBorder: false,
+                                  color: 'transparent'
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      });
+                    });
+
+                  this.db
+                    .collection('open')
+                    .doc('tokens')
+                    .ref.onSnapshot(tokenSystem => {
+                      if (tokenSystem.exists) {
+                        const difficultyMT = tokenSystem.data().difficultyMT;
+                        const difficultyAT = tokenSystem.data().difficultyAT;
+
+                        this.http
+                          .get<any>('https://api.campfirebot.xyz/marabou/group')
+                          .subscribe(data => {
+                            const parsed = JSON.parse(data);
+                            const memberCountMT = parsed.roles[9].memberCount;
+                            const memberCountAT = parsed.roles[10].memberCount;
+                            const baseMT = 4 * difficultyMT;
+                            const baseAT = 4 * difficultyAT;
+
+                            this.STtoMT = Math.floor(
+                              (baseMT * memberCountMT) / 1.2
+                            );
+                            this.MTtoAT = Math.floor(
+                              (baseAT * memberCountAT) / 1.2
+                            );
+
+                            if (this.STtoMT === 0) {
+                              this.STtoMT = 4;
+                            }
+
+                            if (this.MTtoAT === 0) {
+                              this.MTtoAT = 4;
+                            }
+                          });
                       }
                     });
-                  });
-
-                this.db
-                  .collection('open')
-                  .doc('tokens')
-                  .ref.onSnapshot(tokenSystem => {
-                    if (tokenSystem.exists) {
-                      const difficultyMT = tokenSystem.data().difficultyMT;
-                      const difficultyAT = tokenSystem.data().difficultyAT;
-
-                      this.http
-                        .get<any>('https://api.campfirebot.xyz/marabou/group')
-                        .subscribe(data => {
-                          const parsed = JSON.parse(data);
-                          const memberCountMT = parsed.roles[9].memberCount;
-                          const memberCountAT = parsed.roles[10].memberCount;
-                          const baseMT = 4 * difficultyMT;
-                          const baseAT = 4 * difficultyAT;
-
-                          this.STtoMT = Math.floor(
-                            (baseMT * memberCountMT) / 1.2
-                          );
-                          this.MTtoAT = Math.floor(
-                            (baseAT * memberCountAT) / 1.2
-                          );
-
-                          if (this.STtoMT === 0) {
-                            this.STtoMT = 4;
-                          }
-
-                          if (this.MTtoAT === 0) {
-                            this.MTtoAT = 4;
-                          }
-                        });
-                    }
-                  });
+                }
               }
             }
           });
