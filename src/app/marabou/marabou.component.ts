@@ -61,9 +61,6 @@ export class MarabouComponent implements OnInit {
           .doc(localStorage.getItem('id'))
           .ref.onSnapshot(doc => {
             if (doc.exists) {
-              if (doc.data().maraSecure === undefined) {
-                this.router.navigate(['/']);
-              }
               if (doc.data().maraSecure === 'S8UfH') {
                 if (doc.data().robloxId === undefined) {
                   this.router.navigate(['/']);
@@ -301,6 +298,11 @@ export class MarabouComponent implements OnInit {
                       }
                     });
                 }
+              } else {
+                this.router.navigate(['/']);
+                setTimeout(() => {
+                  window.alert('Your Campfire account is not MaraSecured');
+                }, 2000);
               }
             }
           });
