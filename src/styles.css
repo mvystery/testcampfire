@@ -1,5 +1,17 @@
 @charset "UTF-8";
 
+::selection {
+  background: #f0246b;
+  color: white;
+  /* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+  background: #f0246b;
+  color: white;
+  /* Gecko Browsers */
+}
+
 @font-face {
   font-family: "Urania-Light";
   src: url(assets/Urania-Light.ttf);

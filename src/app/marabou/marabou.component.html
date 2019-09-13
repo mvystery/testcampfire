@@ -94,6 +94,36 @@
           <br>
           <span class="is-size-2 has-text-weight-bold circ">{{ balance }}</span><br>MaraTokens</p>
       </div><br>
+
+      <div class="box shaded-box has-text-centered">
+        <h1 class="title is-family-primary has-text-weight-normal is-size-2">Your achievements</h1>
+        <h1 class="subtitle is-size-5 has-text-lighter">All of your progress is rated on a 0-3 scale</h1>
+        <div class="columns">
+          <div class="column">
+            <div class="box has-text-centered">
+              <p>Attendance</p>
+              <p class="has-text-weight-bold">{{ attendance }}</p>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="box has-text-centered">
+              <p>Warnings remaining</p>
+              <p class="has-text-weight-bold">{{ warnings }}</p>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="box has-text-centered">
+              <p>MaraScore</p>
+              <p class="has-text-weight-bold">{{ maraScore }}</p>
+            </div>
+          </div>
+        </div>
+        <p class="has-text-centered">If your MaraScore falls below 1.5 you will be demoted.</p>
+        <a href="" class="button">Information on Warnings</a>
+      </div>
+
       <div class="box has-text-justified">
         <div class="content">
           <p>Marabou uses MaraTokens for its promotions. But, what actually are MaraTokens? MaraTokens are a math based
@@ -189,4 +219,34 @@
     </div>
   </div>
   <!--Main column ended-->
+</div>
+
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Your warnings</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <h1 class="title is-family-primary has-text-weight-normal is-size-5">Warning 1</h1>
+      <p class="subtitle is-size-6">Issuer: Eythereal</p>
+      <table class="table is-fullwidth is-striped is-bordered">
+        <thead>
+          <tr>
+            <th>When it was issued</th>
+            <th>Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ testingSystem }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button">Close</button>
+    </footer>
+  </div>
 </div>

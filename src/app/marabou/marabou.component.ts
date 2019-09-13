@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../auth/login.service';
 import { Chart } from 'chart.js';
+import * as moment from 'moment';
 
 import {
   AngularFirestore,
@@ -21,6 +22,15 @@ export class MarabouComponent implements OnInit {
   name: string;
   balance: number;
   robloxId: number;
+  warnings: any = 'Loading...';
+  attendance: any = 'Loading...';
+  maraScore: any = 'Loading...';
+  warning1Time: any;
+  warning2Time: any;
+  warning1Issuer: string;
+  warning2Issuer: string;
+  warning1Reason: string;
+  warning2Reason: string;
 
   cta = false;
   text: string;
@@ -261,6 +271,25 @@ export class MarabouComponent implements OnInit {
                           }
                         }
                       });
+
+                      this.warnings = data.warnings;
+                      this.attendance = data.attendance;
+
+                      this.maraScore = (data.warnings + data.attendance) / 2;
+                      this.warning1Time = moment(
+                        data.warning_info.warning_1.time,
+                        'X'
+                      ).fromNow();
+
+                      this.warning1Issuer = data.warning_info.warning_1.issuer;
+                      this.warning1Reason = data.warning_info.warning_1.reason;
+
+                      this.warning2Time = moment(
+                        data.warning_info.warning_2.time,
+                        'X'
+                      ).fromNow();
+                      this.warning2Issuer = data.warning_info.warning_2.issuer;
+                      this.warning2Reason = data.warning_info.warning_2.reason;
                     });
 
                   this.db
