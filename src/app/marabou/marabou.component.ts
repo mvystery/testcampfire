@@ -31,6 +31,9 @@ export class MarabouComponent implements OnInit {
   warning2Issuer: string;
   warning1Reason: string;
   warning2Reason: string;
+  warning1Show = false;
+  warning2Show = false;
+  warningModalOpen = false;
 
   cta = false;
   text: string;
@@ -280,7 +283,7 @@ export class MarabouComponent implements OnInit {
                         data.warning_info.warning_1.time,
                         'X'
                       ).fromNow();
-
+                      this.warning1Show = data.warning_info.warning_1.issued;
                       this.warning1Issuer = data.warning_info.warning_1.issuer;
                       this.warning1Reason = data.warning_info.warning_1.reason;
 
@@ -288,6 +291,7 @@ export class MarabouComponent implements OnInit {
                         data.warning_info.warning_2.time,
                         'X'
                       ).fromNow();
+                      this.warning2Show = data.warning_info.warning_2.issued;
                       this.warning2Issuer = data.warning_info.warning_2.issuer;
                       this.warning2Reason = data.warning_info.warning_2.reason;
                     });
@@ -337,5 +341,13 @@ export class MarabouComponent implements OnInit {
           });
       }
     });
+  }
+
+  openWarningModal() {
+    this.warningModalOpen = true;
+  }
+
+  closeWarningModal() {
+    this.warningModalOpen = false;
   }
 }

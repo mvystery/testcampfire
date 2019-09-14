@@ -121,7 +121,7 @@
           </div>
         </div>
         <p class="has-text-centered">If your MaraScore falls below 1.5 you will be demoted.</p>
-        <a href="" class="button">Information on Warnings</a>
+        <a (click)="openWarningModal()" class="button">Information on your warnings</a>
       </div>
 
       <div class="box has-text-justified">
@@ -221,29 +221,50 @@
   <!--Main column ended-->
 </div>
 
-<div class="modal">
-  <div class="modal-background"></div>
+<div class="modal" [class.is-active]="warningModalOpen">
+  <div (click)="closeWarningModal()" class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Your warnings</p>
-      <button class="delete" aria-label="close"></button>
+      <button (click)="closeWarningModal()" class="delete" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
-      <h1 class="title is-family-primary has-text-weight-normal is-size-5">Warning 1</h1>
-      <p class="subtitle is-size-6">Issuer: Eythereal</p>
-      <table class="table is-fullwidth is-striped is-bordered">
-        <thead>
-          <tr>
-            <th>When it was issued</th>
-            <th>Reason</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ testingSystem }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div *ngIf="warning1Show">
+        <h1 class="title is-family-primary has-text-weight-normal is-size-5">Warning 1</h1>
+        <p class="subtitle is-size-6">Issuer: {{ warning1Issuer }}</p>
+        <table class="table is-fullwidth is-striped is-bordered">
+          <thead>
+            <tr>
+              <th>When it was issued</th>
+              <th>Reason</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ warning1Time }}</td>
+              <td>{{ warning1Reason }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="warning2Show">
+        <h1 class="title is-family-primary has-text-weight-normal is-size-5">Warning 2</h1>
+        <p class="subtitle is-size-6">Issuer: {{ warning2Issuer }}</p>
+        <table class="table is-fullwidth is-striped is-bordered">
+          <thead>
+            <tr>
+              <th>When it was issued</th>
+              <th>Reason</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ warning2Time }}</td>
+              <td>{{ warning2Reason }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
     <footer class="modal-card-foot">
       <button class="button">Close</button>
