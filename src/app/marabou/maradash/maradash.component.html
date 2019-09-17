@@ -1,3 +1,172 @@
-<p>
-  maradash works!
-</p>
+<section class="hero is-small is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-1">Hi {{ name }}, welcome to the MaraDigiDash!</h1>
+      <p class="subtitle is-size-4">Management system for Marabou</p>
+    </div>
+  </div>
+</section><br>
+
+<div class="container">
+  <a href="https://www.roblox.com/my/groupadmin.aspx?gid=4328731" target="_blank" class="button">Group Admin</a>
+  <form (ngSubmit)="searchUser(userSearchForm)" #userSearchForm="ngForm" *ngIf="!digiGotData">
+    <br>
+    <div class="field has-addons">
+      <div class="control" style="width: 100%">
+        <input required minlength="3" name="username" ngModel #userField="ngModel" type="text" class="input"
+          placeholder="Username" autocomplete="off">
+      </div>
+      <div class="control">
+        <button class="button is-info" [class.is-loading]="digiLoading" [disabled]="!userSearchForm.form.valid"
+          type="submit">Search</button>
+      </div>
+    </div>
+  </form><br>
+
+  <p class="is-size-3 has-text-centered" *ngIf="!digiGotData">Enter username above</p>
+  <div class="box" [class.is-hidden]="!digiGotData">
+    <img class="is-rounded" src="{{ digiRobloxAvatar }}" alt="">
+    <h1 class="title is-size-3 is-family-primary has-text-weight-normal"><span
+        class="tag is-success is-small">ACTIVE</span> {{ digiRobloxUsername }}</h1>
+
+    <div class="columns has-text-centered">
+      <div class="column">
+        <div class="box">
+          <p class="is-size-5">No. Sessions Attended</p>
+          <p class="is-size-3">{{ digiSessionsAttended + 1 }}</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="box">
+          <p class="is-size-5">Activity Score</p>
+          <p class="is-size-3">{{ digiActivityScore }}<small>/3</small></p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="box">
+          <p class="is-size-5">Warnings used</p>
+          <p class="is-size-3">{{ digiWarningsUsed }}<small>/3</small></p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="box">
+          <p class="is-size-5">MaraScore</p>
+          <p class="is-size-3">{{ digiMaraScore }}<small>/3</small></p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h1 class="title is-family-primary has-text-weight-normal is-size-3">Overview</h1>
+    <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Showing tokens since the beginning of time
+    </h1>
+    <hr class="darker">
+
+    <div class="columns">
+      <div class="column has-text-centered">
+        <canvas id="sessionTimes"></canvas>
+        <br>
+        <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">Session attended</h1>
+        <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Times</h1>
+      </div>
+      <div class="column has-text-centered">
+        <canvas id="sessionDays"></canvas>
+        <br>
+        <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">Sessions attended
+        </h1>
+        <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Days</h1>
+      </div>
+      <div class="column has-text-centered">
+        <canvas id="inactiveDays"></canvas>
+        <br>
+        <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">2019</h1>
+        <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Inactivity</h1>
+      </div>
+    </div><br><br>
+    <h1 class="title is-family-primary has-text-weight-normal is-size-3">Warnings</h1>
+    <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">User warnings
+    </h1>
+    <hr class="darker">
+
+    <div *ngIf="warning1Show">
+      <h1 class="title is-family-primary has-text-weight-normal is-size-5">Warning 1</h1>
+      <p class="subtitle is-size-6">Issuer:
+        {{ warning1Issuer }}</p>
+      <table class="table is-fullwidth is-striped is-bordered">
+        <thead>
+          <tr>
+            <th>When it was issued</th>
+            <th>Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ warning1Time }}</td>
+            <td>{{ warning1Reason }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div><br>
+    <div *ngIf="warning2Show">
+      <h1 class="title is-family-primary has-text-weight-normal is-size-5">Warning 2</h1>
+      <p class="subtitle is-size-6">Issuer:
+        {{ warning2Issuer }}</p>
+      <table class="table is-fullwidth is-striped is-bordered">
+        <thead>
+          <tr>
+            <th>When it was issued</th>
+            <th>Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ warning2Time }}</td>
+            <td>{{ warning2Reason }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <br>
+  <div class="box is-hidden">
+    <h1 class="title is-family-primary has-text-weight-normal is-size-3">CTA</h1>
+    <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Post shown at the top of the Portal to users
+    </h1>
+
+    <a class="button">Enabled</a>
+    <div style="margin-bottom: 10px;"></div>
+    <p><strong>Message</strong></p>
+    <textarea name="" class="textarea" id="ctaMessage"></textarea>
+    <div style="margin-bottom: 10px;"></div>
+    <a class="button">Save</a>
+  </div>
+
+  <div class="box is-hidden">
+    <h1 class="title is-family-primary has-text-weight-normal is-size-3">Surges</h1>
+    <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Affects tokens required to be promoted
+    </h1>
+
+    <p><strong>Supervising Team => Management Team</strong></p>
+    <div class="field has-addons">
+      <div class="control">
+        <input class="input" type="number" placeholder="Text input">
+      </div>
+      <div class="control">
+        <a class="button is-info">
+          Save
+        </a>
+      </div>
+    </div>
+    <p><strong>Management Team => Administration Team</strong></p>
+    <div class="field has-addons">
+      <div class="control">
+        <input class="input" type="number" placeholder="Text input">
+      </div>
+      <div class="control">
+        <a class="button is-info">
+          Save
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
