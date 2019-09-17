@@ -1,273 +1,271 @@
 <section class="hero is-small is-primary">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-2 has-text-right-desktop avatarHolder is-hidden-touch">
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/SUPER%20PLAIN%20WORDMARK.png?alt=media&token=1215aba7-b7ea-4a2e-872e-4dd8846bedfb"
-            class="is-rounded" width="90px">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-2 has-text-right-desktop avatarHolder is-hidden-touch">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/SUPER%20PLAIN%20WORDMARK.png?alt=media&token=1215aba7-b7ea-4a2e-872e-4dd8846bedfb" class="is-rounded" width="90px">
+                </div>
+                <div class="column">
+                    <h1 class="title is-size-1">Welcome to Marabou,
+                        {{ name }}!</h1>
+                    <p class="subtitle is-size-4">Here you can manage and view everything Marabou at a glance</p>
+                </div>
+            </div>
         </div>
-        <div class="column">
-          <h1 class="title is-size-1">Welcome to Marabou,
-            {{ name }}!</h1>
-          <p class="subtitle is-size-4">Here you can manage and view everything Marabou at a glance</p>
-        </div>
-      </div>
     </div>
-  </div>
 </section>
 <div class="box cta has-text-centered" *ngIf="cta">
-  <p class="has-text-weight-bold">{{ text }}</p>
+    <p class="has-text-weight-bold">{{ text }}</p>
 </div>
 <br>
 <div class="container">
-  <div class="columns">
-    <!--Sidebar-->
-    <div class="column is-2">
-      <div class="box cf-cafe">
-        <h1 class="circ is-title is-size-4 has-text-white">Cafe</h1>
-        <a class="button is-grey has-text-weight-bold is-small" disabled title="Coming soon">Play</a>
-      </div>
-      <div class="box cf-interview-center">
-        <h1 class="circ is-title is-size-4 has-text-white">Interview Center</h1>
-        <a href="https://www.roblox.com/games/2632427294/Interview-Center" target="_blank"
-          class="button is-success has-text-weight-bold is-small">Play</a>
-      </div>
-      <div class="box cf-training-center">
-        <h1 class="circ is-title is-size-4 has-text-white">Training Center</h1>
-        <a class="button is-grey has-text-weight-bold is-small" disabled title="Coming soon">Play</a>
-      </div>
+    <div
+        class="columns">
+        <!--Sidebar-->
+        <div class="column is-2">
+            <div class="box cf-cafe">
+                <h1 class="circ is-title is-size-4 has-text-white">Cafe</h1>
+                <a class="button is-grey has-text-weight-bold is-small" disabled title="Coming soon">Play</a>
+            </div>
+            <div class="box cf-interview-center">
+                <h1 class="circ is-title is-size-4 has-text-white">Interview Center</h1>
+                <a href="https://www.roblox.com/games/2632427294/Interview-Center" target="_blank" class="button is-success has-text-weight-bold is-small">Play</a>
+            </div>
+            <div class="box cf-training-center">
+                <h1 class="circ is-title is-size-4 has-text-white">Training Center</h1>
+                <a class="button is-grey has-text-weight-bold is-small" disabled title="Coming soon">Play</a>
+            </div>
 
-      <div class="list">
-        <a href="https://trello.com/b/QLEMDHA3/marabou-session-schedule" target="_blank" class="list-item">
-          <i class="fab fa-trello"></i>
-          Trello</a>
-        <a href="https://www.roblox.com/my/groupadmin.aspx?gid=4328731" target="_blank" class="list-item">
-          <i class="fas fa-cogs"></i>
-          Group Admin</a>
-        <a href="https://docs.google.com/document/d/1dNijOyxCX3iholQJyl-bzJjVAhR9Ohlm8qvPkw20_10/edit" target="_blank"
-          class="list-item">
-          <i class="fas fa-book-open"></i>
-          Interview Guide</a>
-        <a href="https://discordapp.com/invite/AdZXacP" target="_blank" class="list-item">
-          <i class="fab fa-discord"></i>
-          Discord</a>
-        <a href="https://forms.gle/Q4c7PdGzUFhZJemv9" target="_blank" class="list-item">
-          <i class="fas fa-exclamation-triangle"></i>
-          Inactive Notice Form</a>
-      </div>
+            <div class="list">
+                <a href="https://trello.com/b/QLEMDHA3/marabou-session-schedule" target="_blank" class="list-item">
+                    <i class="fab fa-trello"></i>
+                    Trello</a>
+                <a href="https://www.roblox.com/my/groupadmin.aspx?gid=4328731" target="_blank" class="list-item">
+                    <i class="fas fa-cogs"></i>
+                    Group Admin</a>
+                <a href="https://docs.google.com/document/d/1dNijOyxCX3iholQJyl-bzJjVAhR9Ohlm8qvPkw20_10/edit" target="_blank" class="list-item">
+                    <i class="fas fa-book-open"></i>
+                    Interview Guide</a>
+                <a href="https://discordapp.com/invite/AdZXacP" target="_blank" class="list-item">
+                    <i class="fab fa-discord"></i>
+                    Discord</a>
+                <a href="https://forms.gle/Q4c7PdGzUFhZJemv9" target="_blank" class="list-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Inactive Notice Form</a>
+            </div>
+        </div>
+
+        <!--Main Column-->
+        <div class="column">
+            <h1 class="title is-family-primary has-text-weight-normal is-size-2">Overview</h1>
+            <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Showing tokens since the beginning of time
+            </h1>
+            <hr class="darker">
+
+            <div class="columns">
+                <div class="column has-text-centered">
+                    <canvas id="sessionTimes"></canvas>
+                    <br>
+                    <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">Session attended</h1>
+                    <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Times</h1>
+                </div>
+                <div class="column has-text-centered">
+                    <canvas id="sessionDays"></canvas>
+                    <br>
+                    <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">Sessions attended
+                    </h1>
+                    <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Days</h1>
+                </div>
+                <div class="column has-text-centered">
+                    <canvas id="inactiveDays"></canvas>
+                    <br>
+                    <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">2019</h1>
+                    <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Inactivity</h1>
+                </div>
+            </div><br>
+
+            <!--Tickets Information Specifics-->
+            <hr class="darker rel">
+            <div class="box has-text-centered is-rounded">
+                <p>You have
+                    <br>
+                    <span class="is-size-2 has-text-weight-bold circ">{{ balance }}</span><br>MaraTokens</p>
+            </div><br>
+
+            <div class="box shaded-box has-text-centered">
+                <h1 class="title is-family-primary has-text-weight-normal is-size-2">Your achievements</h1>
+                <h1 class="subtitle is-size-5 has-text-lighter">All of your progress is rated on a 0-3 scale</h1>
+                <div class="columns">
+                    <div class="column">
+                        <div class="box has-text-centered">
+                            <p>Attendance</p>
+                            <p class="has-text-weight-bold">{{ attendance }}</p>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="box has-text-centered">
+                            <p>Warnings remaining</p>
+                            <p class="has-text-weight-bold">{{ warnings }}</p>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="box has-text-centered">
+                            <p>MaraScore</p>
+                            <p class="has-text-weight-bold">{{ maraScore }}</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="has-text-centered">If your MaraScore falls below 1.5 you will be demoted.</p>
+                <a (click)="openWarningModal()" class="button">Information on your warnings</a>
+            </div>
+
+            <div class="box has-text-justified">
+                <div class="content">
+                    <p>Marabou uses MaraTokens for its promotions. But, what actually are MaraTokens? MaraTokens are a math based
+                                    staff payment system, that are very versatile and are earnt via attending sessions. The amount you get paid
+                                    will never change, the only thing that ever changes is the amount you need to get promoted. There are
+                                    several reasons why this can change:</p>
+                    <ul>
+                        <li>More staff</li>
+                        <li>More demand</li>
+                        <li>Higher
+                            <abbr title="A surge is where we have increased the prices by a float, to ensure they are not too hard or too easy.">surge</abbr>
+                        </li>
+                    </ul>
+                    <p>Prices can change frequently, so it's advised that you do not attempt to remember prices. Furthermore,
+                                    prices can change at any time and work on a first-come-first-served basis, if someone else gets promoted
+                                    before you, the prices will change.</p>
+                    <p>The row for your promotion will glow pink when you can claim your promotion. To do so, please
+                        <b>contact a member of the Human Resources department.</b>
+                    </p>
+                </div>
+            </div>
+
+            <div class="box">
+                <table class="table is-fullwidth is-striped is-bordered">
+                    <thead>
+                        <th>Ranks</th>
+                        <th>Required tokens</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Staff Assistant -> Supervising Team</th>
+                            <td>12</td>
+                        </tr>
+
+                        <tr>
+                            <th>Supervising Team -> Management Team</th>
+                            <td>{{ STtoMT }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Management Team -> Administration Team</th>
+                            <td>{{ MTtoAT }}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="2" class="has-text-centered  ">Ranks following are unlocked via a secret algorithm</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="box">
+                <table class="table is-fullwidth is-hoverable">
+                    <thead>
+                        <th>Role</th>
+                        <th>Value per completion</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Hosting an interview</td>
+                            <th>10</th>
+                        </tr>
+
+                        <tr>
+                            <td>Coordinating an interview</td>
+                            <th>8</th>
+                        </tr>
+
+                        <tr>
+                            <td>Interviewing at an interview</td>
+                            <th>6</th>
+                        </tr>
+
+                        <tr>
+                            <td>Spectating at an interview</td>
+                            <th>4</th>
+                        </tr>
+
+                        <tr>
+                            <td>Promoting at an interview</td>
+                            <th>6</th>
+                        </tr>
+
+                        <tr>
+                            <td>Shadowing at an interview</td>
+                            <th>4</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-
-    <!--Main Column-->
-    <div class="column">
-      <h1 class="title is-family-primary has-text-weight-normal is-size-2">Overview</h1>
-      <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Showing tokens since the beginning of time
-      </h1>
-      <hr class="darker">
-
-      <div class="columns">
-        <div class="column has-text-centered">
-          <canvas id="sessionTimes"></canvas>
-          <br>
-          <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">Session attended</h1>
-          <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Times</h1>
-        </div>
-        <div class="column has-text-centered">
-          <canvas id="sessionDays"></canvas>
-          <br>
-          <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">Sessions attended
-          </h1>
-          <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Days</h1>
-        </div>
-        <div class="column has-text-centered">
-          <canvas id="inactiveDays"></canvas>
-          <br>
-          <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">2019</h1>
-          <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Inactivity</h1>
-        </div>
-      </div><br>
-
-      <!--Tickets Information Specifics-->
-      <hr class="darker rel">
-      <div class="box has-text-centered is-rounded">
-        <p>You have
-          <br>
-          <span class="is-size-2 has-text-weight-bold circ">{{ balance }}</span><br>MaraTokens</p>
-      </div><br>
-
-      <div class="box shaded-box has-text-centered">
-        <h1 class="title is-family-primary has-text-weight-normal is-size-2">Your achievements</h1>
-        <h1 class="subtitle is-size-5 has-text-lighter">All of your progress is rated on a 0-3 scale</h1>
-        <div class="columns">
-          <div class="column">
-            <div class="box has-text-centered">
-              <p>Attendance</p>
-              <p class="has-text-weight-bold">{{ attendance }}</p>
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="box has-text-centered">
-              <p>Warnings remaining</p>
-              <p class="has-text-weight-bold">{{ warnings }}</p>
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="box has-text-centered">
-              <p>MaraScore</p>
-              <p class="has-text-weight-bold">{{ maraScore }}</p>
-            </div>
-          </div>
-        </div>
-        <p class="has-text-centered">If your MaraScore falls below 1.5 you will be demoted.</p>
-        <a (click)="openWarningModal()" class="button">Information on your warnings</a>
-      </div>
-
-      <div class="box has-text-justified">
-        <div class="content">
-          <p>Marabou uses MaraTokens for its promotions. But, what actually are MaraTokens? MaraTokens are a math based
-            staff payment system, that are very versatile and are earnt via attending sessions. The amount you get paid
-            will never change, the only thing that ever changes is the amount you need to get promoted. There are
-            several reasons why this can change:</p>
-          <ul>
-            <li>More staff</li>
-            <li>More demand</li>
-            <li>Higher
-              <abbr
-                title="A surge is where we have increased the prices by a float, to ensure they are not too hard or too easy.">surge</abbr>
-            </li>
-          </ul>
-          <p>Prices can change frequently, so it's advised that you do not attempt to remember prices. Furthermore,
-            prices can change at any time and work on a first-come-first-served basis, if someone else gets promoted
-            before you, the prices will change.</p>
-          <p>The row for your promotion will glow pink when you can claim your promotion. To do so, please
-            <b>contact a member of the Human Resources department.</b>
-          </p>
-        </div>
-      </div>
-
-      <div class="box">
-        <table class="table is-fullwidth is-striped is-bordered">
-          <thead>
-            <th>Ranks</th>
-            <th>Required tokens</th>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Staff Assistant -> Supervising Team</th>
-              <td>12</td>
-            </tr>
-
-            <tr>
-              <th>Supervising Team -> Management Team</th>
-              <td>{{ STtoMT }}</td>
-            </tr>
-
-            <tr>
-              <th>Management Team -> Administration Team</th>
-              <td>{{ MTtoAT }}</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th colspan="2" class="has-text-centered  ">Ranks following are unlocked via a secret algorithm</th>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-
-      <div class="box">
-        <table class="table is-fullwidth is-hoverable">
-          <thead>
-            <th>Role</th>
-            <th>Value per completion</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Hosting an interview</td>
-              <th>10</th>
-            </tr>
-
-            <tr>
-              <td>Coordinating an interview</td>
-              <th>8</th>
-            </tr>
-
-            <tr>
-              <td>Interviewing at an interview</td>
-              <th>6</th>
-            </tr>
-
-            <tr>
-              <td>Spectating at an interview</td>
-              <th>4</th>
-            </tr>
-
-            <tr>
-              <td>Promoting at an interview</td>
-              <th>6</th>
-            </tr>
-
-            <tr>
-              <td>Shadowing at an interview</td>
-              <th>4</th>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <!--Main column ended-->
+    <!--Main column ended-->
 </div>
 
 <div class="modal" [class.is-active]="warningModalOpen">
-  <div (click)="closeWarningModal()" class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Your warnings</p>
-      <button (click)="closeWarningModal()" class="delete" aria-label="close"></button>
-    </header>
-    <section class="modal-card-body">
-      <div *ngIf="warning1Show">
-        <h1 class="title is-family-primary has-text-weight-normal is-size-5">Warning 1</h1>
-        <p class="subtitle is-size-6">Issuer: {{ warning1Issuer }}</p>
-        <table class="table is-fullwidth is-striped is-bordered">
-          <thead>
-            <tr>
-              <th>When it was issued</th>
-              <th>Reason</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{ warning1Time }}</td>
-              <td>{{ warning1Reason }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div *ngIf="warning2Show">
-        <h1 class="title is-family-primary has-text-weight-normal is-size-5">Warning 2</h1>
-        <p class="subtitle is-size-6">Issuer: {{ warning2Issuer }}</p>
-        <table class="table is-fullwidth is-striped is-bordered">
-          <thead>
-            <tr>
-              <th>When it was issued</th>
-              <th>Reason</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{ warning2Time }}</td>
-              <td>{{ warning2Reason }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button">Close</button>
-    </footer>
-  </div>
+    <div (click)="closeWarningModal()" class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Your warnings</p>
+            <button (click)="closeWarningModal()" class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <div *ngIf="warning1Show">
+                <h1 class="title is-family-primary has-text-weight-normal is-size-5">Warning 1</h1>
+                <p class="subtitle is-size-6">Issuer:
+                    {{ warning1Issuer }}</p>
+                <table class="table is-fullwidth is-striped is-bordered">
+                    <thead>
+                        <tr>
+                            <th>When it was issued</th>
+                            <th>Reason</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ warning1Time }}</td>
+                            <td>{{ warning1Reason }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="warning2Show">
+                <h1 class="title is-family-primary has-text-weight-normal is-size-5">Warning 2</h1>
+                <p class="subtitle is-size-6">Issuer:
+                    {{ warning2Issuer }}</p>
+                <table class="table is-fullwidth is-striped is-bordered">
+                    <thead>
+                        <tr>
+                            <th>When it was issued</th>
+                            <th>Reason</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ warning2Time }}</td>
+                            <td>{{ warning2Reason }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button">Close</button>
+        </footer>
+    </div>
 </div>

@@ -32,6 +32,7 @@ import { SetPrefixComponent } from './dashboard/dashboard-guild-manage/settings-
 import { SetWelcomerComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-welcomer/set-welcomer.component';
 import { SetRobloxComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-roblox/set-roblox.component';
 import { MarabouComponent } from './marabou/marabou.component';
+import { MaradashComponent } from './marabou/maradash/maradash.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { MarabouComponent } from './marabou/marabou.component';
     SetPrefixComponent,
     SetWelcomerComponent,
     SetRobloxComponent,
-    MarabouComponent
+    MarabouComponent,
+    MaradashComponent
   ],
   imports: [
     BrowserModule,
