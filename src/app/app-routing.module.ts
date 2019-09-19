@@ -13,6 +13,7 @@ import { DashboardGuildsComponent } from './dashboard/dashboard-guilds/dashboard
 import { DashboardGuildManageComponent } from './dashboard/dashboard-guild-manage/dashboard-guild-manage.component';
 import { MarabouComponent } from './marabou/marabou.component';
 import { MaradashComponent } from './marabou/maradash/maradash.component';
+import { InterviewsComponent } from './marabou/interviews/interviews.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'commands/fun', component: FunComponent },
   { path: 'dashboard/guilds/:id', component: DashboardGuildManageComponent },
   { path: 'marabou', component: MarabouComponent },
-  { path: 'marabou/maradash', component: MaradashComponent }
+  { path: 'marabou/maradash', component: MaradashComponent },
+  { path: 'marabou/interviews', component: InterviewsComponent }
 ];
 
 @NgModule({

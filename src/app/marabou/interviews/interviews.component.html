@@ -1,0 +1,316 @@
+<section class="hero is-medium is-link bg-marabou-interview">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-size-2">Interview Guide</h1>
+      <hr class="thin" width="5%" style="margin: 0px auto;">
+    </div>
+  </div>
+</section><br>
+
+<div class="container">
+  <div class="box">
+    <h1 class="title is-size-3">Welcome to the Marabou Interview Guide!</h1>
+    <p>Interviews are a <b>core part</b> of our service. We believe strongly that a good interview is the foundation of
+      a good journey, so we work hard to make our interview procedure fabulous.</p><br>
+    <p>We've created this comprehensive guide that has magic features to make it easy for you to use.</p><br>
+    <p>This procedure is managed by the <em>Human Resources Department</em>. So, if you have any questions, drop one of
+      them a line.</p>
+  </div>
+
+  <div class="box">
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label">Host Username</label>
+          <div class="control">
+            <input type="text" class="input" placeholder="Username" id="hostUsernameField">
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <label class="label">Coordinator Username</label>
+          <div class="control">
+            <input type="text" class="input" placeholder="Username" id="coordinatorUsernameField">
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <label class="label">Time Username</label>
+          <div class="control">
+            <input type="text" class="input" placeholder="5pm" id="timeField">
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="button is-info is-fullwidth" (click)="setVars()">Set</a>
+  </div>
+
+  <div class="box">
+    <h1 class="title is-size-3">Host</h1>
+    <p>It's incredibly important that the server is <b>never slocked during the session.</b> We don't slock because we
+      operate a system we call 'Open Opportunity Interviews'. This means that everyone is able to join, regardless of it
+      they popped along 20 minutes before, or 20 minutes after it started.</p><br>
+    <p>We believe that our systems are comprehensive enough to have it so we never slock, so we don't!</p><br>
+
+    <h1 class="title is-size-5">Server Messages</h1>
+    <textarea class="textarea" id="sm1" cols="30"
+      rows="2">Hello you! Welcome to Marabou Interviews. You're currently attending the {{time}} session. This session is hosted by myself, {{host}} and Coordinated by the wonderful {{coordinator}}. We're going to be dashing over some information about Marabou, that happens to be vital knowledge! Please ensure you give me your thorough attention as I do so. </textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#sm1"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="sm2" cols="30"
+      rows="2">Before I do all that, I'd like to introduce all of our extremely lovely staff team who are present at this session. </textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#sm2"><i class="far fa-clipboard"></i> Copy</a>
+    <p class="has-text-centered">Then you read out the staff members' names and role one by one and they will use /e
+      wave.</p>
+
+    <textarea class="textarea" id="sm3" cols="30"
+      rows="2">Again, thank you to all the staff whom are present today!</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#sm3"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="sm4" cols="30"
+      rows="2">I'm now going to read out the rules for this session, so keep focused and read all the rules carefully. If you don't read the rules, you might fail the session.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#sm4"><i class="far fa-clipboard"></i> Copy</a><br>
+
+    <h1 class="title is-size-5">Rules</h1>
+    <textarea class="textarea" id="rule1" cols="30"
+      rows="2">[1] It's extremely essential that you use accurate spelling, punctuation, and grammar throughout your interview. All candidates will get 3 strikes for spelling, punctuation, and grammar. If you top this limit, you will be dismissed. We believe that the use of basic orthography shows that you care about the job you're going to be interviewing for and utilising such exhibits professionalism. </textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#rule1"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="rule2" cols="30"
+      rows="2">[2] Respect is a must here at Marabou. You must respect everyone and everything, regardless of if you agree with it. It's unquestionably imperative that you do not have a shallow level of serenity to work here, as at times roles at Marabou can be stressful. Failure to treat colleagues and other candidates with consideration will result in removal from the session.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#rule2"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="rule3" cols="30"
+      rows="2">[3] You must be professional to work here. With that being said, we take quite an informal approach here to work, meaning we don't take ourselves too seriously, and that everyone can be true to themselves. All we ask is that you keep it calm and don't do anything unethical, immoral or socially unacceptable. </textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#rule3"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="rule4" cols="30"
+      rows="2">[4] It's especially important that you obey all of our team's guidance. If you don't, you can't land a job here at Marabou. Following instructions is not only a fundamental skill, but it's also a key detail of our policy.  </textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#rule4"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="rule5" cols="30"
+      rows="2">[5] If you happen to fail your interview, please do not criticise or abuse our staff team or our systems. Harassing our staff team will result in being permanently ostracised from a job at Marabou.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#rule5"><i class="far fa-clipboard"></i> Copy</a><br>
+
+    <h1 class="title is-size-5">Pass over to Coordinator ({{coordinator}}) & Conclude Info Section Once Done</h1>
+    <textarea class="textarea" id="hostcoord" cols="30"
+      rows="2">I'm now going to pass over to our excellent Coordinator, {{coordinator}}, who's going to give you some information on Marabou. Again, please listen carefully to this information.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#hostcoord"><i class="far fa-clipboard"></i> Copy</a>
+    <p class="has-text-centered">Pass over to Coordinator and then do below once they have finished</p>
+    <textarea class="textarea" id="concludeintro" cols="30"
+      rows="2">So, whoever you are, where ever you come from, we want to work with you. Let's start this journey now, together. </textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#concludeintro"><i class="far fa-clipboard"></i> Copy</a>
+    <p class="has-text-centered">Start session.</p>
+  </div>
+
+  <div class="box">
+    <h1 class="title is-size-3">Coordinator</h1>
+    <p>This information should be read after the Host passes over to you.</p>
+
+    <textarea class="textarea" id="coord1" cols="30"
+      rows="2">Thank you, {{host}}! I'm now going to be giving you some top-tips, some valuable information and some sound advice!</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord1"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord2" cols="30"
+      rows="2">At Marabou, we run a special system called MaraTokens. This system allows us to have extremely fine control over staff attendance. If you're running for an MR position, you'll get familiar with this system, as you'll use it to unlock promotions. </textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord2"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord3" cols="30"
+      rows="2">If you pass, we'll give you more specifics on this system via our induction trainings.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord3"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord4" cols="30"
+      rows="2">If you pass, we'll give you more specifics on this system via our induction trainings.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord4"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord5" cols="30"
+      rows="2">At Marabou, we have what we call our 'Core Values'. These are what we live and breathe. The values are:</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord5"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord6" cols="30"
+      rows="2">Dignity - We believe in respect and honour. We treat all of our employees with dignity. So, we treat all of our employees with consideration and admiration.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord6"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord7" cols="30"
+      rows="2">Nurture - We'll nurture you and build you into who you want to be! We'll work with you to unlock that extra-mile you didn't believe you could complete. </textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord7"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord8" cols="30"
+      rows="2">Accountable - You'll be expected to justify the actions and decisions you take. The same goes for us though, we'll justify our decisions and actions.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord8"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord9" cols="30"
+      rows="2">Culture - Marabou is a place of culture. We believe that everyone's social behaviours are different and we respect that. Marabou is truly a cultural powerhouse and we embrace everyone's cultures and celebrate them.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord9"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord10" cols="30"
+      rows="2">Respect - We expect you to treat everyone with the utmost respect. In return, we'll treat you with respect back.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord10"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord11" cols="30"
+      rows="2">Connect - We want you to connect with other people and make some cracking friends along the way!</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord11"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord12" cols="30"
+      rows="2">Courage - We want you to try your best in everything, even if you're uncertain of the outcome. Face your fears, we'll be right behind you with every step of the journey!</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord12"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord13" cols="30"
+      rows="2">Inspire - We'll inspire you to work hard and achieve the impossible!</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord13"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord14" cols="30"
+      rows="2">Alongside our 'core values' we have our promise from us, to you. The Marabou Promise is simple. We promise you several things, so you can trust us with your time and anything really! Marabou works with you, it's not you working for us!</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord14"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord15" cols="30"
+      rows="2">We'll treat you as an individual - We promise that it's just for you, designed around your strengths and ambitions.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#sm1"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="sm2" cols="30"
+      rows="2">We'll ask you to work hard, but you'll enjoy it - Nothing worth having comes easy. We'll ask you to dig in, work hard, challenge yourself and be outstanding. And we'll be with you every step of the way.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord15"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord16" cols="30"
+      rows="2">We'll inspire you - We're one of the only cafes on Roblox who puts the employee in complete control. Our Human Resources department works with you to have such great employee relations. We're working hard to keep it that way every day of the year!</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord16"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord17" cols="30"
+      rows="2">Making chocolate with love, one bar at a time, one customer at a time, one staff member at a time, most importantly, one amazing individual at a time! We'll motivate you to work hard, push you when you need it and nature you when you don't. We'll be your biggest cheerleader along the way!</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord17"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord18" cols="30"
+      rows="2">We'll help you to be outstanding - if you choose to leave us at anytime, you'll leave us knowing you've had a great time and having made some killer frineds! We'll train you, work with you and make sure oyu're also in good terms.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord18"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord19" cols="30"
+      rows="2">We'll work hard too, for you - We're on the same team, playing by the same rules. We'll put everything we've got into making sure you're happy and make sure you succeed!</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord19"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="coord20" cols="30"
+      rows="2">We won't patronise you - You're your own person. We won't talk down to you, pretend we know best or ignore your opinion, that's just not what we're here for. We're here to help you and make you an incredible person!</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#coord20"><i class="far fa-clipboard"></i> Copy</a>
+    <p class="has-text-centered">Pass back to the host</p>
+  </div>
+
+  <div class="box">
+    <h1 class="title is-size-3">Interviewer</h1>
+    <p>This information should be read to the candidate in the office.</p><br>
+    <p>Produce your own introduction script highlighting:</p>
+    <div class="content">
+      <ul>
+        <li>Your username</li>
+        <li>3 Strike SPaG Rule.</li>
+        <li>If they pass</li>
+        <li>If they fail</li>
+        <li>No time limit on questions</li>
+      </ul>
+    </div>
+    <h1 class="title is-size-5">Trainee Questions</h1>
+    <textarea class="textarea" id="tq1" cols="30" rows="2">Why would you like this job?</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#tq1"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="tq2" cols="30" rows="2">What are your strengths?</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#tq2"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="tq3" cols="30" rows="2">Why do you think you suit this role?</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#tq3"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="tq4" cols="30" rows="2">Give me three words to describe yourself.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#tq4"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="tq5" cols="30" rows="2">Correct this sentence: 'hi i wamt a job plz'</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#tq5"><i class="far fa-clipboard"></i> Copy</a><br>
+
+
+
+    <h1 class="title is-size-5">MR Questions</h1>
+    <textarea class="textarea" id="mr1" cols="30"
+      rows="2">Please correct the following sentence "he,y i engoy workeng aat grops in rolbox becase its fujn,,"</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#mr1"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="mr2" cols="30"
+      rows="2">What is your number one goal you would like to achieve working here?</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#mr2"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="mr3" cols="30" rows="2">Tell me one of our core values.</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#mr3"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="mr4" cols="30"
+      rows="2">Do you feel you work well unsupervised, in a team or both? </textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#mr4"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="mr5" cols="30" rows="2">What are your weaknesses?</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#mr5"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="mr6" cols="30" rows="2">What influenced you to take this interview?</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#mr6"><i class="far fa-clipboard"></i> Copy</a>
+
+    <textarea class="textarea" id="mr7" cols="30"
+      rows="2">What was your biggest challenge? how did you overcome it?</textarea>
+    <a class="button clip-button is-small is-light is-pulled-right" style="position: relative; top: -35px; right: 20px;"
+      data-clipboard-target="#mr7"><i class="far fa-clipboard"></i> Copy</a>
+    <p>Interviewer does <b>NOT</b> check candidates answers for quality - this means they do not tell the candidate if
+      they have passed or failed.</p>
+  </div>
+
+  <div class="box">
+    <h1 class="title is-size-3">Promoter</h1>
+    <p>Promoter is now required to check answers for quality. If the answers do not have 3 or more SPaG mistakes and
+      answers are of a decent standard, the promoter can promote the candidate.</p><br>
+    <p>Promoter MUST ask timezone and if user is in Discord when promoting for MR and then fill out form linked below.
+    </p>
+    <a href="https://www.roblox.com/my/groupadmin.aspx?gid=4328731" target="_blank" class="button"
+      style="margin-right: 5px">Group Admin</a>
+    <a href="https://docs.google.com/forms/u/1/d/e/1FAIpQLSd7n6zfZleJj--CHcSzELMbI5pvklWEkLZ4vlN3fi-22rU6Rw/viewform"
+      target="_blank" class="button is-dark">Form for MR</a>
+  </div>
+</div>
+<br>

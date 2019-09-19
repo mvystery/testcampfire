@@ -33,6 +33,7 @@ import { SetWelcomerComponent } from './dashboard/dashboard-guild-manage/setting
 import { SetRobloxComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-roblox/set-roblox.component';
 import { MarabouComponent } from './marabou/marabou.component';
 import { MaradashComponent } from './marabou/maradash/maradash.component';
+import { InterviewsComponent } from './marabou/interviews/interviews.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { MaradashComponent } from './marabou/maradash/maradash.component';
     SetWelcomerComponent,
     SetRobloxComponent,
     MarabouComponent,
-    MaradashComponent
+    MaradashComponent,
+    InterviewsComponent
   ],
   imports: [
     BrowserModule,

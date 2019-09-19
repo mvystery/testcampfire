@@ -1,0 +1,9 @@
+.bg-marabou {
+  background: #e5b223;
+}
+
+.bg-marabou-interview {
+  background: linear-gradient(149deg, rgba(31, 31, 31, 0.745) 0%, rgba(31, 31, 31, 0.745) 100%), url(../../../assets/marabou/cafe.png);
+  background-position: center;
+  background-size: cover;
+}

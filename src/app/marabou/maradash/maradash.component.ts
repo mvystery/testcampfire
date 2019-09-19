@@ -44,6 +44,7 @@ export class MaradashComponent implements OnInit {
   warning2Reason: string;
   warning1Show = false;
   warning2Show = false;
+  ctaMessage: string;
 
   constructor(
     private service: LoginService,
