@@ -346,7 +346,7 @@ export class MaradashComponent implements OnInit {
 
           this.digiActivityScore = this.digiActivityScore - 0.5;
           this.digiMaraScore =
-            (callback.data.warnings + callback.data.attendance) / 2;
+            (this.digiWarningsUsed + callback.data.attendance) / 2;
 
           setTimeout(() => {
             document.getElementById(
@@ -375,7 +375,7 @@ export class MaradashComponent implements OnInit {
 
           this.digiActivityScore = this.digiActivityScore + 0.5;
           this.digiMaraScore =
-            (callback.data.warnings + callback.data.attendance) / 2;
+            (this.digiWarningsUsed + callback.data.attendance) / 2;
 
           setTimeout(() => {
             document.getElementById(
@@ -404,7 +404,7 @@ export class MaradashComponent implements OnInit {
 
           this.digiActivityScore = 3;
           this.digiMaraScore =
-            (callback.data.warnings + callback.data.attendance) / 2;
+            (this.digiWarningsUsed + callback.data.attendance) / 2;
 
           setTimeout(() => {
             document.getElementById(
