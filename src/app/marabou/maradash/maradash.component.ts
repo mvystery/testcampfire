@@ -414,4 +414,22 @@ export class MaradashComponent implements OnInit {
         }
       });
   }
+
+  setCta() {
+    const messageToSet = (document.getElementById(
+      'ctaMessage'
+    ) as HTMLTextAreaElement).value;
+
+    this.http.post<any>(
+      `https://api.campfirebot.xyz/cta/set`,
+      {
+        message: messageToSet
+      },
+      {
+        headers: {
+          Authorization: 'dshsdhESopc'
+        }
+      }
+    );
+  }
 }
