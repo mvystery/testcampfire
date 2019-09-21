@@ -32,6 +32,7 @@ export class MaradashComponent implements OnInit {
   digiGotData = false;
   digiBalance: number;
   digiRobloxId: number;
+  digiCTA: string;
 
   sessionTimes: any;
   sessionDays: any;
@@ -80,6 +81,15 @@ export class MaradashComponent implements OnInit {
                     .subscribe(data => {
                       const parsed = JSON.parse(data);
                       this.name = parsed.Username;
+                    });
+
+                  this.db
+                    .collection('open')
+                    .doc('cta')
+                    .ref.onSnapshot(doc => {
+                      if (doc.exists) {
+                        this.digiCTA = doc.data().value;
+                      }
                     });
                 }
               } else {
