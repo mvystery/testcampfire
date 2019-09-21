@@ -131,6 +131,26 @@
         </tbody>
       </table>
     </div>
+    <h1 class="title is-family-primary has-text-weight-normal is-size-3">Edit Attendance</h1>
+    <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Modify User ActivityScore</h1>
+
+    <table class="table is-striped is-bordered">
+      <thead>
+        <tr>
+          <th>Current ActivityScore</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ digiActivityScore }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a class="button is-danger" style="margin-right: 5px;" (click)="addAttendance()">-0.5 Score</a>
+    <a class="button is-success" style="margin-right: 5px;" (click)="removeAttendance()">+0.5 Score</a>
+    <a class="button" (click)="resetAttendance()">Reset</a>
+    <p id="statusTextDigiAttendanceScoreEdit" class="has-text-weight-bold"></p>
   </div>
 
   <br>

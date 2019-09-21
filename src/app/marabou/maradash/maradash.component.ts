@@ -31,6 +31,7 @@ export class MaradashComponent implements OnInit {
   digiMaraScore: number;
   digiGotData = false;
   digiBalance: number;
+  digiRobloxId: number;
 
   sessionTimes: any;
   sessionDays: any;
@@ -114,6 +115,7 @@ export class MaradashComponent implements OnInit {
           this.digiLoading = false;
           this.digiRobloxUsername = data.value.username;
           this.digiBalance = callback.data.balance;
+          this.digiRobloxId = callback.id;
           this.digiWarningsUsed = 3 - callback.data.warnings;
           this.digiActivityScore = callback.data.attendance;
           this.digiSessionsAttended =
@@ -322,6 +324,93 @@ export class MaradashComponent implements OnInit {
               }
             }
           });
+        }
+      });
+  }
+
+  addAttendance() {
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/maradigi/userattendance/add/${this.digiRobloxId}`,
+        {
+          headers: {
+            Authorization: 'dshsdhESopc'
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          document.getElementById(
+            'statusTextDigiAttendanceScoreEdit'
+          ).innerHTML = 'Done!';
+
+          this.digiActivityScore = this.digiActivityScore - 0.5;
+          this.digiMaraScore =
+            (callback.data.warnings + callback.data.attendance) / 2;
+
+          setTimeout(() => {
+            document.getElementById(
+              'statusTextDigiAttendanceScoreEdit'
+            ).innerHTML = '';
+          }, 2000);
+        }
+      });
+  }
+
+  removeAttendance() {
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/maradigi/userattendance/remove/${this.digiRobloxId}`,
+        {
+          headers: {
+            Authorization: 'dshsdhESopc'
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          document.getElementById(
+            'statusTextDigiAttendanceScoreEdit'
+          ).innerHTML = 'Done!';
+
+          this.digiActivityScore = this.digiActivityScore + 0.5;
+          this.digiMaraScore =
+            (callback.data.warnings + callback.data.attendance) / 2;
+
+          setTimeout(() => {
+            document.getElementById(
+              'statusTextDigiAttendanceScoreEdit'
+            ).innerHTML = '';
+          }, 2000);
+        }
+      });
+  }
+
+  resetAttendance() {
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/maradigi/userattendance/reset/${this.digiRobloxId}`,
+        {
+          headers: {
+            Authorization: 'dshsdhESopc'
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          document.getElementById(
+            'statusTextDigiAttendanceScoreEdit'
+          ).innerHTML = 'Done!';
+
+          this.digiActivityScore = 3;
+          this.digiMaraScore =
+            (callback.data.warnings + callback.data.attendance) / 2;
+
+          setTimeout(() => {
+            document.getElementById(
+              'statusTextDigiAttendanceScoreEdit'
+            ).innerHTML = '';
+          }, 2000);
         }
       });
   }
