@@ -420,16 +420,27 @@ export class MaradashComponent implements OnInit {
       'ctaMessage'
     ) as HTMLTextAreaElement).value;
 
-    this.http.post<any>(
-      `https://api.campfirebot.xyz/cta/set`,
-      {
-        message: messageToSet
-      },
-      {
-        headers: {
-          Authorization: 'dshsdhESopc'
+    this.http
+      .post<any>(
+        `https://api.campfirebot.xyz/maradigi/cta/set`,
+        {
+          message: messageToSet
+        },
+        {
+          headers: {
+            Authorization: 'dshsdhESopc'
+          }
         }
-      }
-    );
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          document.getElementById('ctaSetButton').classList.add('is-success');
+          setTimeout(() => {
+            document
+              .getElementById('ctaSetButton')
+              .classList.remove('is-success');
+          }, 2000);
+        }
+      });
   }
 }
