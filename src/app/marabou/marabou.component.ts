@@ -11,6 +11,28 @@ import {
 } from '@angular/fire/firestore';
 import { HttpClient } from '@angular/common/http';
 
+import { NgxLinkifyOptions } from 'ngx-linkifyjs';
+
+const options: NgxLinkifyOptions = {
+  attributes: null,
+  className: 'linkified',
+  defaultProtocol: 'http',
+  events: null,
+  format(value, type) {
+    return value;
+  },
+  formatHref(href, type) {
+    return href;
+  },
+  ignoreTags: [],
+  nl2br: false,
+  tagName: 'a',
+  target: {
+    url: '_blank'
+  },
+  validate: true
+};
+
 @Component({
   selector: 'app-marabou',
   templateUrl: './marabou.component.html',

@@ -17,7 +17,7 @@
   </div>
 </section>
 <div class="box cta has-text-centered" *ngIf="cta">
-  <p class="has-text-weight-bold">{{ text }}</p>
+  <p class="has-text-weight-bold" [innerHTML]="text | linkify"></p>
 </div>
 <br>
 <div class="container">

@@ -24,6 +24,7 @@ import { UpdatesComponent } from './updates/updates.component';
 import { DashboardProfileComponent } from './dashboard/dashboard-profile/dashboard-profile.component';
 
 import { ColorPickerModule } from 'ngx-color-picker';
+import { NgxLinkifyjsModule } from 'ngx-linkifyjs';
 import * as Sentry from '@sentry/browser';
 import { DashboardGuildsComponent } from './dashboard/dashboard-guilds/dashboard-guilds.component';
 import { DashboardGuildManageComponent } from './dashboard/dashboard-guild-manage/dashboard-guild-manage.component';
@@ -34,6 +35,27 @@ import { SetRobloxComponent } from './dashboard/dashboard-guild-manage/settings-
 import { MarabouComponent } from './marabou/marabou.component';
 import { MaradashComponent } from './marabou/maradash/maradash.component';
 import { InterviewsComponent } from './marabou/interviews/interviews.component';
+import { NgxLinkifyOptions } from 'ngx-linkifyjs';
+
+const options: NgxLinkifyOptions = {
+  attributes: null,
+  className: 'linkify',
+  defaultProtocol: 'http',
+  events: null,
+  format(value, type) {
+    return value;
+  },
+  formatHref(href, type) {
+    return href;
+  },
+  ignoreTags: [],
+  nl2br: false,
+  tagName: 'a',
+  target: {
+    url: '_blank'
+  },
+  validate: true
+};
 
 @NgModule({
   declarations: [
@@ -68,6 +90,7 @@ import { InterviewsComponent } from './marabou/interviews/interviews.component';
     HttpClientModule,
     AngularFirestoreModule,
     ColorPickerModule,
+    NgxLinkifyjsModule.forRoot(),
     FormsModule,
     BrowserModule
   ],

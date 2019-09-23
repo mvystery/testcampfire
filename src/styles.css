@@ -13,13 +13,13 @@
 }
 
 @font-face {
-  font-family: "Urania-Light";
-  src: url(assets/Urania-Light.ttf);
+  font-family: "Nexa-Light";
+  src: url(assets/Nexa-Light.otf);
 }
 
 @font-face {
-  font-family: "Urania-Black";
-  src: url(assets/Urania-Black.ttf);
+  font-family: "Nexa-Black";
+  src: url(assets/Nexa-Bold.otf);
 }
 
 /*! bulma.io v0.7.5 | MIT License | github.com/jgthms/bulma */
@@ -452,7 +452,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Urania-Light", sans-serif;
+  font-family: "Nexa-Light", sans-serif;
 }
 
 code,
@@ -1261,15 +1261,15 @@ a.has-text-danger:focus {
 }
 
 .is-family-primary {
-  font-family: "Urania-Light", sans-serif !important;
+  font-family: "Nexa-Light", sans-serif !important;
 }
 
 .is-family-secondary {
-  font-family: "Urania-Light", sans-serif !important;
+  font-family: "Nexa-Light", sans-serif !important;
 }
 
 .is-family-sans-serif {
-  font-family: "Urania-Light", sans-serif !important;
+  font-family: "Nexa-Light", sans-serif !important;
 }
 
 .is-family-monospace {
@@ -4389,7 +4389,7 @@ a.tag:hover {
 
 .title {
   color: #363636;
-  font-family: "Urania-Black", sans-serif;
+  font-family: "Nexa-Black", sans-serif;
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.125;
