@@ -28,11 +28,12 @@
     <img class="is-rounded" src="{{ digiRobloxAvatar }}" alt="">
     <h1 class="title is-size-3 is-family-primary has-text-weight-normal"><span
         class="tag is-success is-small">ACTIVE</span> {{ digiRobloxUsername }}</h1>
+    <p class="subtitle is-size-5">ID: {{ robloxId }}</p>
 
-    <div class="columns has-text-centered">
+    <div class="columns has-text-centered is-vcentered">
       <div class="column">
         <div class="box">
-          <p class="is-size-5">No. Sessions Attended</p>
+          <p class="is-size-5">Sessions Attended</p>
           <p class="is-size-3">{{ digiSessionsAttended + 1 }}</p>
         </div>
       </div>
@@ -151,6 +152,34 @@
     <a class="button is-success" style="margin-right: 5px;" (click)="removeAttendance()">+0.5 Score</a>
     <a class="button" (click)="resetAttendance()">Reset</a>
     <p id="statusTextDigiAttendanceScoreEdit" class="has-text-weight-bold"></p>
+
+    <br>
+    <h1 class="title is-family-primary has-text-weight-normal is-size-3">Edit tokens</h1>
+    <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Modify a users tokens</h1>
+
+    <table class="table is-striped is-bordered">
+      <thead>
+        <tr>
+          <th>Current tokens</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ digiBalance }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="field has-addons">
+      <div class="control">
+        <input type="number" class="input" placeholder="30" min="1" id="tokenAmount">
+      </div>
+    </div>
+    <a class="button is-success" style="margin-right: 5px;" (click)="addTokens()">Add</a>
+    <a class="button is-danger" style="margin-right: 5px;" (click)="removeTokens()">Remove</a>
+    <a class="button is-dark" style="margin-right: 5px;" (click)="setTokens()">Set</a>
+    <a class="button" (click)="resetTokens()">Reset</a>
+    <p id="statusTextDigiTokensEdit" class="has-text-weight-bold"></p>
   </div>
 
   <br>

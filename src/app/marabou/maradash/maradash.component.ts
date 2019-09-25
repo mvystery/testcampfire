@@ -425,6 +425,113 @@ export class MaradashComponent implements OnInit {
       });
   }
 
+  // Tokens Changer
+
+  addTokens() {
+    const amountToAdd = (document.getElementById(
+      'tokenAmount'
+    ) as HTMLInputElement).value;
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/maradigi/tokens/add/${this.digiRobloxId}/${amountToAdd}`,
+        {
+          headers: {
+            Authorization: 'dshsdhESopc'
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          document.getElementById('statusTextDigiTokensEdit').innerHTML =
+            'Done!';
+
+          this.digiBalance = this.digiBalance + parseFloat(amountToAdd);
+
+          setTimeout(() => {
+            document.getElementById('statusTextDigiTokensEdit').innerHTML = '';
+          }, 2000);
+        }
+      });
+  }
+
+  removeTokens() {
+    const amountToRemove = (document.getElementById(
+      'tokenAmount'
+    ) as HTMLInputElement).value;
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/maradigi/tokens/remove/${this.digiRobloxId}/${amountToRemove}`,
+        {
+          headers: {
+            Authorization: 'dshsdhESopc'
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          document.getElementById('statusTextDigiTokensEdit').innerHTML =
+            'Done!';
+
+          this.digiBalance = this.digiBalance - parseFloat(amountToRemove);
+
+          setTimeout(() => {
+            document.getElementById('statusTextDigiTokensEdit').innerHTML = '';
+          }, 2000);
+        }
+      });
+  }
+
+  setTokens() {
+    const amountToSet = (document.getElementById(
+      'tokenAmount'
+    ) as HTMLInputElement).value;
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/maradigi/tokens/set/${this.digiRobloxId}/${amountToSet}`,
+        {
+          headers: {
+            Authorization: 'dshsdhESopc'
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          document.getElementById('statusTextDigiTokensEdit').innerHTML =
+            'Done!';
+
+          this.digiBalance = parseFloat(amountToSet);
+
+          setTimeout(() => {
+            document.getElementById('statusTextDigiTokensEdit').innerHTML = '';
+          }, 2000);
+        }
+      });
+  }
+
+  resetTokens() {
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/maradigi/tokens/reset/${this.digiRobloxId}`,
+        {
+          headers: {
+            Authorization: 'dshsdhESopc'
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          document.getElementById('statusTextDigiTokensEdit').innerHTML =
+            'Done!';
+
+          this.digiBalance = 0;
+
+          setTimeout(() => {
+            document.getElementById('statusTextDigiTokensEdit').innerHTML = '';
+          }, 2000);
+        }
+      });
+  }
+
   setCta() {
     const messageToSet = (document.getElementById(
       'ctaMessage'
