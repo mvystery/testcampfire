@@ -26,8 +26,9 @@
   <p class="is-size-3 has-text-centered" *ngIf="!digiGotData">Enter username above</p>
   <div class="box" [class.is-hidden]="!digiGotData">
     <img class="is-rounded" src="{{ digiRobloxAvatar }}" alt="">
-    <h1 class="title is-size-3 is-family-primary has-text-weight-normal"><span
-        class="tag is-success is-small">ACTIVE</span> {{ digiRobloxUsername }}</h1>
+    <h1 class="title is-size-3 is-family-primary has-text-weight-normal"><span class="tag is-success is-small"
+        *ngIf="digiActive">ACTIVE</span><span class="tag is-danger is-small" *ngIf="!digiActive">INACTIVE</span>
+      {{ digiRobloxUsername }}</h1>
     <p class="subtitle is-size-5">ID: {{ robloxId }}</p>
 
     <div class="columns has-text-centered is-vcentered">
@@ -132,6 +133,7 @@
         </tbody>
       </table>
     </div>
+    <hr class="darker">
     <h1 class="title is-family-primary has-text-weight-normal is-size-3">Edit Attendance</h1>
     <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Modify User ActivityScore</h1>
 
@@ -180,6 +182,14 @@
     <a class="button is-dark" style="margin-right: 5px;" (click)="setTokens()">Set</a>
     <a class="button" (click)="resetTokens()">Reset</a>
     <p id="statusTextDigiTokensEdit" class="has-text-weight-bold"></p>
+
+    <hr class="darker">
+    <h1 class="title is-family-primary has-text-weight-normal is-size-3">Danger zone</h1>
+    <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Make changes to employment status</h1>
+    <a class="button is-danger" style="margin-right: 5px;" *ngIf="digiActive" (click)="deactivateUser()">Deactivate
+      User</a>
+    <a class="button is-danger" style="margin-right: 5px;" *ngIf="!digiActive" (click)="activateUser()">Reactivate
+      User</a>
   </div>
 
   <br>

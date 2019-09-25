@@ -33,6 +33,7 @@ export class MaradashComponent implements OnInit {
   digiBalance: number;
   digiRobloxId: number;
   digiCTA: string;
+  digiActive: boolean;
 
   sessionTimes: any;
   sessionDays: any;
@@ -127,6 +128,7 @@ export class MaradashComponent implements OnInit {
           this.digiBalance = callback.data.balance;
           this.digiRobloxId = callback.id;
           this.digiWarningsUsed = 3 - callback.data.warnings;
+          this.digiActive = callback.data.active;
           this.digiActivityScore = callback.data.attendance;
           this.digiSessionsAttended =
             callback.data.sessions_attended[13] +
@@ -524,6 +526,54 @@ export class MaradashComponent implements OnInit {
             'Done!';
 
           this.digiBalance = 0;
+
+          setTimeout(() => {
+            document.getElementById('statusTextDigiTokensEdit').innerHTML = '';
+          }, 2000);
+        }
+      });
+  }
+
+  deactivateUser() {
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/maradigi/user/deactivate/${this.digiRobloxId}`,
+        {
+          headers: {
+            Authorization: 'dshsdhESopc'
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          document.getElementById('statusTextDigiTokensEdit').innerHTML =
+            'Done!';
+
+          this.digiActive = false;
+
+          setTimeout(() => {
+            document.getElementById('statusTextDigiTokensEdit').innerHTML = '';
+          }, 2000);
+        }
+      });
+  }
+
+  activateUser() {
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/maradigi/user/activate/${this.digiRobloxId}`,
+        {
+          headers: {
+            Authorization: 'dshsdhESopc'
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          document.getElementById('statusTextDigiTokensEdit').innerHTML =
+            'Done!';
+
+          this.digiActive = true;
 
           setTimeout(() => {
             document.getElementById('statusTextDigiTokensEdit').innerHTML = '';
