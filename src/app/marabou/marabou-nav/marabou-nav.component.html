@@ -1,0 +1,52 @@
+<nav class="navbar is-dark" style="z-index: 10; position: sticky; top: 146px;">
+  <div class="container">
+    <div class="navbar-brand">
+      <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="campfireMenu" role="button"
+        (click)="expand()">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="campfireMenu">
+      <div class="navbar-start">
+        <a class="navbar-item" routerLink="../marabou" routerLinkActive="is-active">Portal</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a routerLink="../commands" class="navbar-link">Your Details</a>
+          <div class="navbar-dropdown">
+            <a routerLink="../commands/social" class="navbar-item">Details</a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a routerLink="../commands" class="navbar-link">Progress</a>
+          <div class="navbar-dropdown">
+            <a routerLink="../commands/social" class="navbar-item">Targets</a>
+            <a routerLink="../commands/social" class="navbar-item">Actions</a>
+            <a routerLink="../commands/social" class="navbar-item">Review</a>
+            <a routerLink="../commands/social" class="navbar-item">Your Logbook</a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a routerLink="../commands" class="navbar-link">Attendance</a>
+          <div class="navbar-dropdown">
+            <a routerLink="../commands/social" class="navbar-item">Attendance Summary</a>
+            <a routerLink="../commands/social" class="navbar-item">Predictions</a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a routerLink="../commands" class="navbar-link">Support</a>
+          <div class="navbar-dropdown">
+            <a routerLink="../commands/social" class="navbar-item">Group Support</a>
+            <a routerLink="../commands/social" class="navbar-item">Well-being Support</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+      </div>
+    </div>
+  </div>
+</nav>

@@ -41,13 +41,15 @@
 
 .is-sticky {
   position: sticky;
-  top: 0;
+  top: 200px;
+  z-index: 1;
 }
 
 div.box.is-rounded {
+  font-size: 1em;
   border-radius: 100%;
-  height: 166px;
-  width: 166px;
+  height: 156px;
+  width: 156px;
   margin: auto;
   margin-top: -80px;
 }
@@ -58,5 +60,23 @@ hr.rel {
 }
 
 .shaded-box {
-  background: rgb(238, 190, 207);
+  background: rgb(255, 174, 0);
+}
+
+.bg-marabou-interview {
+  background: linear-gradient(149deg, rgba(31, 31, 31, 0.745) 0%, rgba(31, 31, 31, 0.745) 100%), url(../../assets/d7sD742.png);
+  background-position: center;
+  background-size: cover;
+}
+
+a {
+  color: #e66d1c;
+}
+
+.strip {
+  background: #333333;
+  position: sticky;
+  top: 0;
+  height: 52px;
+  margin-bottom: -52px;
 }

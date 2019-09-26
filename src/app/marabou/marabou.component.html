@@ -1,4 +1,4 @@
-<section class="hero is-small is-primary">
+<section class="hero is-small is-link bg-marabou-interview" style="position: sticky; top: 0px; z-index: 11">
   <div class="hero-body">
     <div class="container">
       <div class="columns">
@@ -24,6 +24,15 @@
   <div class="columns">
     <!--Sidebar-->
     <div class="column is-2">
+      <!--Tickets Information Specifics-->
+      <hr class="darker rel">
+      <div class="is-sticky">
+        <div class="box has-text-centered is-rounded">
+          <p>You have
+            <br>
+            <span class="is-size-2 has-text-weight-bold circ">{{ balance }}</span><br>MaraTokens</p>
+        </div><br>
+      </div>
       <div class="box cf-cafe">
         <h1 class="circ is-title is-size-4 has-text-white">Cafe</h1>
         <a class="button is-grey has-text-weight-bold is-small" disabled title="Coming soon">Play</a>
@@ -86,42 +95,64 @@
         </div>
       </div><br>
 
-      <!--Tickets Information Specifics-->
-      <hr class="darker rel">
-      <div class="box has-text-centered is-rounded">
-        <p>You have
-          <br>
-          <span class="is-size-2 has-text-weight-bold circ">{{ balance }}</span><br>MaraTokens</p>
-      </div><br>
-
-      <div class="box shaded-box has-text-centered">
-        <h1 class="title is-family-primary has-text-weight-normal is-size-2">Your achievements</h1>
-        <h1 class="subtitle is-size-5 has-text-lighter">All of your progress is rated on a 0-3 scale</h1>
-        <div class="columns">
-          <div class="column">
-            <div class="box has-text-centered">
-              <p>Attendance</p>
-              <p class="has-text-weight-bold">{{ attendance }}</p>
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="box has-text-centered">
-              <p>Warnings remaining</p>
-              <p class="has-text-weight-bold">{{ warnings }}</p>
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="box has-text-centered">
-              <p>MaraScore</p>
-              <p class="has-text-weight-bold">{{ maraScore }}</p>
-            </div>
+      <div class="columns is-vcentered has-text-centered">
+        <div class="column">
+          <div class="box">
+            <p class="is-size-5">Sessions Attended</p>
+            <p class="is-size-3">71</p>
           </div>
         </div>
-        <p class="has-text-centered">If your MaraScore falls below 1.5 you will be demoted.</p>
-        <a (click)="openWarningModal()" class="button">Information on your warnings</a>
+        <div class="column">
+          <div class="box">
+            <p class="is-size-5">Activity Score</p>
+            <p class="is-size-3">{{ attendance }}<small>/3</small></p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box">
+            <p class="is-size-5">Warnings used</p>
+            <p class="is-size-3">{{ warnings }}<small>/3</small></p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box">
+            <p class="is-size-5">MaraScore</p>
+            <p class="is-size-3">{{ maraScore }}<small>/3</small></p>
+          </div>
+        </div>
       </div>
+
+      <div class="has-text-centered">
+        <a class="button" (click)="openWarningModal()">View Warnings</a>
+      </div><br>
+
+      <table class="table is-fullwidth is-striped is-bordered">
+        <thead>
+          <th>Ranks</th>
+          <th>Required tokens</th>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Staff Assistant -> Supervising Team</th>
+            <td>12</td>
+          </tr>
+
+          <tr>
+            <th>Supervising Team -> Management Team</th>
+            <td>{{ STtoMT }}</td>
+          </tr>
+
+          <tr>
+            <th>Management Team -> Administration Team</th>
+            <td>{{ MTtoAT }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="2" class="has-text-centered  ">Ranks following are unlocked via a secret algorithm</th>
+          </tr>
+        </tfoot>
+      </table>
 
       <div class="box has-text-justified">
         <div class="content">
@@ -140,40 +171,7 @@
           <p>Prices can change frequently, so it's advised that you do not attempt to remember prices. Furthermore,
             prices can change at any time and work on a first-come-first-served basis, if someone else gets promoted
             before you, the prices will change.</p>
-          <p>The row for your promotion will glow pink when you can claim your promotion. To do so, please
-            <b>contact a member of the Human Resources department.</b>
-          </p>
         </div>
-      </div>
-
-      <div class="box">
-        <table class="table is-fullwidth is-striped is-bordered">
-          <thead>
-            <th>Ranks</th>
-            <th>Required tokens</th>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Staff Assistant -> Supervising Team</th>
-              <td>12</td>
-            </tr>
-
-            <tr>
-              <th>Supervising Team -> Management Team</th>
-              <td>{{ STtoMT }}</td>
-            </tr>
-
-            <tr>
-              <th>Management Team -> Administration Team</th>
-              <td>{{ MTtoAT }}</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th colspan="2" class="has-text-centered  ">Ranks following are unlocked via a secret algorithm</th>
-            </tr>
-          </tfoot>
-        </table>
       </div>
 
       <div class="box">

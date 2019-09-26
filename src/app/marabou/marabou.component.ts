@@ -297,7 +297,7 @@ export class MarabouComponent implements OnInit {
                         }
                       });
 
-                      this.warnings = data.warnings;
+                      this.warnings = 3 - data.warnings;
                       this.attendance = data.attendance;
 
                       this.maraScore = (data.warnings + data.attendance) / 2;

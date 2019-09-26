@@ -36,6 +36,7 @@ import { MarabouComponent } from './marabou/marabou.component';
 import { MaradashComponent } from './marabou/maradash/maradash.component';
 import { InterviewsComponent } from './marabou/interviews/interviews.component';
 import { NgxLinkifyOptions } from 'ngx-linkifyjs';
+import { MarabouNavComponent } from './marabou/marabou-nav/marabou-nav.component';
 
 const options: NgxLinkifyOptions = {
   attributes: null,
@@ -80,7 +81,8 @@ const options: NgxLinkifyOptions = {
     SetRobloxComponent,
     MarabouComponent,
     MaradashComponent,
-    InterviewsComponent
+    InterviewsComponent,
+    MarabouNavComponent
   ],
   imports: [
     BrowserModule,
