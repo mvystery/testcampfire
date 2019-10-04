@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../auth/login.service';
 import { Chart } from 'chart.js';
 import * as moment from 'moment';
+import Swal from 'sweetalert2';
 
 import {
   AngularFirestore,
@@ -355,9 +356,12 @@ export class MarabouComponent implements OnInit {
                 }
               } else {
                 this.router.navigate(['/']);
-                setTimeout(() => {
-                  window.alert('Your Campfire account is not MaraSecured');
-                }, 2000);
+                Swal.fire({
+                  title: 'Error - Your account is not MaraSecured',
+                  text: 'Please contact Senior Leadership',
+                  type: 'error',
+                  confirmButtonText: 'Dismiss'
+                });
               }
             }
           });
