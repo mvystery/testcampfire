@@ -1,7 +1,7 @@
-<section class="hero is-small is-dark">
+<section class="hero is-small is-black">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title is-size-1">Hi {{ name }}, welcome to the MaraDigiDash!</h1>
+      <h1 class="title is-size-3">Hi {{ name }}, welcome to the MaraDigiDash!</h1>
       <p class="subtitle is-size-4">Management system for Marabou</p>
     </div>
   </div>
@@ -23,10 +23,10 @@
     </div>
   </form><br>
 
-  <p class="is-size-3 has-text-centered" *ngIf="!digiGotData">Enter username above</p>
+  <p class="is-size-4 has-text-centered" *ngIf="!digiGotData">Enter username above</p>
   <div class="box" [class.is-hidden]="!digiGotData">
     <img class="is-rounded" src="{{ digiRobloxAvatar }}" alt="">
-    <h1 class="title is-size-3 is-family-primary has-text-weight-normal"><span class="tag is-success is-small"
+    <h1 class="title is-size-4 is-family-primary has-text-weight-normal"><span class="tag is-success is-small"
         *ngIf="digiActive">ACTIVE</span><span class="tag is-danger is-small" *ngIf="!digiActive">INACTIVE</span>
       {{ digiRobloxUsername }}</h1>
     <p class="subtitle is-size-5">ID: {{ digiRobloxId }}</p>
@@ -35,36 +35,36 @@
       <div class="column">
         <div class="box">
           <p class="is-size-5">Sessions Attended</p>
-          <p class="is-size-3">{{ digiSessionsAttended + 1 }}</p>
+          <p class="is-size-4">{{ digiSessionsAttended + 1 }}</p>
         </div>
       </div>
       <div class="column">
         <div class="box">
           <p class="is-size-5">Activity Score</p>
-          <p class="is-size-3">{{ digiActivityScore }}<small>/3</small></p>
+          <p class="is-size-4">{{ digiActivityScore }}<small>/3</small></p>
         </div>
       </div>
       <div class="column">
         <div class="box">
           <p class="is-size-5">Warnings used</p>
-          <p class="is-size-3">{{ digiWarningsUsed }}<small>/3</small></p>
+          <p class="is-size-4">{{ digiWarningsUsed }}<small>/3</small></p>
         </div>
       </div>
       <div class="column">
         <div class="box">
           <p class="is-size-5">MaraScore</p>
-          <p class="is-size-3">{{ digiMaraScore }}<small>/3</small></p>
+          <p class="is-size-4">{{ digiMaraScore }}<small>/3</small></p>
         </div>
       </div>
       <div class="column">
         <div class="box">
           <p class="is-size-5">Tokens</p>
-          <p class="is-size-3">{{ digiBalance }}</p>
+          <p class="is-size-4">{{ digiBalance }}</p>
         </div>
       </div>
     </div>
     <hr>
-    <h1 class="title is-family-primary has-text-weight-normal is-size-3">Overview</h1>
+    <h1 class="title is-family-primary has-text-weight-normal is-size-4">Overview</h1>
     <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Showing tokens since the beginning of time
     </h1>
     <hr class="darker">
@@ -90,7 +90,7 @@
         <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Inactivity</h1>
       </div>
     </div><br><br>
-    <h1 class="title is-family-primary has-text-weight-normal is-size-3">Warnings</h1>
+    <h1 class="title is-family-primary has-text-weight-normal is-size-4">Warnings</h1>
     <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">User warnings
     </h1>
     <hr class="darker">
@@ -134,7 +134,7 @@
       </table>
     </div>
     <hr class="darker">
-    <h1 class="title is-family-primary has-text-weight-normal is-size-3">Edit Attendance</h1>
+    <h1 class="title is-family-primary has-text-weight-normal is-size-4">Edit Attendance</h1>
     <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Modify User ActivityScore</h1>
 
     <table class="table is-striped is-bordered">
@@ -156,7 +156,7 @@
     <p id="statusTextDigiAttendanceScoreEdit" class="has-text-weight-bold"></p>
 
     <br>
-    <h1 class="title is-family-primary has-text-weight-normal is-size-3">Edit tokens</h1>
+    <h1 class="title is-family-primary has-text-weight-normal is-size-4">Edit tokens</h1>
     <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Modify a users tokens</h1>
 
     <table class="table is-striped is-bordered">
@@ -184,7 +184,7 @@
     <p id="statusTextDigiTokensEdit" class="has-text-weight-bold"></p>
 
     <hr class="darker">
-    <h1 class="title is-family-primary has-text-weight-normal is-size-3">Danger zone</h1>
+    <h1 class="title is-family-primary has-text-weight-normal is-size-4">Danger zone</h1>
     <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Make changes to employment status</h1>
     <a class="button is-danger" style="margin-right: 5px;" *ngIf="digiActive" (click)="deactivateUser()">Deactivate
       User</a>
@@ -194,7 +194,7 @@
 
   <br>
   <div class="box">
-    <h1 class="title is-family-primary has-text-weight-normal is-size-3">CTA</h1>
+    <h1 class="title is-family-primary has-text-weight-normal is-size-4">CTA</h1>
     <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Post shown at the top of the Portal to users
     </h1>
 
@@ -227,7 +227,7 @@
         <input class="input" type="number" placeholder="Text input">
       </div>
       <div class="control">
-        <a class="button is-info">
+        <a class="button is-success">
           Save
         </a>
       </div>

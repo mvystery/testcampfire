@@ -8,9 +8,9 @@
             class="is-rounded" width="90px">
         </div>
         <div class="column">
-          <h1 class="title is-size-1">Welcome to Marabou,
+          <h1 class="title is-size-4">Welcome to Marabou,
             {{ name }}!</h1>
-          <p class="subtitle is-size-4">Here you can manage and view everything Marabou at a glance</p>
+          <p class="subtitle is-size-5">Here you can manage and view everything Marabou at a glance</p>
         </div>
       </div>
     </div>
@@ -30,20 +30,20 @@
         <div class="box has-text-centered is-rounded">
           <p>You have
             <br>
-            <span class="is-size-2 has-text-weight-bold circ">{{ balance }}</span><br>MaraTokens</p>
+            <span class="is-size-4 has-text-weight-bold circ">{{ balance }}</span><br>MaraTokens</p>
         </div><br>
       </div>
       <div class="box cf-cafe">
-        <h1 class="circ is-title is-size-4 has-text-white">Cafe</h1>
+        <h1 class="circ is-title is-size-5 has-text-white">Cafe</h1>
         <a class="button is-grey has-text-weight-bold is-small" disabled title="Coming soon">Play</a>
       </div>
       <div class="box cf-interview-center">
-        <h1 class="circ is-title is-size-4 has-text-white">Interview Center</h1>
+        <h1 class="circ is-title is-size-5 has-text-white">Interview Center</h1>
         <a href="https://www.roblox.com/games/2632427294/Interview-Center" target="_blank"
           class="button is-success has-text-weight-bold is-small">Play</a>
       </div>
       <div class="box cf-training-center">
-        <h1 class="circ is-title is-size-4 has-text-white">Training Center</h1>
+        <h1 class="circ is-title is-size-5 has-text-white">Training Center</h1>
         <a class="button is-grey has-text-weight-bold is-small" disabled title="Coming soon">Play</a>
       </div>
 
@@ -68,7 +68,7 @@
 
     <!--Main Column-->
     <div class="column">
-      <h1 class="title is-family-primary has-text-weight-normal is-size-2">Overview</h1>
+      <h1 class="title is-family-primary has-text-weight-normal is-size-3">Overview</h1>
       <h1 class="subtitle is-size-5 has-text-lighter has-text-grey-light">Showing tokens since the beginning of time
       </h1>
       <hr class="darker">
@@ -99,25 +99,25 @@
         <div class="column">
           <div class="box">
             <p class="is-size-5">Sessions Attended</p>
-            <p class="is-size-3">71</p>
+            <p class="is-size-4">{{ sessionCount }}</p>
           </div>
         </div>
         <div class="column">
           <div class="box">
             <p class="is-size-5">Activity Score</p>
-            <p class="is-size-3">{{ attendance }}<small>/3</small></p>
+            <p class="is-size-4">{{ attendance }}<small>/3</small></p>
           </div>
         </div>
         <div class="column">
           <div class="box">
             <p class="is-size-5">Warnings used</p>
-            <p class="is-size-3">{{ warnings }}<small>/3</small></p>
+            <p class="is-size-4">{{ warnings }}<small>/3</small></p>
           </div>
         </div>
         <div class="column">
           <div class="box">
             <p class="is-size-5">MaraScore</p>
-            <p class="is-size-3">{{ maraScore }}<small>/3</small></p>
+            <p class="is-size-4">{{ maraScore }}<small>/3</small></p>
           </div>
         </div>
       </div>

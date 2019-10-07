@@ -50,6 +50,7 @@ export class MarabouComponent implements OnInit {
   maraScore: any = 'Loading...';
   warning1Time: any;
   warning2Time: any;
+  sessionCount: any = 'Loading...';
   warning1Issuer: string;
   warning2Issuer: string;
   warning1Reason: string;
@@ -300,6 +301,14 @@ export class MarabouComponent implements OnInit {
 
                       this.warnings = 3 - data.warnings;
                       this.attendance = data.attendance;
+                      this.sessionCount =
+                        data.sessions_attended[13] +
+                        data.sessions_attended[15] +
+                        data.sessions_attended[17] +
+                        data.sessions_attended[19] +
+                        data.sessions_attended[21] +
+                        data.sessions_attended[23] +
+                        1;
 
                       this.maraScore = (data.warnings + data.attendance) / 2;
                       this.warning1Time = moment(
