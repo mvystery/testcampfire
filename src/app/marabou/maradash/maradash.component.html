@@ -29,12 +29,16 @@
     <h1 class="title is-size-4 is-family-primary has-text-weight-normal"><span class="tag is-success is-small"
         *ngIf="digiActive">ACTIVE</span><span class="tag is-danger is-small" *ngIf="!digiActive">INACTIVE</span>
       {{ digiRobloxUsername }}</h1>
-    <p class="subtitle is-size-5">ID: {{ digiRobloxId }}</p>
+    <p class="subtitle is-size-5" style="margin-bottom: 0px">Rank: {{ digiGroupRank }}</p>
+    <p class="subtitle is-size-6">ID: {{ digiRobloxId }}</p>
 
+    <a href="https://roblox.com/users/{{ digiRobloxId }}/profile" class="button">Profile ></a>
+
+    <div class="spacer"></div>
     <div class="columns has-text-centered is-vcentered">
       <div class="column">
         <div class="box">
-          <p class="is-size-5">Sessions Attended</p>
+          <p class="is-size-5">Attended</p>
           <p class="is-size-4">{{ digiSessionsAttended + 1 }}</p>
         </div>
       </div>

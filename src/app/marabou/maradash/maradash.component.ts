@@ -33,6 +33,7 @@ export class MaradashComponent implements OnInit {
   digiBalance: number;
   digiRobloxId: number;
   digiCTA: string;
+  digiGroupRank: string;
   digiActive: boolean;
 
   sessionTimes: any;
@@ -155,6 +156,23 @@ export class MaradashComponent implements OnInit {
           this.warning2Show = callback.data.warning_2.issued;
           this.warning2Issuer = callback.data.warning_2.issuer;
           this.warning2Reason = callback.data.warning_2.reason;
+
+          this.http
+            .get<any>(
+              `https://api.campfirebot.xyz/roblox/users/${this.digiRobloxId}/groups`
+            )
+            .subscribe(rankData => {
+              const parsed = JSON.parse(rankData);
+              const found = parsed.find(group => {
+                return group.Id === 4328731;
+              });
+
+              if (found) {
+                this.digiGroupRank = found.Role;
+              } else {
+                this.digiGroupRank = 'Guest';
+              }
+            });
 
           const ctx = document.getElementById('sessionTimes');
           this.sessionTimes = new Chart(ctx, {
