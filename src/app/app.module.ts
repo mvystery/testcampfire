@@ -37,6 +37,7 @@ import { MaradashComponent } from './marabou/maradash/maradash.component';
 import { InterviewsComponent } from './marabou/interviews/interviews.component';
 import { NgxLinkifyOptions } from 'ngx-linkifyjs';
 import { MarabouNavComponent } from './marabou/marabou-nav/marabou-nav.component';
+import { SetRobloxBindsComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-roblox-binds/set-roblox-binds.component';
 
 const options: NgxLinkifyOptions = {
   attributes: null,
@@ -82,7 +83,8 @@ const options: NgxLinkifyOptions = {
     MarabouComponent,
     MaradashComponent,
     InterviewsComponent,
-    MarabouNavComponent
+    MarabouNavComponent,
+    SetRobloxBindsComponent
   ],
   imports: [
     BrowserModule,

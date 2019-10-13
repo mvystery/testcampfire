@@ -31,6 +31,13 @@
           </span>
           verification
         </a>
+
+        <a class="panel-block" [class.is-active]="binds" (click)="changeTab('binds')">
+          <span class="panel-icon">
+            <i class="fas fa-check" aria-hidden="true"></i>
+          </span>
+          binds
+        </a>
       </div>
     </nav>
 
@@ -40,6 +47,8 @@
       <app-set-prefix *ngIf="prefix"></app-set-prefix>
       <app-set-welcomer *ngIf="welcomer"></app-set-welcomer>
       <app-set-roblox *ngIf="verify"></app-set-roblox>
+      <app-set-roblox-binds *ngIf="binds">
+      </app-set-roblox-binds>
     </div>
   </div>
 </div>

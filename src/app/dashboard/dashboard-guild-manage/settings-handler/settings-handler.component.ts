@@ -12,6 +12,7 @@ export class SettingsHandlerComponent implements OnInit {
   general = true;
   roblox = false;
   verify = false;
+  binds = false;
 
   constructor() {}
 
@@ -26,6 +27,16 @@ export class SettingsHandlerComponent implements OnInit {
     if (tabName === 'prefix') {
       this.welcomer = false;
       this.prefix = true;
+    }
+
+    if (tabName === 'verify') {
+      this.binds = false;
+      this.verify = true;
+    }
+
+    if (tabName === 'binds') {
+      this.binds = true;
+      this.verify = false;
     }
   }
 
@@ -46,6 +57,7 @@ export class SettingsHandlerComponent implements OnInit {
       this.prefix = false;
       this.welcomer = false;
       this.verify = true;
+      this.binds = false;
     }
   }
 }

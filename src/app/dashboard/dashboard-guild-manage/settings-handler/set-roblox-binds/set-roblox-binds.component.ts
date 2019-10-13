@@ -8,7 +8,7 @@ interface VerifyData {
   groupId: number;
   verifiedRole: string;
   bindsOn: boolean;
-  binds: object;
+  binds: Array<any>;
 }
 
 interface Callback {
@@ -16,17 +16,18 @@ interface Callback {
 }
 
 @Component({
-  selector: 'app-set-roblox',
-  templateUrl: './set-roblox.component.html',
-  styleUrls: ['./set-roblox.component.css']
+  selector: 'app-set-roblox-binds',
+  templateUrl: './set-roblox-binds.component.html',
+  styleUrls: ['./set-roblox-binds.component.css']
 })
-export class SetRobloxComponent implements OnInit {
+export class SetRobloxBindsComponent implements OnInit {
   loaded = false;
+
   enabled = false;
   status = 'Disabled';
   role: string;
   groupId: number;
-  binds: object;
+  roles = [];
 
   constructor(
     private http: HttpClient,
@@ -50,7 +51,7 @@ export class SetRobloxComponent implements OnInit {
           this.status = 'Enabled';
           this.groupId = data.groupId;
           this.role = data.verifiedRole;
-          this.binds = data.binds;
+          this.roles = data.binds;
         } else {
           this.enabled = false;
           this.status = 'Disabled';
@@ -58,65 +59,26 @@ export class SetRobloxComponent implements OnInit {
       });
   }
 
-  toggleVerify() {
-    if (this.enabled === false) {
-      this.http
-        .post<Callback>(
-          `https://api.campfirebot.xyz/settings/${this.guildMan.getServerId()}/verify/toggle`,
-          {
-            toggle: true
-          },
-          {
-            headers: {
-              Authorization: localStorage.getItem('auth')
-            }
-          }
-        )
-        .subscribe(data => {
-          if (data.completed === true) {
-            this.enabled = true;
-            this.status = 'Enabled';
-          }
-        });
-    } else {
-      this.http
-        .post<Callback>(
-          `https://api.campfirebot.xyz/settings/${this.guildMan.getServerId()}/verify/toggle`,
-          {
-            toggle: false
-          },
-          {
-            headers: {
-              Authorization: localStorage.getItem('auth')
-            }
-          }
-        )
-        .subscribe(data => {
-          if (data.completed === true) {
-            this.enabled = false;
-            this.status = 'Disabled';
-          }
-        });
-    }
+  bindsForm(data) {
+    this.roles.push({ name: data.value.roleName, id: data.value.gr1 });
+    console.log(this.roles);
   }
 
-  setRoblox(formInputData) {
-    Swal.fire({
-      title: 'Just a moment',
-      position: 'bottom-end',
-      // tslint:disable-next-line: quotemark
-      text: "We're saving your data",
-      type: 'info',
-      toast: true,
-      showConfirmButton: false,
-      timer: 2000
-    });
+  delBind(bind) {
+    this.roles.splice(this.roles.findIndex(objecto => objecto.id === bind), 1);
+  }
+
+  saveBinds() {
+    const result = this.roles.reduce((map, obj) => {
+      map[obj.id] = obj.name;
+      return map;
+    }, {});
+
     this.http
       .post<Callback>(
-        `https://api.campfirebot.xyz/settings/${this.guildMan.getServerId()}/verify`,
+        `https://api.campfirebot.xyz/settings/${this.guildMan.getServerId()}/binds`,
         {
-          role: formInputData.value.role,
-          group: formInputData.value.groupId
+          binds: result
         },
         {
           headers: {
@@ -125,7 +87,7 @@ export class SetRobloxComponent implements OnInit {
         }
       )
       .subscribe(data => {
-        if (data.completed) {
+        if (data.completed === true) {
           document.getElementById('saveButton').classList.add('is-success');
           Swal.fire({
             title: 'All done!',
