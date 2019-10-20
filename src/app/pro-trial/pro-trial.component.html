@@ -1,0 +1,9 @@
+<div class="notification is-info" style="border-radius: 0;" *ngIf="dealVisible">
+  <button class="delete" (click)="closeDeal()"></button>
+  <h1 class="title is-size-5">Campfire PRO is live</h1>
+  <p class="subtitle" style="margin-bottom: 4px;">Try it <b>free for 14 days</b>, on us! Then just <b>$2.50</b> a month.
+  </p>
+  <a class="button is-outlined is-rounded is-light" (click)="getDeal()" [class.is-loading]="loadingDeal">Get PRO</a><br>
+  <small style="font-size: 0.5em;">No strings attached. Offer not valid in conjuction with any
+    other offer.</small>
+</div>
