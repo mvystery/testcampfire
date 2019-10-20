@@ -34,9 +34,25 @@
 
         <a class="panel-block" [class.is-active]="binds" (click)="changeTab('binds')">
           <span class="panel-icon">
-            <i class="fas fa-check" aria-hidden="true"></i>
+            <i class="fas fa-link" aria-hidden="true"></i>
           </span>
           binds
+        </a>
+
+        <!---
+        <a class="panel-block" [class.is-active]="assets" (click)="changeTab('assets')">
+          <span class="panel-icon">
+            <i class="fas fa-dollar-sign" aria-hidden="true"></i>
+          </span>
+          assets
+        </a>
+        -->
+
+        <a class="panel-block" [class.is-active]="presence" (click)="changeTab('presence')">
+          <span class="panel-icon">
+            <i class="fas fa-chart-pie" aria-hidden="true"></i>
+          </span>
+          presence
         </a>
       </div>
     </nav>
@@ -49,6 +65,10 @@
       <app-set-roblox *ngIf="verify"></app-set-roblox>
       <app-set-roblox-binds *ngIf="binds">
       </app-set-roblox-binds>
+      <app-set-roblox-asset *ngIf="assets">
+      </app-set-roblox-asset>
+      <app-set-roblox-presence *ngIf="presence">
+      </app-set-roblox-presence>
     </div>
   </div>
 </div>

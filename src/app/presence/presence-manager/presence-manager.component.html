@@ -1,0 +1,204 @@
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-4">{{ greeting }}, {{ robloxUsername }}!</h1>
+      <h1 class="subtitle is-size-5">Manage everything at {{ groupName }}, done easy.</h1>
+    </div>
+  </div>
+</section>
+<div class="spacer"></div>
+
+<img src="../../../../assets/spinner.svg" *ngIf="loading" alt="Loading" width="100px"
+  style="margin: auto; display: block;">
+<p *ngIf="loading" class="has-text-centered">Hang tight!</p>
+
+<div class="container" [class.is-hidden]="loading">
+  <h1 class="title is-size-4">Campfire Presence Manager</h1>
+  <h1 class="subtitle is-size-5 has-text-lighter-has-text-grey-light">Backend view</h1>
+
+  <form (ngSubmit)="searchUser(userSearchForm)" #userSearchForm="ngForm" *ngIf="!digiGotData">
+    <label class="label">Search User</label>
+    <div class="field has-addons">
+      <div class="control" style="width: 100%">
+        <input required minlength="3" name="username" ngModel #userField="ngModel" type="text" class="input"
+          placeholder="Username" autocomplete="off">
+      </div>
+      <div class="control">
+        <button class="button is-link" [class.is-loading]="searchLoading" [disabled]="!userSearchForm.form.valid"
+          type="submit">Search</button>
+      </div>
+    </div>
+  </form>
+
+  <hr class="darker">
+
+  <h1 class="title is-size-4">Edit Settings</h1>
+  <h1 class="subtitle is-size-5 has-text-lighter-has-text-grey-light">of {{ groupName }}</h1>
+
+  <div class="box">
+    <form (ngSubmit)="presenceSettingsSave(presenceSettings)" #presenceSettings="ngForm" *ngIf="!digiGotData">
+      <!--Max Inactive Days for Inactive Notice Restriction Bool-->
+      <div class="field">
+        <label class="checkbox">
+          <input type="checkbox" [(ngModel)]="maxInactiveDaysEnabled" name="maxInactiveDaysEnabled">
+          Max Inactive Days Restriction Enabled
+        </label>
+      </div>
+
+      <!--Max Inactive Days for Inactive Notice Restriction Type (Year/Month)-->
+      <div class="field" [class.is-hidden]="!presenceSettings.controls.maxInactiveDaysEnabled?.value">
+        <label class="label">Max Inactive Days Restriction Type</label>
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="daysType" value="month" required [(ngModel)]="!maxInactiveDaysYear">
+            Month
+          </label>
+          <label class="radio">
+            <input type="radio" name="daysType" value="year" required [(ngModel)]="maxInactiveDaysYear">
+            Year
+          </label>
+        </div>
+      </div>
+
+      <!--Max Inactive Days for Inactive Notice Restriction Count (Either by year/month see above)-->
+      <div class="field" [class.is-hidden]="!presenceSettings.controls.maxInactiveDaysEnabled.value">
+        <label class="label">Max Inactive Days</label>
+        <input type="number" required minlength="1" ngModel="{{ maxInactiveDays }}" name="maxInactiveDays" class="input"
+          placeholder="5" autocomplete="off" min="1">
+      </div>
+
+      <!--Whether warnings clear on the 1st of each month-->
+      <div class="field">
+        <label class="checkbox">
+          <input type="checkbox" [(ngModel)]="clearWarnings" name="clearWarningsEachMonth">
+          Clear Warnings Each Month (1st of every month)
+        </label>
+      </div>
+
+      <!--Maximum amount of warnings allowed (cannot exceed 5)-->
+      <div class="field">
+        <label class="label">Warnings Allowed (Max of 5)</label>
+        <input type="number" required minlength="1" max="5" min="1" name="warningCount" class="input" placeholder="5"
+          autocomplete="off" ngModel="{{ maxWarnings }}">
+      </div>
+
+      <!--If tokens are used for promotions: bool-->
+      <div class="field">
+        <label class="checkbox">
+          <input type="checkbox" [(ngModel)]="tokensForPromotions" name="tokensForPromotions">
+          Tokens for promotions
+        </label>
+      </div>
+
+      <!--Use token AI or customise manually-->
+      <div class="field" [class.is-hidden]="!presenceSettings.controls.tokensForPromotions?.value">
+        <label class="label">Tokens Adjust</label>
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="tokensAdjust" [(ngModel)]="tokensAdjustbyAI" value="ai">
+            TokenAI
+          </label>
+          <label class="radio">
+            <input type="radio" name="tokensAdjust" [(ngModel)]="tokensAdjustbyAI" value="manual">
+            Manual
+          </label>
+        </div>
+      </div>
+
+      <div class="field" [class.is-hidden]="presenceSettings.controls.tokensForPromotions?.value">
+        <label class="label">Message on how you use tokens in your group</label>
+        <textarea type="text" required minlength="1" ngModel="{{ messageOnTokens }}" name="tokensUse" class="textarea"
+          placeholder="We use Tokens to keep track of staff activity... you are required to get..." autocomplete="off"
+          min="1"></textarea>
+      </div>
+
+      <!--How many sessions people can claim max-->
+      <div class="field" *ngIf="false">
+        <label class="label">Max Claimable Weekly Sessions per User</label>
+        <input type="number" required minlength="1" name="maxSessions" class="input" placeholder="10" autocomplete="off"
+          ngModel="{{ maxClaimableWeeklySessions }}">
+      </div>
+
+      <div class="field">
+        <button type="submit" class="submit" [class.is-loading]="saveSettingsLoading" class="button is-link"
+          [disabled]="!presenceSettings.form.valid">Save</button>
+      </div>
+    </form>
+    <p class="has-text-right has-text-grey-light">Last modified by: {{ settingsModifedBy }}</p>
+  </div>
+
+  <div class="box">
+    <form (ngSubmit)="ctaSettings(ctaSettingsForm)" #ctaSettingsForm="ngForm">
+      <!--Max Inactive Days for Inactive Notice Restriction Bool-->
+      <div class="field">
+        <label class="checkbox">
+          <input type="checkbox" [(ngModel)]="ctaEnabled" name="ctaEnabled">
+          CTA Enabled
+        </label>
+      </div>
+
+      <div class="field" [class.is-hidden]="!ctaSettingsForm.controls.ctaEnabled?.value">
+        <label class="label">CTA Message</label>
+        <textarea type="text" required minlength="1" ngModel="{{ ctaMessage }}" name="ctaMessage" class="textarea"
+          placeholder="Our reforms process will begin soon" autocomplete="off" min="1"></textarea>
+      </div>
+
+      <div class="field">
+        <button type="submit" class="submit" [class.is-loading]="saveCTALoading" class="button is-link"
+          [disabled]="!ctaSettingsForm.form.valid">Save</button>
+      </div>
+    </form>
+    <p class="has-text-right has-text-grey-light">Last modified by: {{ CtaModifiedBy }}</p>
+  </div>
+
+  <div class="box" *ngIf="ownerSection">
+    <h1 class="title is-size-5">Owner Settings</h1>
+    <a class="button" (click)="enablePro()" [class.is-loading]="proFeaturesEnabling">Enable PRO Features</a><br>
+    <small>By enabling PRO Features, you hereby give other users and yourself access to PRO features available in
+      Presence. In a month, you'll need to click this button again to confirm your PRO membership.</small><br>
+    <small>Renew before: {{ premium }}</small>
+    <div class="spacer"></div>
+    <form (ngSubmit)="ownerSettings(ownerForm)" #ownerForm="ngForm">
+      <div class="field">
+        <label class="label">Moderator Role</label>
+        <input type="number" required class="input" placeholder="250" name="moderatorRole"
+          ngModel="{{ moderatorRole }}">
+      </div>
+      <div class="field">
+        <label class="label">Staff Role (enter the role where you staff start at i.e. 30)</label>
+        <input type="number" required class="input" placeholder="30" name="staffRole" ngModel="{{ staffRole }}">
+      </div>
+      <div class="field">
+        <label class="label">Handbook</label>
+        <input type="url" required class="input" placeholder="https://docs.google.com" name="handbook"
+          ngModel="{{ handbook }}">
+      </div>
+      <div class="field">
+        <label class="label">Discord</label>
+        <input type="url" required class="input" placeholder="https://discord.gg/api" name="discord"
+          ngModel="{{ discordLink }}">
+      </div>
+      <div class="field">
+        <button type="submit" class="button is-link" [disabled]="ownerForm.form.invalid"
+          [class.is-loading]="ownerSettingsSaving">Save</button>
+      </div>
+    </form>
+    <div class="spacer"></div>
+    <p>Token</p>
+    <a class="button is-outlined is-danger is-small" (click)="revealToken()"
+      [class.is-loading]="loadingToken">Reveal</a>
+    <p id="token"></p>
+
+    <div class="content">
+      <ul>
+        <li><b>Interviews & Trainings Script (Pays at the end of a session)</b>: <a
+            href="https://www.roblox.com/library/4164523468/Presence-Interviews-Trainings">https://www.roblox.com/library/4164523468/Presence-Interviews-Trainings</a>
+        </li>
+        <li><b>Shift Script (Pays by minute)</b>: <a
+            href="https://www.roblox.com/library/4164544318/Presence-Shifts">https://www.roblox.com/library/4164544318/Presence-Shifts</a>
+        </li>
+      </ul>
+      <p>Pop the script of choice above into your 'ServerScriptService' and configure the settings inside.</p>
+    </div>
+  </div>
+</div>

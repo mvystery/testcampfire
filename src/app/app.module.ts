@@ -13,11 +13,12 @@ import { SettingsComponent } from './commands/settings/settings.component';
 import { ModerationComponent } from './commands/moderation/moderation.component';
 import { FunComponent } from './commands/fun/fun.component';
 import { CommandsIndexComponent } from './commands/commands-index/commands-index.component';
+import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { NgForm, FormsModule } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UpdatesComponent } from './updates/updates.component';
@@ -38,6 +39,13 @@ import { InterviewsComponent } from './marabou/interviews/interviews.component';
 import { NgxLinkifyOptions } from 'ngx-linkifyjs';
 import { MarabouNavComponent } from './marabou/marabou-nav/marabou-nav.component';
 import { SetRobloxBindsComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-roblox-binds/set-roblox-binds.component';
+import { SetRobloxAssetComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-roblox-asset/set-roblox-asset.component';
+import { SetRobloxPresenceComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-roblox-presence/set-roblox-presence.component';
+import { PresenceComponent } from './presence/presence.component';
+import { PresenceFrontendComponent } from './presence/presence-frontend/presence-frontend.component';
+import { PresenceManagerComponent } from './presence/presence-manager/presence-manager.component';
+import { ProTrialComponent } from './pro-trial/pro-trial.component';
+import { ViewProfileComponent } from './presence/presence-manager/view-profile/view-profile.component';
 
 const options: NgxLinkifyOptions = {
   attributes: null,
@@ -84,7 +92,14 @@ const options: NgxLinkifyOptions = {
     MaradashComponent,
     InterviewsComponent,
     MarabouNavComponent,
-    SetRobloxBindsComponent
+    SetRobloxBindsComponent,
+    SetRobloxAssetComponent,
+    SetRobloxPresenceComponent,
+    PresenceComponent,
+    PresenceFrontendComponent,
+    PresenceManagerComponent,
+    ProTrialComponent,
+    ViewProfileComponent
   ],
   imports: [
     BrowserModule,

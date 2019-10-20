@@ -1,0 +1,215 @@
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-4">{{ greeting }}, {{ robloxUsername }}!</h1>
+      <h1 class="subtitle is-size-5">Here you can manage and view everything {{ groupName }} at a glance.</h1>
+    </div>
+  </div>
+</section>
+
+<div class="box cta has-text-centered has-background-light" *ngIf="ctaVisible">
+  <p class="has-text-weight-bold">{{ cta }}</p>
+</div>
+
+<div class="spacer"></div>
+<div class="container">
+  <img src="../../../assets/spinner.svg" *ngIf="loading" alt="Loading" width="100px"
+    style="margin: auto; display: block;">
+  <p *ngIf="loading" class="has-text-centered">Just a quickie</p>
+  <div class="columns" [class.is-hidden]="loading">
+    <div class="column is-2">
+      <div class="list">
+        <a href="https://trello.com/b/QLEMDHA3/marabou-session-schedule" target="_blank" class="list-item">
+          <i class="fab fa-trello"></i>
+          Trello</a>
+        <a href="https://www.roblox.com/my/groupadmin.aspx?gid={{id}}" target="_blank" class="list-item">
+          <i class="fas fa-cogs"></i>
+          Group Admin</a>
+        <a href="https://campfirebot.xyz/marabou/interviews" target="_blank" class="list-item">
+          <i class="fas fa-book-open"></i>
+          Handbook</a>
+        <a href="https://discordapp.com/invite/AdZXacP" target="_blank" class="list-item">
+          <i class="fab fa-discord"></i>
+          Discord</a>
+        <a routerLink="manage" *ngIf="isMod" class="list-item">
+          <i class="fas fa-user-shield"></i>
+          Manager</a>
+      </div>
+    </div>
+    <div class="column is-10">
+      <h1 class="title is-size-4">Overview</h1>
+      <h1 class="subtitle is-size-5 has-text-lighter-has-text-grey-light">Showing tokens since the beginning of time
+      </h1>
+      <hr class="darker">
+
+      <div class="columns">
+        <div class="column has-text-centered">
+          <canvas id="sessionTimes"></canvas>
+          <br>
+          <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">Sessions attended
+          </h1>
+          <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Times</h1>
+        </div>
+        <div class="column has-text-centered">
+          <canvas id="sessionTypes"></canvas>
+          <br>
+          <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">Sessions attended
+          </h1>
+          <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Type</h1>
+        </div>
+        <div class="column has-text-centered">
+          <canvas id="sessionDays"></canvas>
+          <br>
+          <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light">Sessions attended
+          </h1>
+          <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4">Days</h1>
+        </div>
+      </div>
+
+      <hr class="darker">
+      <div class="columns">
+        <div class="column">
+          <div class="box has-text-centered">
+            <p class="is-size-5">Tokens</p>
+            <p class="is-size-4">{{ tokens }}</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box has-text-centered">
+            <p class="is-size-5">Activity</p>
+            <p class="is-size-4">{{ activity }}<small>/3</small></p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box has-text-centered">
+            <p class="is-size-5">Warnings</p>
+            <p class="is-size-4">{{ warnings }}<small>/{{ warningsAllowed }}</small></p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box has-text-centered">
+            <p class="is-size-5">Attended</p>
+            <p class="is-size-4">{{ attended }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <h1 class="title is-size-5">Tokens</h1>
+            <div class="content" *ngIf="tokensForPromos">
+              <p>
+                {{ groupName }} uses tokens for its promotions. But what actually are tokens? Tokens are a math based
+                staff payment system that is very versatile and are earn via attending sessions. The amount you get paid
+                never changes, the only thing that changes is the amount you need to get promoted.
+              </p>
+              <p *ngIf="magicTokens">Tokens at {{ groupName }} are managed by Campfire's Smart AI. This means that
+                promotions are earned at
+                a fair amount, every time.</p>
+              <p *ngIf="magicTokens">Because of this, prices can change frequently, so it's advised you don't attempt to
+                remember the
+                prices. Furthermore, prices can change at any time and work on a first-come-first-served basis, if
+                soemone else gets promoted before you, the prices will change.</p>
+              <p *ngIf="!magicTokens">Tokens at {{ groupName }} are managed by the staff team of {{ groupName }}.</p>
+            </div>
+
+            <div class="content" *ngIf="!tokensForPromos">
+              <p>
+                {{ groupName }} uses tokens to keep track of staff activity. You can read more about how {{ groupName }}
+                uses MaraTokens below.
+              </p>
+              <div class="box">
+                <p>{{ messageOnTokens }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <h1 class="title is-size-5">Performance</h1>
+
+            <canvas id="inactivity"></canvas>
+            <br>
+            <h1 class="title is-family-primary has-text-weight-normal is-size-6 has-text-grey-light has-text-centered">
+              {{ inactiveType }}ly
+            </h1>
+            <h1 class="subtitle is-family-primary has-text-weight-normal is-size-4 has-text-centered">Inactive</h1>
+
+            <hr class="darker">
+
+            <h1 class="title is-size-5">This week</h1>
+            <div class="box">
+              <h1 class="title is size-4 has-text-centered">{{ sessionsWeek }}</h1>
+              <h1 class="subtitle is size-5 has-text-centered">Sessions attended this week</h1>
+            </div>
+
+            <div class="box">
+              <h1 class="title is size-4 has-text-centered">{{ tokensWeek }}</h1>
+              <h1 class="subtitle is size-5 has-text-centered">Tokens this week</h1>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box">
+            <h1 class="title is-size-5">Latest Transactions</h1>
+            <div *ngFor="let transaction of transactionLog; let i=index">
+              <div *ngIf="i<5">
+                <p>{{ transaction }}</p>
+                <hr class="darker" *ngIf="i<4">
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <h1 class="title is-size-5">Warnings and infractions</h1>
+            <p *ngIf="warnings < 1">You have no warnings or infractions</p>
+
+            <div *ngIf="warnings >= 1">
+              <hr>
+              <h1 class="title is-size-5">Warning 1</h1>
+              <h1 class="subtitle is-size-6">Issued by: {{ warning1?.issuer }} | {{ momentWarning1 }}</h1>
+              <p>{{ warning1?.reason }}</p>
+              <hr>
+            </div>
+
+            <div *ngIf="warnings >= 2">
+              <hr>
+              <h1 class="title is-size-5">Warning 2</h1>
+              <h1 class="subtitle is-size-6">Issued by: {{ warning2?.issuer }} | {{ momentWarning2 }}</h1>
+              <p>{{ warning2?.reason }}</p>
+              <hr>
+            </div>
+
+            <div *ngIf="warnings >= 3">
+              <hr>
+              <h1 class="title is-size-5">Warning 3</h1>
+              <h1 class="subtitle is-size-6">Issued by: {{ warning3?.issuer }} | {{ momentWarning3 }}</h1>
+              <p>{{ warning3?.reason }}</p>
+              <hr>
+            </div>
+
+            <div *ngIf="warnings >= 4">
+              <hr>
+              <h1 class="title is-size-5">Warning 4</h1>
+              <h1 class="subtitle is-size-6">Issued by: {{ warning4?.issuer }} | {{ momentWarning4 }}</h1>
+              <p>{{ warning4?.reason }}</p>
+              <hr>
+            </div>
+
+            <div *ngIf="warnings === 5">
+              <hr>
+              <h1 class="title is-size-5">Warning 5</h1>
+              <h1 class="subtitle is-size-6">Issued by: {{ warning5?.issuer }} | {{ momentWarning5 }}</h1>
+              <p>{{ warning5?.reason }}</p>
+              <hr>
+            </div>
+          </div>
+
+          <div class="box">
+            <h1 class="title is-size-5">Overall team performance</h1>
+            <canvas id="staffPerformance"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

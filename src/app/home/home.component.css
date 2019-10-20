@@ -1,6 +1,9 @@
 .cf-fire-bg {
   background: rgb(240, 36, 107);
-  background: linear-gradient(169deg, #dd0072 0%, #eaec78 90%, #b6ec78 100%);
+  background-image: url(../../assets/Campfire-BG.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .cf-circular-pfp {

@@ -13,6 +13,8 @@ export class SettingsHandlerComponent implements OnInit {
   roblox = false;
   verify = false;
   binds = false;
+  assets = false;
+  presence = false;
 
   constructor() {}
 
@@ -31,12 +33,30 @@ export class SettingsHandlerComponent implements OnInit {
 
     if (tabName === 'verify') {
       this.binds = false;
+      this.assets = false;
       this.verify = true;
+      this.presence = false;
     }
 
     if (tabName === 'binds') {
       this.binds = true;
       this.verify = false;
+      this.assets = false;
+      this.presence = false;
+    }
+
+    if (tabName === 'assets') {
+      this.assets = true;
+      this.verify = false;
+      this.binds = false;
+      this.presence = false;
+    }
+
+    if (tabName === 'presence') {
+      this.presence = true;
+      this.assets = false;
+      this.verify = false;
+      this.binds = false;
     }
   }
 
@@ -48,6 +68,8 @@ export class SettingsHandlerComponent implements OnInit {
       this.welcomer = false;
       this.verify = false;
       this.prefix = true;
+      this.binds = false;
+      this.assets = false;
     }
 
     if (sectionName === 'roblox') {
@@ -58,6 +80,7 @@ export class SettingsHandlerComponent implements OnInit {
       this.welcomer = false;
       this.verify = true;
       this.binds = false;
+      this.assets = false;
     }
   }
 }

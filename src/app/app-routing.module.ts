@@ -14,6 +14,10 @@ import { DashboardGuildManageComponent } from './dashboard/dashboard-guild-manag
 import { MarabouComponent } from './marabou/marabou.component';
 import { MaradashComponent } from './marabou/maradash/maradash.component';
 import { InterviewsComponent } from './marabou/interviews/interviews.component';
+import { PresenceComponent } from './presence/presence.component';
+import { PresenceFrontendComponent } from './presence/presence-frontend/presence-frontend.component';
+import { PresenceManagerComponent } from './presence/presence-manager/presence-manager.component';
+import { ViewProfileComponent } from './presence/presence-manager/view-profile/view-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,7 +33,11 @@ const routes: Routes = [
   { path: 'dashboard/guilds/:id', component: DashboardGuildManageComponent },
   { path: 'marabou', component: MarabouComponent },
   { path: 'marabou/maradash', component: MaradashComponent },
-  { path: 'marabou/interviews', component: InterviewsComponent }
+  { path: 'marabou/interviews', component: InterviewsComponent },
+  { path: 'presence', component: PresenceComponent },
+  { path: 'presence/:id', component: PresenceFrontendComponent },
+  { path: 'presence/:id/manage', component: PresenceManagerComponent },
+  { path: 'presence/:id/manage/:userId', component: ViewProfileComponent }
 ];
 
 @NgModule({

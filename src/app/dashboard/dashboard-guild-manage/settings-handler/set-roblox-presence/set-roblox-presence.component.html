@@ -1,0 +1,18 @@
+<img src="../../../../../assets/spinner.svg" *ngIf="!loaded" alt="Loading" width="100px"
+  style="margin: auto; display: block;">
+<p *ngIf="!loaded" class="has-text-centered">Preparing the presence!</p>
+<div *ngIf="loaded">
+  <p *ngIf="errorText">
+    You don't have permission to modify the group this Discord is binded to. To change the bind go to
+    the verification tab and change the group Id. You <b>must</b> be the owner of the group (role 255)
+  </p>
+
+  <h1 class="subtitle is-size-5 has-text-weight-bold" *ngIf="!errorText">Modify settings for {{ groupName }}</h1>
+  <a class="button" [class.is-loading]="presenceLoading" *ngIf="!presence && !errorText"
+    (click)="createPresence()">Create Presence
+    System</a>
+  <p *ngIf="presence">Presence is enabled for this group. To control your presence please visit <a
+      routerLink="/presence/{{groupId}}">https://campfirebot.xyz/presence/{{groupId}}</a> to view Presence information
+  </p>
+  <p *ngIf="!errorText"><small>To undo this please contact Campfire Support</small></p>
+</div>
