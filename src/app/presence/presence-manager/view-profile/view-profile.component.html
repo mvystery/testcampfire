@@ -194,37 +194,55 @@
         <a class="button is-danger" style="margin-right: 5px;" (click)="removeTokens()">Remove</a>
         <a class="button is-dark" style="margin-right: 5px;" (click)="setTokens()">Set</a>
         <a class="button" (click)="resetTokens()">Reset</a>
-        <p id="statusTextDigiTokensEdit" class="has-text-weight-bold"></p>
+
         <hr class="darker">
-        <h1 class="title is-size-5">Edit Attendance</h1>
+        <h1 class="title is-size-5">Edit Activity</h1>
         <table class="table is-striped is-bordered">
           <thead>
             <tr>
-              <th>Current tokens</th>
+              <th>Current activity</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{{ tokens }}</td>
+              <td>{{ activity }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <a class="button is-danger" style="margin-right: 5px;" (click)="removeAttendance()">-0.5 Score</a>
+        <a class="button is-success" style="margin-right: 5px;" (click)="addAttendance()">+0.5 Score</a>
+        <a class="button" (click)="resetAttendance()">Reset</a>
+
+        <hr class="darker">
+        <h1 class="title is-size-5">Edit Inactivity</h1>
+        <table class="table is-striped is-bordered">
+          <thead>
+            <tr>
+              <th>Days Inactive</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ inactiveDaysOff }}</td>
             </tr>
           </tbody>
         </table>
 
         <div class="field has-addons">
           <div class="control">
-            <input type="number" class="input" placeholder="30" min="1" id="tokenAmount">
+            <input type="number" class="input" placeholder="3" min="1" id="daysOffAmount">
           </div>
         </div>
-        <a class="button is-success" style="margin-right: 5px;" (click)="addTokens()">Add</a>
-        <a class="button is-danger" style="margin-right: 5px;" (click)="removeTokens()">Remove</a>
-        <a class="button is-dark" style="margin-right: 5px;" (click)="setTokens()">Set</a>
-        <a class="button" (click)="resetTokens()">Reset</a>
-        <p id="statusTextDigiTokensEdit" class="has-text-weight-bold"></p>
+        <a class="button is-success" style="margin-right: 5px;" (click)="addInactivity()">Add</a>
+        <a class="button is-danger" style="margin-right: 5px;" (click)="removeInactivity()">Remove</a>
+        <a class="button is-dark" style="margin-right: 5px;" (click)="setInactivity()">Set</a>
+        <a class="button" (click)="resetInactivity()">Reset</a>
 
         <hr class="darker">
         <h1 class="title is-size-5">Delete Data</h1>
         <p class="subtitle is-size-6">For security, this request is routed to us for approval.</p>
-        <a class="button is-danger" (click)="resetTokens()">Delete data</a>
+        <a class="button is-danger" (click)="destroy()">Delete data</a>
       </div>
     </div>
   </div>

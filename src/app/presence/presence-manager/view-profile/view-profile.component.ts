@@ -42,6 +42,9 @@ export class ViewProfileComponent implements OnInit {
   transactionLog: Array<string>;
   inactiveType: string;
 
+  inactiveDaysOff: number;
+  today = new Date();
+
   sessionsWeek: number;
   tokensWeek: number;
 
@@ -439,16 +442,38 @@ export class ViewProfileComponent implements OnInit {
               }
             });
 
+            if (data.group.maxInactiveTypeYear === 'month') {
+              if (
+                data.userData[
+                  `inactivity_${this.today.getMonth()}_${this.today.getFullYear()}`
+                ] !== 'undefined'
+              ) {
+                this.inactiveDaysOff =
+                  data.userData[
+                    `inactivity_${this.today.getMonth()}_${this.today.getFullYear()}`
+                  ];
+              } else {
+                this.inactiveDaysOff = 0;
+              }
+            } else {
+              if (
+                data.userData[`inactivity_${this.today.getFullYear()}`] !==
+                'undefined'
+              ) {
+                this.inactiveDaysOff = 0;
+              } else {
+                this.inactiveDaysOff =
+                  data.userData[`inactivity_${this.today.getFullYear()}`];
+              }
+            }
+
             this.inactiveDays = new Chart('inactivity', {
               type: 'pie',
               data: {
                 labels: ['Inactive', 'Inactive Remaining'],
                 datasets: [
                   {
-                    data: [
-                      data.userData.inactivity,
-                      data.group.maxInactiveDays
-                    ],
+                    data: [this.inactiveDaysOff, data.group.maxInactiveDays],
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: ['#e82525', '#25e85c'],
@@ -580,6 +605,341 @@ export class ViewProfileComponent implements OnInit {
             });
           }
         });
+    });
+  }
+
+  addAttendance() {
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/presence/${this.groupId}/activity/add/${this.clientUserId}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem('auth')
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          Swal.fire({
+            title: 'All done!',
+            position: 'bottom-end',
+            // tslint:disable-next-line: quotemark
+            text: 'Your data was saved',
+            type: 'success',
+            toast: true,
+            showConfirmButton: false,
+            timer: 5000
+          });
+
+          this.activity = this.activity + 0.5;
+        }
+      });
+  }
+
+  removeAttendance() {
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/presence/${this.groupId}/activity/minus/${this.clientUserId}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem('auth')
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          Swal.fire({
+            title: 'All done!',
+            position: 'bottom-end',
+            // tslint:disable-next-line: quotemark
+            text: 'Your data was saved',
+            type: 'success',
+            toast: true,
+            showConfirmButton: false,
+            timer: 5000
+          });
+
+          this.activity = this.activity - 0.5;
+        }
+      });
+  }
+
+  resetAttendance() {
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/presence/${this.groupId}/activity/reset/${this.clientUserId}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem('auth')
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          Swal.fire({
+            title: 'All done!',
+            position: 'bottom-end',
+            // tslint:disable-next-line: quotemark
+            text: 'Your data was saved',
+            type: 'success',
+            toast: true,
+            showConfirmButton: false,
+            timer: 5000
+          });
+
+          this.activity = 3;
+        }
+      });
+  }
+
+  // Tokens Changer
+
+  addTokens() {
+    const amountToAdd = (document.getElementById(
+      'tokenAmount'
+    ) as HTMLInputElement).value;
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/presence/${this.groupId}/tokens/add/${this.clientUserId}/${amountToAdd}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem('auth')
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          Swal.fire({
+            title: 'All done!',
+            position: 'bottom-end',
+            // tslint:disable-next-line: quotemark
+            text: 'Your data was saved',
+            type: 'success',
+            toast: true,
+            showConfirmButton: false,
+            timer: 5000
+          });
+          this.tokens = this.tokens + parseFloat(amountToAdd);
+        }
+      });
+  }
+
+  removeTokens() {
+    const amountToRemove = (document.getElementById(
+      'tokenAmount'
+    ) as HTMLInputElement).value;
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/presence/${this.groupId}/tokens/remove/${this.clientUserId}/${amountToRemove}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem('auth')
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          Swal.fire({
+            title: 'All done!',
+            position: 'bottom-end',
+            // tslint:disable-next-line: quotemark
+            text: 'Your data was saved',
+            type: 'success',
+            toast: true,
+            showConfirmButton: false,
+            timer: 5000
+          });
+          this.tokens = this.tokens - parseFloat(amountToRemove);
+        }
+      });
+  }
+
+  setTokens() {
+    const amountToSet = (document.getElementById(
+      'tokenAmount'
+    ) as HTMLInputElement).value;
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/presence/${this.groupId}/tokens/set/${this.clientUserId}/${amountToSet}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem('auth')
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          Swal.fire({
+            title: 'All done!',
+            position: 'bottom-end',
+            // tslint:disable-next-line: quotemark
+            text: 'Your data was saved',
+            type: 'success',
+            toast: true,
+            showConfirmButton: false,
+            timer: 5000
+          });
+          this.tokens = parseFloat(amountToSet);
+        }
+      });
+  }
+
+  resetTokens() {
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/presence/${this.groupId}/tokens/reset/${this.clientUserId}/${this.inactiveType}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem('auth')
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          Swal.fire({
+            title: 'All done!',
+            position: 'bottom-end',
+            // tslint:disable-next-line: quotemark
+            text: 'Your data was saved',
+            type: 'success',
+            toast: true,
+            showConfirmButton: false,
+            timer: 5000
+          });
+
+          this.tokens = 0;
+        }
+      });
+  }
+
+  addInactivity() {
+    const amountToAdd = (document.getElementById(
+      'daysOffAmount'
+    ) as HTMLInputElement).value;
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/presence/${this.groupId}/inactivity/add/${this.clientUserId}/${amountToAdd}/${this.inactiveType}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem('auth')
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          Swal.fire({
+            title: 'All done!',
+            position: 'bottom-end',
+            // tslint:disable-next-line: quotemark
+            text: 'Your data was saved',
+            type: 'success',
+            toast: true,
+            showConfirmButton: false,
+            timer: 5000
+          });
+          this.inactiveDaysOff = this.inactiveDaysOff + parseFloat(amountToAdd);
+        }
+      });
+  }
+
+  removeInactivity() {
+    const amountToRemove = (document.getElementById(
+      'daysOffAmount'
+    ) as HTMLInputElement).value;
+    this.http
+      .get<any>(
+        // tslint:disable-next-line: max-line-length
+        `https://api.campfirebot.xyz/presence/${this.groupId}/inactivity/remove/${this.clientUserId}/${amountToRemove}/${this.inactiveType}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem('auth')
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          Swal.fire({
+            title: 'All done!',
+            position: 'bottom-end',
+            // tslint:disable-next-line: quotemark
+            text: 'Your data was saved',
+            type: 'success',
+            toast: true,
+            showConfirmButton: false,
+            timer: 5000
+          });
+          this.inactiveDaysOff =
+            this.inactiveDaysOff - parseFloat(amountToRemove);
+        }
+      });
+  }
+
+  setInactivity() {
+    const amountToSet = (document.getElementById(
+      'daysOffAmount'
+    ) as HTMLInputElement).value;
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/presence/${this.groupId}/inactivity/set/${this.clientUserId}/${amountToSet}/${this.inactiveType}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem('auth')
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          Swal.fire({
+            title: 'All done!',
+            position: 'bottom-end',
+            // tslint:disable-next-line: quotemark
+            text: 'Your data was saved',
+            type: 'success',
+            toast: true,
+            showConfirmButton: false,
+            timer: 5000
+          });
+          this.inactiveDaysOff = parseFloat(amountToSet);
+        }
+      });
+  }
+
+  resetInactivity() {
+    this.http
+      .get<any>(
+        `https://api.campfirebot.xyz/presence/${this.groupId}/inactivity/reset/${this.clientUserId}/${this.inactiveType}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem('auth')
+          }
+        }
+      )
+      .subscribe(callback => {
+        if (callback.success === true) {
+          Swal.fire({
+            title: 'All done!',
+            position: 'bottom-end',
+            // tslint:disable-next-line: quotemark
+            text: 'Your data was saved',
+            type: 'success',
+            toast: true,
+            showConfirmButton: false,
+            timer: 5000
+          });
+
+          this.inactiveDaysOff = 0;
+        }
+      });
+  }
+
+  destroy() {
+    Swal.fire({
+      title: 'This feature is coming soon',
+      // tslint:disable-next-line: quotemark
+      text: "Apologies. We're working on it!",
+      type: 'info',
+      showConfirmButton: false,
+      timer: 5000
     });
   }
 }

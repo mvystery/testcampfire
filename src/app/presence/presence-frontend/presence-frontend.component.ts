@@ -31,6 +31,7 @@ export class PresenceFrontendComponent implements OnInit {
   sessionTimes: any;
   sessionDays: any;
   inactiveDays: any;
+  sessionTypes: any;
   staffPerformance: any;
 
   tokens: number;
@@ -60,6 +61,9 @@ export class PresenceFrontendComponent implements OnInit {
   momentWarning5: string;
 
   isMod: boolean;
+
+  inactiveDaysOff: number;
+  today = new Date();
 
   ngOnInit() {
     document.addEventListener('contextmenu', event => event.preventDefault());
@@ -109,7 +113,6 @@ export class PresenceFrontendComponent implements OnInit {
       .subscribe(data => {
         if (data.presence.exists === true) {
           this.loading = false;
-          this.robloxUsername = data.presence.user.robloxUsername;
           this.groupName = data.presence.group.groupName;
           this.cta = data.presence.group.cta;
           this.ctaVisible = data.presence.group.ctaShowing;
@@ -333,24 +336,18 @@ export class PresenceFrontendComponent implements OnInit {
             }
           });
 
-          const SessionTypeLabels = [];
-          Object.keys(data.presence.group.sessionTypesLabels).forEach(key => {
-            SessionTypeLabels.push(data.presence.group.sessionTypesLabels[key]);
-          });
-
-          const SessionTypeData = [];
-          Object.keys(data.presence.user.sessionTypes).forEach(key => {
-            SessionTypeData.push(data.presence.user.sessionTypes[key]);
-          });
-
-          this.sessionTimes = new Chart('sessionTypes', {
+          this.sessionTypes = new Chart('sessionTypes', {
             type: 'doughnut',
             data: {
-              labels: SessionTypeLabels,
+              labels: ['Interview', 'Training', 'Shift'],
               datasets: [
                 {
                   label: 'Number attended lifetime',
-                  data: SessionTypeData,
+                  data: [
+                    data.presence.user.interview,
+                    data.presence.user.training,
+                    data.presence.user.shift
+                  ],
                   fill: false,
                   lineTension: 0.1,
                   backgroundColor: [
@@ -469,6 +466,31 @@ export class PresenceFrontendComponent implements OnInit {
             }
           });
 
+          if (data.presence.group.maxInactiveTypeYear === 'month') {
+            if (
+              data.presence.user[
+                `inactivity_${this.today.getMonth()}_${this.today.getFullYear()}`
+              ] !== 'undefined'
+            ) {
+              this.inactiveDaysOff =
+                data.presence.user[
+                  `inactivity_${this.today.getMonth()}_${this.today.getFullYear()}`
+                ];
+            } else {
+              this.inactiveDaysOff = 0;
+            }
+          } else {
+            if (
+              data.presence.user[`inactivity_${this.today.getFullYear()}`] !==
+              'undefined'
+            ) {
+              this.inactiveDaysOff = 0;
+            } else {
+              this.inactiveDaysOff =
+                data.user[`inactivity_${this.today.getFullYear()}`];
+            }
+          }
+
           this.inactiveDays = new Chart('inactivity', {
             type: 'pie',
             data: {
@@ -476,7 +498,7 @@ export class PresenceFrontendComponent implements OnInit {
               datasets: [
                 {
                   data: [
-                    data.presence.user.inactivity,
+                    this.inactiveDaysOff,
                     data.presence.group.maxInactiveDays
                   ],
                   fill: false,

@@ -1,7 +1,7 @@
 <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title is-size-4">{{ greeting }}, {{ robloxUsername }}!</h1>
+      <h1 class="title is-size-4">{{ greeting }}!</h1>
       <h1 class="subtitle is-size-5">Manage everything at {{ groupName }}, done easy.</h1>
     </div>
   </div>
@@ -16,7 +16,7 @@
   <h1 class="title is-size-4">Campfire Presence Manager</h1>
   <h1 class="subtitle is-size-5 has-text-lighter-has-text-grey-light">Backend view</h1>
 
-  <form (ngSubmit)="searchUser(userSearchForm)" #userSearchForm="ngForm" *ngIf="!digiGotData">
+  <form (ngSubmit)="searchUser(userSearchForm)" #userSearchForm="ngForm">
     <label class="label">Search User</label>
     <div class="field has-addons">
       <div class="control" style="width: 100%">
@@ -36,7 +36,7 @@
   <h1 class="subtitle is-size-5 has-text-lighter-has-text-grey-light">of {{ groupName }}</h1>
 
   <div class="box">
-    <form (ngSubmit)="presenceSettingsSave(presenceSettings)" #presenceSettings="ngForm" *ngIf="!digiGotData">
+    <form (ngSubmit)="presenceSettingsSave(presenceSettings)" #presenceSettings="ngForm">
       <!--Max Inactive Days for Inactive Notice Restriction Bool-->
       <div class="field">
         <label class="checkbox">
