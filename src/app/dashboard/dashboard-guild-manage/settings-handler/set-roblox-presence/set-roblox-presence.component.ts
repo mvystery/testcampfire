@@ -38,7 +38,7 @@ export class SetRobloxPresenceComponent implements OnInit {
           this.groupId = data.groupId;
 
           this.http
-            .get<any>(`http://api.campfirebot.xyz/presence/checkgroups`, {
+            .get<any>(`https://api.campfirebot.xyz/presence/checkgroups`, {
               headers: {
                 Authorization: localStorage.getItem('auth')
               }
@@ -50,7 +50,7 @@ export class SetRobloxPresenceComponent implements OnInit {
               if (result.length === 1) {
                 this.http
                   .get<any>(
-                    `http://api.campfirebot.xyz/presence/check/${groupId}`,
+                    `https://api.campfirebot.xyz/presence/check/${groupId}`,
                     {
                       headers: {
                         Authorization: localStorage.getItem('auth')
