@@ -17,6 +17,8 @@ export class SetRobloxPresenceComponent implements OnInit {
 
   presence: boolean;
 
+  robloxVerificationOff: boolean;
+
   constructor(
     private http: HttpClient,
     private guildMan: DashboardGuildManageComponent
@@ -72,6 +74,9 @@ export class SetRobloxPresenceComponent implements OnInit {
                 this.errorText = true;
               }
             });
+        } else {
+          this.loaded = true;
+          this.robloxVerificationOff = true;
         }
       });
   }

@@ -1,6 +1,8 @@
 <img src="../../../../../assets/spinner.svg" *ngIf="!loaded" alt="Loading" width="100px"
   style="margin: auto; display: block;">
 <p *ngIf="!loaded" class="has-text-centered">Preparing the presence!</p>
+<p *ngIf="robloxVerificationOff">You need to turn on Verification for this guild. Do this in the verification tab. You
+  will need to also enter the group ID on this page.</p>
 <div *ngIf="loaded">
   <p *ngIf="errorText">
     You don't have permission to modify the group this Discord is binded to. To change the bind go to
