@@ -470,7 +470,7 @@ export class PresenceFrontendComponent implements OnInit {
             if (
               data.presence.user[
                 `inactivity_${this.today.getMonth()}_${this.today.getFullYear()}`
-              ] !== 'undefined'
+              ] !== undefined
             ) {
               this.inactiveDaysOff =
                 data.presence.user[
@@ -482,12 +482,12 @@ export class PresenceFrontendComponent implements OnInit {
           } else {
             if (
               data.presence.user[`inactivity_${this.today.getFullYear()}`] !==
-              'undefined'
+              undefined
             ) {
-              this.inactiveDaysOff = 0;
-            } else {
               this.inactiveDaysOff =
                 data.user[`inactivity_${this.today.getFullYear()}`];
+            } else {
+              this.inactiveDaysOff = 0;
             }
           }
 

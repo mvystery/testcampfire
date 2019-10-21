@@ -446,7 +446,7 @@ export class ViewProfileComponent implements OnInit {
               if (
                 data.userData[
                   `inactivity_${this.today.getMonth()}_${this.today.getFullYear()}`
-                ] !== 'undefined'
+                ] !== undefined
               ) {
                 this.inactiveDaysOff =
                   data.userData[
@@ -458,14 +458,16 @@ export class ViewProfileComponent implements OnInit {
             } else {
               if (
                 data.userData[`inactivity_${this.today.getFullYear()}`] !==
-                'undefined'
+                undefined
               ) {
-                this.inactiveDaysOff = 0;
-              } else {
                 this.inactiveDaysOff =
                   data.userData[`inactivity_${this.today.getFullYear()}`];
+              } else {
+                this.inactiveDaysOff = 0;
               }
             }
+
+            console.log(this.inactiveDaysOff);
 
             this.inactiveDays = new Chart('inactivity', {
               type: 'pie',
