@@ -19,16 +19,13 @@
   <div class="columns" [class.is-hidden]="loading">
     <div class="column is-2">
       <div class="list">
-        <a href="https://trello.com/b/QLEMDHA3/marabou-session-schedule" target="_blank" class="list-item">
-          <i class="fab fa-trello"></i>
-          Trello</a>
         <a href="https://www.roblox.com/my/groupadmin.aspx?gid={{id}}" target="_blank" class="list-item">
           <i class="fas fa-cogs"></i>
           Group Admin</a>
-        <a href="https://campfirebot.xyz/marabou/interviews" target="_blank" class="list-item">
+        <a href="{{handbookLink}}" target="_blank" class="list-item">
           <i class="fas fa-book-open"></i>
           Handbook</a>
-        <a href="https://discordapp.com/invite/AdZXacP" target="_blank" class="list-item">
+        <a href="{{discordLink}}" target="_blank" class="list-item">
           <i class="fab fa-discord"></i>
           Discord</a>
         <a routerLink="manage" *ngIf="isMod" class="list-item">

@@ -65,6 +65,9 @@ export class PresenceFrontendComponent implements OnInit {
   inactiveDaysOff: number;
   today = new Date();
 
+  discordLink: string;
+  handbookLink: string;
+
   ngOnInit() {
     document.addEventListener('contextmenu', event => event.preventDefault());
 
@@ -124,6 +127,9 @@ export class PresenceFrontendComponent implements OnInit {
           this.attended = data.presence.user.sessionsAttendedTotal;
           this.activity = 3 - data.presence.user.activityDeduct;
           this.warningsAllowed = data.presence.group.maxWarnings;
+
+          this.discordLink = data.presence.group.discordLink;
+          this.handbookLink = data.presence.group.handbook;
 
           if (data.presence.user.warnings === 1) {
             this.warning1 = data.presence.user.warning1;
