@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 import { DashboardGuildManageComponent } from '../../dashboard-guild-manage.component';
 
 @Component({
@@ -21,7 +22,8 @@ export class SetRobloxPresenceComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private guildMan: DashboardGuildManageComponent
+    private guildMan: DashboardGuildManageComponent,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -80,6 +82,8 @@ export class SetRobloxPresenceComponent implements OnInit {
             text:
               'You need to enable Verification in the Verification tab to use this feature',
             type: 'error'
+          }).then(result => {
+            window.location.reload();
           });
         }
       });
