@@ -75,8 +75,12 @@ export class SetRobloxPresenceComponent implements OnInit {
               }
             });
         } else {
-          this.loaded = true;
-          this.robloxVerificationOff = true;
+          Swal.fire({
+            title: 'Error',
+            text:
+              'You need to enable Verification in the Verification tab to use this feature',
+            type: 'error'
+          });
         }
       });
   }
