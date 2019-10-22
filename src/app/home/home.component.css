@@ -6,6 +6,13 @@
   background-repeat: no-repeat;
 }
 
+.cf-shadow-bg {
+  background-image: url(../../assets/Shadow-BG.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .cf-circular-pfp {
   background: white;
   border-radius: 100%;
