@@ -16,6 +16,8 @@ export class PresenceComponent implements OnInit {
   stepTwo: boolean;
   guildName: string;
 
+  readyToGo: boolean;
+
   ngOnInit() {
     this.http
       .get<any>('https://api.campfirebot.xyz/users/me/guilds', {
