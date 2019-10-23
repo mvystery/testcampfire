@@ -46,6 +46,9 @@ import { PresenceFrontendComponent } from './presence/presence-frontend/presence
 import { PresenceManagerComponent } from './presence/presence-manager/presence-manager.component';
 import { ProTrialComponent } from './pro-trial/pro-trial.component';
 import { ViewProfileComponent } from './presence/presence-manager/view-profile/view-profile.component';
+import { VerifyComponent } from './verify/verify.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 const options: NgxLinkifyOptions = {
   attributes: null,
@@ -99,7 +102,10 @@ const options: NgxLinkifyOptions = {
     PresenceFrontendComponent,
     PresenceManagerComponent,
     ProTrialComponent,
-    ViewProfileComponent
+    ViewProfileComponent,
+    VerifyComponent,
+    CheckoutComponent,
+    ThankYouComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,44 @@
+<section class="hero is-fullheight-with-navbar is-primary">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-size-3">Let's get you verified!</h1>
+      <div class="columns">
+        <div class="column is-3"></div>
+        <div class="column">
+          <div class="box">
+            <div class="step-one animated fadeIn" *ngIf="step === 1">
+              <h1 class="title is-size-5 has-text-dark">Your Roblox username, please</h1>
+              <form (ngSubmit)="usernameForm(usernameData)" #usernameData="ngForm">
+                <div class="field">
+                  <input type="text" ngModel minlength="3" maxlength="20" name="username" required class="input">
+                </div>
+                <div class="field">
+                  <button class="button is-link is-fullwidth" [disabled]="!usernameData.form.valid" type="submit">Next
+                    step!</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="step-two animated fadeInRight" *ngIf="step === 2">
+              <h1 class="title is-size-5 has-text-dark">
+                Great! Hello {{ robloxUsername }}! <br>
+                Now, pop this code onto your Roblox Bio.
+              </h1>
+              <div class="spacer"></div>
+              <textarea name="" id="" class="textarea has-text-centered" rows="1" readonly>{{ code }}</textarea><a
+                class="button clip-button is-small is-info is-pulled-right"
+                style="position: relative; top: -35px; right: 20px;" data-clipboard-target="#sm1"><i
+                  class="far fa-clipboard"></i> Copy</a><br>
+              <a class="button is-fullwidth" href="https://www.roblox.com/my/account" target="_blank"
+                style="margin-bottom: 5px;">Click here to go
+                to Roblox
+                Settings</a>
+              <a class="button is-primary is-fullwidth">That's done!</a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-3"></div>
+      </div>
+    </div>
+  </div>
+</section>

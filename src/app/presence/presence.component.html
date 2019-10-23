@@ -1,42 +1,98 @@
-<section class="hero is-light is-small">
+<div class="box has-text-centered"
+  style="background-color: #5816a5; color: white; margin-bottom: 0px; border-radius: 0">
+  <p>Work for a group that uses Presence? <span style="font-weight: lighter;">Get your link from in your
+      group. This page is for setting up Presence</span>
+  </p>
+</div>
+<section class="hero is-primary is-medium cf-dots-bg">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title is-size-4">Welcome to Campfire Presence!</h1>
-      <h1 class="subtitle is-size-5">Enter your Group ID below</h1>
+      <h1 class="title is-size-1">Presence</h1>
+      <h1 class="subtitle is-size-4 has-font-weight-bold">Flagship human resources manager from Campfire HQ</h1>
+    </div>
+  </div>
+</section>
 
-      <form (ngSubmit)="loadPresence(presenceForm)" #presenceForm="ngForm">
-        <div class="field has-addons">
-          <div class="control" style="flex: 1;">
-            <input type="number" class="input is-fullwidth" placeholder="Go to" required minlength="1" ngModel
-              name="query">
-          </div>
-          <div class="control">
-            <input [disabled]="!presenceForm.form.valid" type="submit" class="button is-link" value="Go">
+<section class="hero is-success bg-presence-hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-3">Welcome to the future</h1>
+      <h1 class="subtitle is-size-5 has-font-weight-bold">The magic of Campfire Presence makes it so much easier</h1>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-3">Easy setup</h1>
+      <h1 class="subtitle is-size-5 has-font-weight-bold">Just 3 steps to get <b>your</b> group started</h1>
+
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <h1 class="title is-size-4 has-text-centered">Step 1</h1>
+            <div class="content has-text-centered">
+              <p>Select your guild</p>
+            </div>
           </div>
         </div>
-      </form>
-    </div>
-  </div>
-</section>
-<section class="hero is-dark is-bold is-medium">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="is-size-4">
-        Presence is a Roblox Human Resource Management tool that intergrates
-        directly in with your groups!
-      </h1>
+
+        <div class="column">
+          <div class="box">
+            <h1 class="title is-size-4 has-text-centered">Step 2</h1>
+            <div class="content has-text-centered">
+              <p>Set it up with your group</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="box">
+            <h1 class="title is-size-4 has-text-centered">Step 3</h1>
+            <div class="content">
+              <div class="content has-text-centered">
+                <p>Install scripts and start recording</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="hero is-black is-bold is-medium">
+<section class="hero is-danger" *ngIf="readyToGo">
   <div class="hero-body">
     <div class="container">
-      <h1 class="is-size-4">
-        The owner of the Roblox Group has to enable this feature, and it can be
-        done through
-        <b>Dashboard > Guilds > (Group Guild) > Roblox > Presence</b>
-      </h1>
+      <h1 class="title is-size-3" *ngIf="stepOne">Select a guild</h1>
+      <h1 class="subtitle is-size-5 has-font-weight-bold" *ngIf="stepOne">From guilds you manage below</h1>
+
+      <div class="columns is-vcentered" *ngIf="stepOne">
+        <div class="column animated fadeInUp has-text-centered" *ngFor="let guild of guilds">
+          <img src="https://cdn.discordapp.com/icons/{{ guild.id }}/{{ guild.icon }}.webp?size=1024" class="is-rounded"
+            width="120px">
+          <p class="is-size-5 has-text-light">{{ guild.name }}</p>
+          <br>
+          <a class="button is-light is-outlined is-rounded" (click)="selectGuild(guild.id, guild.name)">Select ></a>
+        </div>
+      </div>
+
+      <h1 class="title is-size-3" *ngIf="stepTwo">Let's set up {{ guildName }}</h1>
+      <h1 class="subtitle is-size-5 has-font-weight-bold" *ngIf="stepTwo">Fill out details below</h1>
+      <div class="field">
+        <label class="label has-text-light">Group ID</label>
+        <input type="number" required minlength="1" ngModel name="groupId" class="input" placeholder="5323453"
+          autocomplete="off" min="1">
+      </div><br>
+
+      <div class="field">
+        <p class="has-text-light">You're verified as {{ verifiedUsername }}</p>
+        <p class="has-text-light">If this is incorrect, click the button below</p>
+        <a class="button is-light is-outlined is-small">Reverify</a>
+      </div><br>
+
+      <a class="button is-light">Set up</a>
     </div>
   </div>
 </section>

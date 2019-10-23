@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../auth/login.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   randomMessage: string;
 
-  constructor() {}
+  constructor(private service: LoginService) {}
+
+  sparkBill: boolean;
+  infernoBill: boolean;
+
+  user: firebase.User;
 
   ngOnInit() {
+    this.service.getLoggedInUser().subscribe(user => {
+      if (user) {
+        this.user = user;
+      }
+    });
+
     const messageArray = [
       'social-ing',
       'community',
@@ -21,5 +33,21 @@ export class HomeComponent implements OnInit {
 
     this.randomMessage =
       messageArray[Math.floor(Math.random() * messageArray.length)];
+  }
+
+  startBillingSpark() {
+    this.sparkBill = true;
+  }
+
+  closeSpark() {
+    this.sparkBill = false;
+  }
+
+  startBillingInferno() {
+    this.infernoBill = true;
+  }
+
+  closeInferno() {
+    this.infernoBill = false;
   }
 }

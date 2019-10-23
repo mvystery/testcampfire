@@ -306,24 +306,18 @@ export class ViewProfileComponent implements OnInit {
               }
             });
 
-            const SessionTypeLabels = [];
-            Object.keys(data.group.sessionTypesLabels).forEach(key => {
-              SessionTypeLabels.push(data.group.sessionTypesLabels[key]);
-            });
-
-            const SessionTypeData = [];
-            Object.keys(data.userData.session_types).forEach(key => {
-              SessionTypeData.push(data.userData.session_types[key]);
-            });
-
             this.sessionTimes = new Chart('sessionTypes', {
               type: 'doughnut',
               data: {
-                labels: SessionTypeLabels,
+                labels: ['Interview', 'Training', 'Shift'],
                 datasets: [
                   {
                     label: 'Number attended lifetime',
-                    data: SessionTypeData,
+                    data: [
+                      data.userData.session_types.interview,
+                      data.userData.session_types.training,
+                      data.userData.session_types.shift
+                    ],
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: [

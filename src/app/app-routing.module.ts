@@ -18,6 +18,8 @@ import { PresenceComponent } from './presence/presence.component';
 import { PresenceFrontendComponent } from './presence/presence-frontend/presence-frontend.component';
 import { PresenceManagerComponent } from './presence/presence-manager/presence-manager.component';
 import { ViewProfileComponent } from './presence/presence-manager/view-profile/view-profile.component';
+import { VerifyComponent } from './verify/verify.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,7 +39,9 @@ const routes: Routes = [
   { path: 'presence', component: PresenceComponent },
   { path: 'presence/:id', component: PresenceFrontendComponent },
   { path: 'presence/:id/manage', component: PresenceManagerComponent },
-  { path: 'presence/:id/manage/:userId', component: ViewProfileComponent }
+  { path: 'presence/:id/manage/:userId', component: ViewProfileComponent },
+  { path: 'verify', component: VerifyComponent },
+  { path: 'thank-you', component: ThankYouComponent }
 ];
 
 @NgModule({

@@ -2743,20 +2743,20 @@ fieldset[disabled] .button.is-info.is-inverted.is-outlined {
 .button.is-success {
   background-color: #00d99a;
   border-color: transparent;
-  color: #01805b;
+  color: #014b36;
 }
 
 .button.is-success:hover,
 .button.is-success.is-hovered {
   background-color: #00cc91;
   border-color: transparent;
-  color: #01805b;
+  color: #014b36;
 }
 
 .button.is-success:focus,
 .button.is-success.is-focused {
   border-color: transparent;
-  color: #01805b;
+  color: #014b36;
 }
 
 .button.is-success:focus:not(:active),
@@ -2768,7 +2768,7 @@ fieldset[disabled] .button.is-info.is-inverted.is-outlined {
 .button.is-success.is-active {
   background-color: #00c088;
   border-color: transparent;
-  color: #01805b;
+  color: #014b36;
 }
 
 .button.is-success[disabled],
@@ -8231,7 +8231,7 @@ a.navbar-item.is-active,
 }
 
 .hero.is-fullheight-with-navbar {
-  min-height: calc(100vh - 3.25rem);
+  min-height: calc(100vh - 88px);
 }
 
 .pagination {

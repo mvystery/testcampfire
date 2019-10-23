@@ -1,0 +1,13 @@
+.cf-dots-bg {
+  background-image: url(../../assets/Shadow-Dots.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-presence-hero {
+  background-image: url(../../assets/presence.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

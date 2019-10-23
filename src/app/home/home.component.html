@@ -121,11 +121,12 @@
   </div>
 </div>
 
-<div class="hero is-warning is-medium">
+<div class="hero is-warning is-medium" *ngIf="user">
   <div class="hero-body">
     <div class="container">
       <h1 class="title is-size-2 is-size-2-touch">Three, simple plans</h1>
-      <h1 class="subtitle is-size-5 is-size-5-touch has-text-weight-bold">Pick the best one for you</h1>
+      <h1 class="subtitle is-size-5 is-size-5-touch has-text-weight-bold">Donate to Campfire, pick the best one for you
+      </h1>
 
       <div class="columns">
         <div class="column">
@@ -173,9 +174,9 @@
             <hr class="darker">
             <p>Early access to Canary</p>
             <hr class="darker">
-            <a class="button is-fullwidth is-success is-outlined is-rounded has-text-weight-bold" disabled>Purchase for
+            <a class="button is-fullwidth is-success is-outlined is-rounded has-text-weight-bold"
+              (click)="startBillingSpark()">Purchase for
               £2.50</a>
-            <p class="has-text-danger">Out of stock</p>
           </div>
         </div>
 
@@ -213,9 +214,9 @@
             <hr class="darker">
             <p>Request a feature, we'll add it the same month</p>
             <hr class="darker">
-            <a class="button is-fullwidth is-success is-outlined is-rounded has-text-weight-bold" disabled>Purchase for
+            <a class="button is-fullwidth is-success is-outlined is-rounded has-text-weight-bold"
+              (click)="startBillingInferno()">Purchase for
               £5.00</a>
-            <p class="has-text-danger">Out of stock</p>
           </div>
         </div>
       </div>
@@ -276,4 +277,30 @@
       <p class="is-size-7">All data stored within United States of America</p>
     </div>
   </div>
+</div>
+
+<div class="modal animated fadeInUp" [class.is-active]="sparkBill">
+  <div class="modal-background" (click)="closeSpark()"></div>
+  <div class="modal-content">
+    <div class="box">
+      <h1 class="title is-size-3">Spark</h1>
+      <h1 class="subtitle is-size-6">By donating to Campfire, you support its development. In return we give you perks!
+      </h1>
+      <app-checkout amount="250" description="Spark Plan"></app-checkout>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="closeSpark()"></button>
+</div>
+
+<div class="modal animated fadeInUp" [class.is-active]="infernoBill">
+  <div class="modal-background" (click)="closeInferno()"></div>
+  <div class="modal-content">
+    <div class="box">
+      <h1 class="title is-size-3">Inferno</h1>
+      <h1 class="subtitle is-size-6">By donating to Campfire, you support its development. In return we give you perks!
+      </h1>
+      <app-checkout amount="500" description="Inferno Plan"></app-checkout>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="closeInferno()"></button>
 </div>

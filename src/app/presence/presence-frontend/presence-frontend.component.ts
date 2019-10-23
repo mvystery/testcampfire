@@ -350,9 +350,9 @@ export class PresenceFrontendComponent implements OnInit {
                 {
                   label: 'Number attended lifetime',
                   data: [
-                    data.presence.user.interview,
-                    data.presence.user.training,
-                    data.presence.user.shift
+                    data.presence.user.session_types.interview,
+                    data.presence.user.session_types.training,
+                    data.presence.user.session_types.shift
                   ],
                   fill: false,
                   lineTension: 0.1,

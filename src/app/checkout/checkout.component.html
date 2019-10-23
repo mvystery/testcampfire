@@ -1,0 +1,21 @@
+<div class="container">
+  <form (submit)="handleForm()">
+    <div class="notification is-danger" *ngIf="cardErrors">
+      {{ cardErrors }}
+    </div>
+    <div class="field">
+      <label class="label">Credit or Debit Card</label>
+      <div #cardElement>
+        <!-- A Stripe Element will be inserted here. -->
+      </div>
+    </div>
+    <div class="field">
+      <button class="button is-success is-fullwidth has-text-weight-bold" [class.is-loading]="loading"
+        type="submit">Unlock benefits for
+        £{{(amount / 100).toFixed(2)}}</button>
+    </div>
+
+    <img src="../../assets/powered_by_stripe.svg" alt="Powered by Stripe" class="is-pulled-right">
+    <div class="spacer"></div>
+  </form>
+</div>
