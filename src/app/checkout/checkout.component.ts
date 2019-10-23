@@ -21,12 +21,12 @@ export class CheckoutComponent implements OnInit {
   @Input() description: string;
   @ViewChild('cardElement') cardElement: ElementRef;
 
-  stripe; // : stripe.Stripe;
-  card;
-  cardErrors;
+  stripe: any; // : stripe.Stripe;
+  card: any;
+  cardErrors: any;
 
   loading = false;
-  confirmation;
+  confirmation: any;
 
   stripeClientSecret: string;
 
