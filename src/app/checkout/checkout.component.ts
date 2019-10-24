@@ -23,7 +23,7 @@ export class CheckoutComponent implements OnInit {
 
   stripe: any; // : stripe.Stripe;
   card: any;
-  cardErrors: any;
+  cardErrors: any = false;
 
   loading = false;
   confirmation: any;
