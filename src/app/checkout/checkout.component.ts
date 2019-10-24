@@ -61,7 +61,6 @@ export class CheckoutComponent implements OnInit {
         }
       )
       .subscribe(intent => {
-        console.log(intent);
         this.stripeClientSecret = intent.client_secret;
       });
   }
