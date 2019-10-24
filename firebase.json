@@ -12,7 +12,7 @@
         "dynamicLinks": true
       },
       {
-        "source": "/.well-know/apple-developer-merchantid-domain-association",
+        "source": "/.well-known/apple-developer-merchantid-domain-association",
         "destination": "/apple-developer-merchantid-domain-association"
       },
       {
