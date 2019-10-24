@@ -1,5 +1,5 @@
 <div class="container">
-  <form (submit)="handleForm">
+  <form (submit)="handleForm()">
     <div class="notification is-danger" *ngIf="cardErrors">
       {{ cardErrors }}
     </div>

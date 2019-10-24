@@ -66,7 +66,7 @@ export class CheckoutComponent implements OnInit {
       });
   }
 
-  async handleForm(e) {
+  async handleForm() {
     this.loading = true;
     const { paymentIntent, error } = await this.stripe.handleCardPayment(
       this.stripeClientSecret,
