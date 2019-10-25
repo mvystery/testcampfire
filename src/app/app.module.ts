@@ -49,6 +49,7 @@ import { ViewProfileComponent } from './presence/presence-manager/view-profile/v
 import { VerifyComponent } from './verify/verify.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
+import { CloverComponent } from './clover/clover.component';
 
 const options: NgxLinkifyOptions = {
   attributes: null,
@@ -105,7 +106,8 @@ const options: NgxLinkifyOptions = {
     ViewProfileComponent,
     VerifyComponent,
     CheckoutComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    CloverComponent
   ],
   imports: [
     BrowserModule,

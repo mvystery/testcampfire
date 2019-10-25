@@ -20,6 +20,7 @@ import { PresenceManagerComponent } from './presence/presence-manager/presence-m
 import { ViewProfileComponent } from './presence/presence-manager/view-profile/view-profile.component';
 import { VerifyComponent } from './verify/verify.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
+import { CloverComponent } from './clover/clover.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,7 +42,8 @@ const routes: Routes = [
   { path: 'presence/:id/manage', component: PresenceManagerComponent },
   { path: 'presence/:id/manage/:userId', component: ViewProfileComponent },
   { path: 'verify', component: VerifyComponent },
-  { path: 'thank-you', component: ThankYouComponent }
+  { path: 'thank-you', component: ThankYouComponent },
+  { path: 'clover', component: CloverComponent }
 ];
 
 @NgModule({
