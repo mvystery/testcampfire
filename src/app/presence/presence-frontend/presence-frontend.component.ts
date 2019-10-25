@@ -96,12 +96,7 @@ export class PresenceFrontendComponent implements OnInit {
       })
       .subscribe(data => {
         if (data.allowed === false) {
-          this.router.navigate(['/']);
-          Swal.fire({
-            title: 'Whoops!',
-            type: 'error',
-            text: 'Not authenticated properly'
-          });
+          this.isMod = false;
         } else {
           this.isMod = true;
         }
