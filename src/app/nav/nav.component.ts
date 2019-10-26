@@ -10,6 +10,8 @@ import { Router, NavigationStart } from '@angular/router';
 export class NavComponent implements OnInit {
   user: firebase.User;
 
+  theme: string;
+
   constructor(private service: LoginService, private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
@@ -28,6 +30,15 @@ export class NavComponent implements OnInit {
         this.service.pushToken(e.data);
       }
     };
+
+    const theme = localStorage.getItem('theme');
+    if (theme === null) {
+      this.theme = 'halloween';
+      document.body.className = 'halloween-theme';
+    } else {
+      this.theme = theme;
+      document.body.className = `${theme}-theme`;
+    }
   }
 
   expand() {
@@ -36,5 +47,11 @@ export class NavComponent implements OnInit {
 
   login() {
     this.service.login();
+  }
+
+  changeTheme(theme) {
+    this.theme = theme;
+    localStorage.setItem('theme', theme);
+    document.body.className = `${theme}-theme`;
   }
 }
