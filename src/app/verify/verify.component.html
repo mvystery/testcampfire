@@ -1,44 +1,65 @@
 <section class="hero is-fullheight-with-navbar is-primary">
   <div class="hero-body">
-    <div class="container has-text-centered">
+    <div class="container has-text-centered" *ngIf="readyForRoblox">
       <h1 class="title is-size-3">Let's get you verified!</h1>
       <div class="columns">
         <div class="column is-3"></div>
         <div class="column">
           <div class="box">
             <div class="step-one animated fadeIn" *ngIf="step === 1">
-              <h1 class="title is-size-5 has-text-dark">Your Roblox username, please</h1>
+              <h1 class="title is-size-5">Your Roblox username, please</h1>
               <form (ngSubmit)="usernameForm(usernameData)" #usernameData="ngForm">
                 <div class="field">
                   <input type="text" ngModel minlength="3" maxlength="20" name="username" required class="input">
                 </div>
                 <div class="field">
                   <button class="button is-link is-fullwidth" [disabled]="!usernameData.form.valid" type="submit">Next
-                    step!</button>
+                    step</button>
                 </div>
               </form>
             </div>
 
             <div class="step-two animated fadeInRight" *ngIf="step === 2">
-              <h1 class="title is-size-5 has-text-dark">
+              <h1 class="title is-size-5">
                 Great! Hello {{ robloxUsername }}! <br>
                 Now, pop this code onto your Roblox Bio.
               </h1>
               <div class="spacer"></div>
-              <textarea name="" id="" class="textarea has-text-centered" rows="1" readonly>{{ code }}</textarea><a
-                class="button clip-button is-small is-info is-pulled-right"
-                style="position: relative; top: -35px; right: 20px;" data-clipboard-target="#sm1"><i
+              <textarea name="" id="" class="textarea has-text-centered" rows="1" readonly
+                id="codeToCopy">{{ code }}</textarea><a class="button clip-button is-small is-info is-pulled-right"
+                style="position: relative; top: -35px; right: 20px;" data-clipboard-target="#codeToCopy"><i
                   class="far fa-clipboard"></i> Copy</a><br>
               <a class="button is-fullwidth" href="https://www.roblox.com/my/account" target="_blank"
                 style="margin-bottom: 5px;">Click here to go
                 to Roblox
                 Settings</a>
-              <a class="button is-primary is-fullwidth">That's done!</a>
+              <a class="button is-link is-fullwidth" (click)="verifyCodeDone()"
+                [class.is-loading]="loadingSubmit">That's done!</a>
+            </div>
+
+            <div class="step-three animated fadeInRight" *ngIf="step === 3">
+              <h1 class="title is-size-5">
+                That's done {{ robloxUsername }}! You're now Verified!
+              </h1>
+              <p>Thank you for using Campfire Verification. Have a great day!</p>
+            </div>
+
+            <div class="step-two animated fadeInRight" *ngIf="step === 4">
+              <h1 class="title is-size-4">
+                Whoops! That's not right. Let's try again, click the button below to start over.
+              </h1>
+              <p>{{ finalStepError }}</p>
+              <a (click)="goBackToStart()" class="button is-fullwidth is-link"><i class="fas fa-redo"></i> Restart</a>
             </div>
           </div>
         </div>
         <div class="column is-3"></div>
       </div>
+    </div>
+
+    <div class="container has-text-centered" *ngIf="error">
+      <h1 class="title is-size-3">Looks like you're already Verified</h1>
+      <h1 class="subtitle is-size-5">Want to change your account? Click <a (click)="forceVerify()"><u>here</u></a></h1>
     </div>
   </div>
 </section>
