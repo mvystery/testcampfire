@@ -4,17 +4,24 @@
 <p *ngIf="robloxVerificationOff">You need to turn on Verification for this guild. Do this in the verification tab. You
   will need to also enter the group ID on this page.</p>
 <div *ngIf="loaded">
-  <p *ngIf="errorText">
-    You don't have permission to modify the group this Discord is binded to. To change the bind go to
-    the verification tab and change the group Id. You <b>must</b> be the owner of the group (role 255)
-  </p>
+  <div *ngIf="!doesNotHaveVerify">
+    <p *ngIf="errorText">
+      You don't have permission to modify the group this Discord is binded to. To change the bind go to
+      the group tab and change the group Id. You <b>must</b> be the owner of the group (role 255)
+    </p>
 
-  <h1 class="subtitle is-size-5 has-text-weight-bold" *ngIf="!errorText">Modify settings for {{ groupName }}</h1>
-  <a class="button" [class.is-loading]="presenceLoading" *ngIf="!presence && !errorText"
-    (click)="createPresence()">Create Presence
-    System</a>
-  <p *ngIf="presence">Presence is enabled for this group. To control your presence please visit <a
-      routerLink="/presence/{{groupId}}">https://campfirebot.xyz/presence/{{groupId}}</a> to view Presence information
-  </p>
-  <p *ngIf="!errorText"><small>To undo this please contact Campfire Support</small></p>
+    <h1 class="subtitle is-size-5 has-text-weight-bold" *ngIf="!errorText">Modify settings for {{ groupName }}</h1>
+    <a class="button" [class.is-loading]="presenceLoading" *ngIf="!presence && !errorText"
+      (click)="createPresence()">Create Presence
+      System</a>
+    <p *ngIf="presence">Presence is enabled for this group. To control your presence please visit <a
+        routerLink="/presence/{{groupId}}">https://campfirebot.xyz/presence/{{groupId}}</a> to view Presence information
+    </p>
+    <p *ngIf="!errorText"><small>To undo this please contact Campfire Support</small></p>
+  </div>
+
+  <div *ngIf="doesNotHaveVerify">
+    <p>Your Roblox account has not been verified with Campfire. Click the button below to verify them together</p><br>
+    <a routerLink="/verify" class="button is-link">Verify Roblox x Campfire</a>
+  </div>
 </div>

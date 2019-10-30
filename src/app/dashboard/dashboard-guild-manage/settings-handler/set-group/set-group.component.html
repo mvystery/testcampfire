@@ -1,0 +1,16 @@
+<img src="../../../../../assets/spinner.svg" *ngIf="!loaded" alt="Loading" width="100px"
+  style="margin: auto; display: block;">
+<p *ngIf="!loaded" class="has-text-centered">Loading...</p>
+<div *ngIf="loaded">
+  <h1 class="subtitle is-size-5 has-text-weight-bold">Group ID for this server is:</h1>
+  <div class="field has-addons">
+    <div class="control">
+      <input id="group" class="input" type="text" placeholder="Group ID" value="{{ groupId }}">
+    </div>
+    <div class="control">
+      <a id="setButton" class="button is-primary" (click)="setGroup()">
+        Set
+      </a>
+    </div>
+  </div>
+</div>

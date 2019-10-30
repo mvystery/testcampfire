@@ -15,6 +15,7 @@ export class SettingsHandlerComponent implements OnInit {
   binds = false;
   assets = false;
   presence = false;
+  group = false;
 
   constructor() {}
 
@@ -36,6 +37,7 @@ export class SettingsHandlerComponent implements OnInit {
       this.assets = false;
       this.verify = true;
       this.presence = false;
+      this.group = false;
     }
 
     if (tabName === 'binds') {
@@ -43,6 +45,7 @@ export class SettingsHandlerComponent implements OnInit {
       this.verify = false;
       this.assets = false;
       this.presence = false;
+      this.group = false;
     }
 
     if (tabName === 'assets') {
@@ -50,10 +53,20 @@ export class SettingsHandlerComponent implements OnInit {
       this.verify = false;
       this.binds = false;
       this.presence = false;
+      this.group = false;
     }
 
     if (tabName === 'presence') {
       this.presence = true;
+      this.assets = false;
+      this.verify = false;
+      this.binds = false;
+      this.group = false;
+    }
+
+    if (tabName === 'group') {
+      this.group = true;
+      this.presence = false;
       this.assets = false;
       this.verify = false;
       this.binds = false;
@@ -69,7 +82,9 @@ export class SettingsHandlerComponent implements OnInit {
       this.verify = false;
       this.prefix = true;
       this.binds = false;
+      this.presence = false;
       this.assets = false;
+      this.group = false;
     }
 
     if (sectionName === 'roblox') {
@@ -80,7 +95,9 @@ export class SettingsHandlerComponent implements OnInit {
       this.welcomer = false;
       this.verify = true;
       this.binds = false;
+      this.presence = false;
       this.assets = false;
+      this.group = false;
     }
   }
 }

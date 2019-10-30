@@ -50,6 +50,7 @@ import { VerifyComponent } from './verify/verify.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { CloverComponent } from './clover/clover.component';
+import { SetGroupComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-group/set-group.component';
 
 const options: NgxLinkifyOptions = {
   attributes: null,
@@ -107,7 +108,8 @@ const options: NgxLinkifyOptions = {
     VerifyComponent,
     CheckoutComponent,
     ThankYouComponent,
-    CloverComponent
+    CloverComponent,
+    SetGroupComponent
   ],
   imports: [
     BrowserModule,

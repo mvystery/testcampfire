@@ -32,6 +32,13 @@
           verification
         </a>
 
+        <a class="panel-block" [class.is-active]="group" (click)="changeTab('group')">
+          <span class="panel-icon">
+            <i class="fas fa-users" aria-hidden="true"></i>
+          </span>
+          group
+        </a>
+
         <a class="panel-block" [class.is-active]="binds" (click)="changeTab('binds')">
           <span class="panel-icon">
             <i class="fas fa-link" aria-hidden="true"></i>
@@ -69,6 +76,7 @@
       </app-set-roblox-asset>
       <app-set-roblox-presence *ngIf="presence">
       </app-set-roblox-presence>
+      <app-set-group *ngIf="group"></app-set-group>
     </div>
   </div>
 </div>
