@@ -12082,3 +12082,7 @@ hr.darker {
 .box .title {
   color: var(--text-color) !important;
 }
+
+.box.bolder {
+  box-shadow: 0 .5em 1em -.125em rgba(10, 10, 10, 0.226), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+}

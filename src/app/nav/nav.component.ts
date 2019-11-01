@@ -33,8 +33,12 @@ export class NavComponent implements OnInit {
 
     const theme = localStorage.getItem('theme');
     if (theme === null) {
-      this.theme = 'halloween';
+      this.theme = 'light';
       document.body.className = 'halloween-theme';
+    } else if (theme === 'halloween') {
+      this.theme = 'light';
+      document.body.className = 'light-theme';
+      localStorage.setItem('theme', 'light');
     } else {
       this.theme = theme;
       document.body.className = `${theme}-theme`;
