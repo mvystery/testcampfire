@@ -84,7 +84,7 @@ export class CheckoutComponent implements OnInit {
       this.cardErrors = error.message;
     } else {
       this.loading = false;
-      this.router.navigate(['/thank-you']);
+      window.location.pathname = '/thank-you';
     }
   }
 }

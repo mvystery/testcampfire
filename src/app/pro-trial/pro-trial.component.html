@@ -1,9 +1,22 @@
-<div class="notification is-info" style="border-radius: 0;" *ngIf="dealVisible">
+<div class="notification is-warning" style="border-radius: 0; margin-bottom: 0;" *ngIf="dealVisible">
   <button class="delete" (click)="closeDeal()"></button>
-  <h1 class="title is-size-5">Campfire PRO is live</h1>
-  <p class="subtitle" style="margin-bottom: 4px;">Try it <b>free for 14 days</b>, on us! Then just <b>$2.50</b> a month.
+  <h1 class="title is-size-5">Take Part In Children In Need: Annual Duck Race Sweepstake</h1>
+  <p class="subtitle" style="margin-bottom: 4px;">Further details available in our support server
   </p>
-  <a class="button is-outlined is-rounded is-light" (click)="getDeal()" [class.is-loading]="loadingDeal">Get PRO</a><br>
-  <small style="font-size: 0.5em;">No strings attached. Offer not valid in conjuction with any
-    other offer.</small>
+  <a class="button is-outlined is-rounded is-danger" (click)="getDeal()" [class.is-loading]="loadingDeal">Buy a
+    Duck for £2</a><br>
+  <small style="font-size: 0.5em;">100% of your donation will go to Children In Need</small>
+</div>
+
+<div class="modal animated fadeInUp" [class.is-active]="childrenInNeedBill">
+  <div class="modal-background" (click)="closeChildrenInNeed()"></div>
+  <div class="modal-content">
+    <div class="box">
+      <h1 class="title is-size-3">Children In Need: Ducks</h1>
+      <h1 class="subtitle is-size-6">100% of your donation will go to Children In Need
+      </h1>
+      <app-checkout amount="200" description="Children In Need"></app-checkout>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="closeChildrenInNeed()"></button>
 </div>

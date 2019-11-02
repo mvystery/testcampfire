@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { LoginService } from '../auth/login.service';
 import { HttpClient } from '@angular/common/http';
+import { Router, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-pro-trial',
@@ -13,36 +14,34 @@ export class ProTrialComponent implements OnInit {
   loadingDeal: boolean;
   user: firebase.User;
 
-  constructor(private service: LoginService, private http: HttpClient) {}
+  childrenInNeedBill: boolean;
+
+  constructor(
+    private service: LoginService,
+    private http: HttpClient,
+    private router: Router
+  ) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.childrenInNeedBill = false;
+      }
+    });
+  }
 
   ngOnInit() {
     this.service.getLoggedInUser().subscribe(user => {
       if (user) {
-        if (localStorage.getItem('voucher1xClosed') === 'true') {
+        if (localStorage.getItem('voucher2xClosed') === 'true') {
           this.dealVisible = false;
         } else {
-          this.http
-            .get<any>('https://api.campfirebot.xyz/pro/check', {
-              headers: {
-                Authorization: localStorage.getItem('auth')
-              }
-            })
-            .subscribe(data => {
-              if (data.completed === true) {
-                if (data.premium === false) {
-                  this.dealVisible = true;
-                }
-              } else {
-                console.error(`Campfire PRO Handler | ${data.reason}`);
-              }
-            });
+          this.dealVisible = true;
         }
       }
       this.user = user;
     });
   }
 
-  closeDeal() {
+  closeADeal() {
     Swal.fire({
       title: 'Are you sure?',
       text:
@@ -61,7 +60,20 @@ export class ProTrialComponent implements OnInit {
     });
   }
 
+  closeDeal() {
+    this.dealVisible = false;
+    localStorage.setItem('voucher2xClosed', 'true');
+  }
+
+  closeChildrenInNeed() {
+    this.childrenInNeedBill = false;
+  }
+
   getDeal() {
+    this.childrenInNeedBill = true;
+  }
+
+  getADeal() {
     this.loadingDeal = true;
     this.http
       .get<any>('https://api.campfirebot.xyz/pro/redeem', {
