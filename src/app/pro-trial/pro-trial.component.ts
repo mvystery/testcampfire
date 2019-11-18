@@ -34,7 +34,7 @@ export class ProTrialComponent implements OnInit {
         if (localStorage.getItem('voucher2xClosed') === 'true') {
           this.dealVisible = false;
         } else {
-          this.dealVisible = true;
+          this.dealVisible = false;
         }
       }
       this.user = user;
