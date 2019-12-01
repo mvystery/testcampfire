@@ -1,307 +1,456 @@
-<!doctype html>
-<html lang="en">
 
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142581839-1"></script>
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" />
+    <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 
-  gtag('config', 'UA-142581839-1', { 'optimize_id': 'GTM-W95WW5C'});
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+      <script src="https://cdn.statuspage.io/vendor/moment-timezone-with-data.js"></script>
+      <script src="https://cdn.statuspage.io/vendor/jstz.js"></script>
+      <script src="https://cdn.statuspage.io/vendor/localtimes.js"></script>
+
+    <style>
+     * {
+         -moz-box-sizing:border-box;
+         -webkit-box-sizing:border-box;
+         box-sizing:border-box;
+     }
+
+     html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+     abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+     small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+     fieldset, form, label, legend, caption, article, aside, canvas, details, figcaption, figure,  footer, header, hgroup,
+     menu, nav, section, summary, time, mark, audio, video {
+         margin:0;
+         padding:0;
+         border:0;
+         outline:0;
+         vertical-align:baseline;
+         background:transparent;
+     }
+
+     article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+         display: block;
+     }
+
+     html {
+         font-size: 16px;
+         line-height: 24px;
+         width:100%;
+         height:100%;
+         -webkit-text-size-adjust: 100%;
+         -ms-text-size-adjust: 100%;
+         overflow-y:scroll;
+         overflow-x:hidden;
+     }
+
+     img {
+         vertical-align:middle;
+         max-width: 100%;
+         height: auto;
+         border: 0;
+         -ms-interpolation-mode: bicubic;
+     }
+
+     body {
+         min-height:100%;
+         -webkit-font-smoothing: subpixel-antialiased;
+     }
+
+     .clearfix {
+	       clear:both;
+	       zoom: 1;
+     }
+     .clearfix:before, .clearfix:after {
+         content: "\0020";
+         display: block;
+         height: 0;
+         visibility: hidden;
+     }
+     .clearfix:after {
+         clear: both;
+     }
+    </style>
+    <style>
+  body.background.error-page-wrapper, .background.error-page-wrapper.preview {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    position:relative;
+  }
+
+  .background.error-page-wrapper .content-container {
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,.2);
+    padding:50px;
+    background-color: #fff;
+    width:100%;
+    max-width:525px;
+    position:absolute;
+    left:50%;
+    margin-left:-262px;
+  }
+
+  .background.error-page-wrapper .content-container.in {
+    left:0px;
+    opacity:1;
+  }
+
+  .background.error-page-wrapper .head-line {
+    transition:color .2s linear;
+    font-size:48px;
+    line-height:60px;
+    letter-spacing: -1px;
+    margin-bottom: 5px;
+    color:#ccc;
+  }
+  .background.error-page-wrapper .subheader {
+    transition:color .2s linear;
+    font-size:36px;
+    line-height:46px;
+    color:#333;
+  }
+  .background.error-page-wrapper .hr {
+    height:1px;
+    background-color: #ddd;
+    width:60%;
+    max-width:250px;
+    margin:35px auto;
+  }
+  .background.error-page-wrapper .context {
+    transition:color .2s linear;
+    font-size:18px;
+    line-height:27px;
+    color:#bbb;
+  }
+  .background.error-page-wrapper .context p {
+    margin:0;
+  }
+  .background.error-page-wrapper .context p:nth-child(n+2) {
+    margin-top:16px;
+  }
+  .background.error-page-wrapper .buttons-container {
+    margin-top: 35px;
+    overflow: hidden;
+  }
+  .background.error-page-wrapper .buttons-container a {
+    transition:text-indent .2s ease-out, color .2s linear, background-color .2s linear;
+    text-indent: 0px;
+    font-size:14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color:#fff;
+    background-color:#2ecc71;
+    border-radius: 99px;
+    padding:12px 0 13px;
+    text-align: center;
+    display:inline-block;
+    overflow: hidden;
+    position: relative;
+    width:45%;
+  }
+
+  .background.error-page-wrapper .buttons-container .fa {
+    transition:left .2s ease-out;
+    position: absolute;
+    left:-50px;
+  }
+
+  .background.error-page-wrapper .buttons-container a:hover {
+    text-indent: 15px;
+  }
+
+  .background.error-page-wrapper .buttons-container a:nth-child(1) {
+    float:left;
+  }
+
+  .background.error-page-wrapper .buttons-container a:nth-child(2) {
+    float:right;
+  }
+
+  .background.error-page-wrapper .buttons-container .fa-home {
+    font-size:18px;
+    top:15px;
+  }
+
+  .background.error-page-wrapper .buttons-container a:hover .fa-home {
+    left:10px;
+  }
+
+  .background.error-page-wrapper .buttons-container .fa-warning {
+    font-size:16px;
+    top:17px;
+  }
+
+  .background.error-page-wrapper .buttons-container a:hover .fa-warning {
+    left:5px;
+  }
+
+  .background.error-page-wrapper .buttons-container .fa-power-off {
+    font-size:16px;
+    top:17px;
+  }
+
+  .background.error-page-wrapper .buttons-container a:hover .fa-power-off {
+    left:9px;
+  }
+
+
+  .background.error-page-wrapper .buttons-container.single-button {
+    text-align: center;
+  }
+
+  .background.error-page-wrapper .buttons-container.single-button a  {
+    float:none !important;
+  }
+
+  @media screen and (max-width: 555px) {
+    .background.error-page-wrapper {
+      padding:30px 5%;
+    }
+    .background.error-page-wrapper .content-container {
+      padding:37px;
+      position: static;
+      left: 0;
+      margin-left:0;
+    }
+    .background.error-page-wrapper .head-line {
+      font-size:36px;
+    }
+    .background.error-page-wrapper .subheader {
+      font-size:27px;
+      line-height: 37px;
+    }
+    .background.error-page-wrapper .hr {
+      margin:30px auto;
+      width:215px;
+    }
+    .background.error-page-wrapper .buttons-container .fa {
+      display:none;
+    }
+    .background.error-page-wrapper .buttons-container a:hover {
+      text-indent: 0px;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .background.error-page-wrapper {
+      padding:30px;
+    }
+    .background.error-page-wrapper .head-line {
+      font-size:32px;
+    }
+    .background.error-page-wrapper .hr {
+      margin:25px auto;
+      width:180px;
+    }
+    .background.error-page-wrapper .context {
+      font-size:15px;
+      line-height:22px;
+    }
+
+    .background.error-page-wrapper .context p:nth-child(n+2) {
+      margin-top:10px;
+    }
+    .background.error-page-wrapper .buttons-container {
+      margin-top:29px;
+    }
+    .background.error-page-wrapper .buttons-container a {
+      float:none !important;
+      width:65%;
+      margin:0 auto;
+      font-size:13px;
+      padding:9px 0;
+    }
+
+    .background.error-page-wrapper .buttons-container a:nth-child(2) {
+      margin-top:12px;
+    }
+  }
+</style>
+
+    <style>
+
+
+    .background-image {
+      background-color: #FFFFFF;
+      background-image: url(https://dka575ofm4ao0.cloudfront.net/assets/better_error_pages/templates/background/background-e1d28eee7cab6e890134c7271be33d66.png) !important;
+    }
+
+    .primary-text-color {
+      color: rgba(133, 32, 247, 1) !important;
+    }
+
+    .secondary-text-color {
+      color: rgba(26, 23, 24, 1) !important;
+    }
+
+
+
+
+    .border-button {
+      color: rgba(133, 32, 247, 1) !important;
+      border-color: rgba(133, 32, 247, 1) !important;
+    }
+    .button {
+      background-color: rgba(133, 32, 247, 1) !important;
+      color: #FFFFFF !important;
+    }
+
+    .shadow {
+      box-shadow: 0 0 20px #000000;
+    }
+
+</style>
+
+  </head>
+  <body class="background error-page-wrapper background-color background-image">
+    <center>
+  <div class="content-container shadow">
+    <div class="head-line secondary-text-color">
+      Maintenance
+    </div>
+    <div class="subheader primary-text-color">
+      We're undergoing a bit of
+      scheduled maintenance.
+    </div>
+    <div class="hr"></div>
+    <div class="clearfix"></div>
+    <div class="context secondary-text-color">
+      
+    <p>Sorry for the inconvenience. We'll be back up and running as fast as possible.</p>
+
+    </div>
+  </div>
+</center>
+
+
+    <script>
+     function ErrorPage(container, pageType, templateName) {
+       this.$container = $(container);
+       this.$contentContainer = this.$container.find(templateName == 'sign' ? '.sign-container' : '.content-container');
+       this.pageType = pageType;
+       this.templateName = templateName;
+     }
+
+     ErrorPage.prototype.centerContent = function () {
+       var containerHeight = this.$container.outerHeight()
+         , contentContainerHeight = this.$contentContainer.outerHeight()
+         , top = (containerHeight - contentContainerHeight) / 2
+         , offset = this.templateName == 'sign' ? -100 : 0;
+
+       this.$contentContainer.css('top', top + offset);
+     };
+
+     ErrorPage.prototype.initialize = function () {
+       var self = this;
+
+       this.centerContent();
+       this.$container.on('resize', function (e) {
+         e.preventDefault();
+         e.stopPropagation();
+         self.centerContent();
+       });
+
+       // fades in content on the plain template
+       if (this.templateName == 'plain') {
+         window.setTimeout(function () {
+           self.$contentContainer.addClass('in');
+         }, 500);
+       }
+
+       // swings sign in on the sign template
+       if (this.templateName == 'sign') {
+         $('.sign-container').animate({textIndent : 0}, {
+           step : function (now) {
+             $(this).css({
+               transform : 'rotate(' + now + 'deg)',
+               'transform-origin' : 'top center'
+             });
+           },
+           duration : 1000,
+           easing : 'easeOutBounce'
+         });
+       }
+     };
+
+
+     ErrorPage.prototype.createTimeRangeTag = function(start, end) {
+       return (
+         '<time utime=' + start + ' simple_format="MMM DD, YYYY HH:mm">' + start + '</time> - <time utime=' + end + ' simple_format="MMM DD, YYYY HH:mm">' + end + '</time>.'
+       )
+     };
+
+
+     ErrorPage.prototype.handleStatusFetchSuccess = function (pageType, data) {
+       if (pageType == '503') {
+         $('#replace-with-fetched-data').html(data.status.description);
+       } else {
+         if (!!data.scheduled_maintenances.length) {
+           var maint = data.scheduled_maintenances[0];
+           $('#replace-with-fetched-data').html(this.createTimeRangeTag(maint.scheduled_for, maint.scheduled_until));
+           $.fn.localizeTime();
+         }
+         else {
+           $('#replace-with-fetched-data').html('<em>(there are no active scheduled maintenances)</em>');
+         }
+       }
+     };
+
+
+     ErrorPage.prototype.handleStatusFetchFail = function (pageType) {
+       $('#replace-with-fetched-data').html('<em>(enter a valid Statuspage url)</em>');
+     };
+
+
+     ErrorPage.prototype.fetchStatus = function (pageUrl, pageType) {
+       //console.log('in app.js fetch');
+       if (!pageUrl || !pageType || pageType == '404') return;
+
+       var url = ''
+         , self = this;
+
+       if (pageType == '503') {
+         url = pageUrl + '/api/v2/status.json';
+       }
+       else {
+         url = pageUrl + '/api/v2/scheduled-maintenances/active.json';
+       }
+
+       $.ajax({
+         type : "GET",
+         url : url,
+       }).success(function (data, status) {
+         //console.log('success');
+         self.handleStatusFetchSuccess(pageType, data);
+       }).fail(function (xhr, msg) {
+         //console.log('fail');
+         self.handleStatusFetchFail(pageType);
+       });
+
+     };
+     var ep = new ErrorPage('body', "maintenance", "background");
+     ep.initialize();
+
+     // hack to make sure content stays centered >_<
+     $(window).on('resize', function() {
+       $('body').trigger('resize')
+     });
+
+    </script>
+
+    
+      <!-- OneTrust Cookies Consent Notice (statuspage.io, en-GB) start -->
+  <script src="https://cdn.cookielaw.org/consent/0800f092-2124-46ec-b11d-b4f48b677302.js" type="text/javascript" charset="UTF-8"></script>
+  <script type="text/javascript">
+    function OptanonWrapper() { }
   </script>
+  <!-- OneTrust Cookies Consent Notice (statuspage.io, en-GB) end -->
 
-  
-  <meta charset="utf-8">
-  <title>Campfire</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
-  <link rel="apple-touch-icon" sizes="72x72"
-    href="https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/Campfire%20Logo.png?alt=media&token=d61df8a4-0b47-4c48-9a1b-ec412616bece">
-  <link rel="apple-touch-icon" sizes="96x96"
-    href="https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/Campfire%20Logo.png?alt=media&token=d61df8a4-0b47-4c48-9a1b-ec412616bece">
-  <link rel="apple-touch-icon" sizes="128x128"
-    href="https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/Campfire%20Logo.png?alt=media&token=d61df8a4-0b47-4c48-9a1b-ec412616bece">
-  <link rel="apple-touch-icon" sizes="144x144"
-    href=".https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/Campfire%20Logo.png?alt=media&token=d61df8a4-0b47-4c48-9a1b-ec412616bece">
-  <link rel="apple-touch-icon" sizes="152x152"
-    href="https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/Campfire%20Logo.png?alt=media&token=d61df8a4-0b47-4c48-9a1b-ec412616bece">
-  <link rel="icon" type="image/png" sizes="192x192"
-    href="https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/Campfire%20Logo.png?alt=media&token=d61df8a4-0b47-4c48-9a1b-ec412616bece">
-  <link rel="manifest" href="../assets/icons/manifest.json">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-  <meta name="theme-color" content="#8520f7">
-  <meta property="og:title" content="Campfire - Social Discord Bot" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://campfirebot.xyz" />
-  <meta property="og:image"
-    content="https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/Campfire%20Logo.png?alt=media&token=d61df8a4-0b47-4c48-9a1b-ec412616bece" />
-  <meta property="og:description"
-    content="We're Campfire, a social Discord bot that brings the best to your Discord server. We'll bring a best-in-class economy system, some seriously great fun commands and bucket loads of extras." />
-  <base href="/">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142581839-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-142581839-1');
-    gtag('set', {
-      'user_id': window.localStorage.getItem("id")
-    });
-
-  </script>
-
-  <script>
-    window['_fs_debug'] = false;
-    window['_fs_host'] = 'fullstory.com';
-    window['_fs_org'] = 'MMQZ8';
-    window['_fs_namespace'] = 'FS';
-    (function (m, n, e, t, l, o, g, y) {
-      if (e in m) {
-        if (m.console && m.console.log) {
-          m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');
-        }
-        return;
-      }
-      g = m[e] = function (a, b, s) {
-        g.q ? g.q.push([a, b, s]) : g._api(a, b, s);
-      };
-      g.q = [];
-      o = n.createElement(t);
-      o.async = 1;
-      o.crossOrigin = 'anonymous';
-      o.src = 'https://' + _fs_host + '/s/fs.js';
-      y = n.getElementsByTagName(t)[0];
-      y.parentNode.insertBefore(o, y);
-      g.identify = function (i, v, s) {
-        g(l, {
-          uid: i
-        }, s);
-        if (v)
-          g(l, v, s)
-
-
-
-
-
-      };
-      g.setUserVars = function (v, s) {
-        g(l, v, s)
-      };
-      g.event = function (i, v, s) {
-        g('event', {
-          n: i,
-          p: v
-        }, s)
-      };
-      g.shutdown = function () {
-        g("rec", !1)
-      };
-      g.restart = function () {
-        g("rec", !0)
-      };
-      g.consent = function (a) {
-        g("consent", !arguments.length || a)
-      };
-      g.identifyAccount = function (i, v) {
-        o = 'account';
-        v = v || {};
-        v.acctId = i;
-        g(o, v)
-      };
-      g.clearUserCookie = function () {};
-    })(window, document, window['_fs_namespace'], 'script', 'user');
-
-  </script>
-
-  <script>
-    FS.identify(localStorage.getItem("id"), {
-      displayName: localStorage.getItem("username")
-    });
-
-  </script>
-
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-  <script src="https://js.stripe.com/v3/"></script>
-
-  <!-- Quantcast Choice. Consent Manager Tag -->
-  <script type="text/javascript" async="true">
-    var elem = document.createElement('script');
-    elem.src = 'https://quantcast.mgr.consensu.org/cmp.js';
-    elem.async = true;
-    elem.type = "text/javascript";
-    var scpt = document.getElementsByTagName('script')[0];
-    scpt.parentNode.insertBefore(elem, scpt);
-    (function () {
-      var gdprAppliesGlobally = true;
-
-      function addFrame() {
-        if (!window.frames['__cmpLocator']) {
-          if (document.body) {
-            var body = document.body,
-              iframe = document.createElement('iframe');
-            iframe.style = 'display:none';
-            iframe.name = '__cmpLocator';
-            body.appendChild(iframe);
-          } else {
-            // In the case where this stub is located in the head,
-            // this allows us to inject the iframe more quickly than
-            // relying on DOMContentLoaded or other events.
-            setTimeout(addFrame, 5);
-          }
-        }
-      }
-      addFrame();
-
-      function cmpMsgHandler(event) {
-        var msgIsString = typeof event.data === "string";
-        var json;
-        if (msgIsString) {
-          json = event.data.indexOf("__cmpCall") != -1 ? JSON.parse(event.data) : {};
-        } else {
-          json = event.data;
-        }
-        if (json.__cmpCall) {
-          var i = json.__cmpCall;
-          window.__cmp(i.command, i.parameter, function (retValue, success) {
-            var returnMsg = {
-              "__cmpReturn": {
-                "returnValue": retValue,
-                "success": success,
-                "callId": i.callId
-              }
-            };
-            event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
-          });
-        }
-      }
-      window.__cmp = function (c) {
-        var b = arguments;
-        if (!b.length) {
-          return __cmp.a;
-        } else if (b[0] === 'ping') {
-          b[2]({
-            "gdprAppliesGlobally": gdprAppliesGlobally,
-            "cmpLoaded": false
-          }, true);
-        } else if (c == '__cmp')
-          return false;
-        else {
-          if (typeof __cmp.a === 'undefined') {
-            __cmp.a = [];
-          }
-          __cmp.a.push([].slice.apply(b));
-        }
-      }
-      window.__cmp.gdprAppliesGlobally = gdprAppliesGlobally;
-      window.__cmp.msgHandler = cmpMsgHandler;
-      if (window.addEventListener) {
-        window.addEventListener('message', cmpMsgHandler, false);
-      } else {
-        window.attachEvent('onmessage', cmpMsgHandler);
-      }
-    })();
-    window.__cmp('init', {
-      'Language': 'en',
-      'Initial Screen Reject Button Text': 'I DO NOT ACCEPT',
-      'Initial Screen Accept Button Text': 'I ACCEPT',
-      'Purpose Screen Body Text': 'You can set your consent preferences and determine how you want your data to be used based on the purposes below. You may set your preferences for us independently from those of third-party partners. Each purpose has a description so that you know how we and partners use your data.',
-      'Purpose Screen Vendor Link Text': 'See Vendors',
-      'Purpose Screen Save and Exit Button Text': 'SAVE &amp; EXIT',
-      'Vendor Screen Body Text': 'You can set consent preferences for individual third-party partners we work with below. Expand each company list item to see what purposes they use data for to help make your choices. In some cases, companies may use your data without asking for your consent, based on their legitimate interests. You can click on their privacy policy links for more information and to object to such processing. ',
-      'Vendor Screen Accept All Button Text': 'ACCEPT ALL',
-      'Vendor Screen Reject All Button Text': 'REJECT ALL',
-      'Vendor Screen Purposes Link Text': 'Back to Purposes',
-      'Vendor Screen Save and Exit Button Text': 'SAVE &amp; EXIT',
-      'Initial Screen Body Text': 'We and our partners use technologies, such as cookies, and process personal data, such as IP addresses and cookie identifiers, to personalise ads and content based on your interests, measure the performance of ads and content, and derive insights about the audiences who saw ads and content. Click below to consent to the use of this technology and the processing of your personal data for these purposes. You can change your mind and change your consent choices at any time by returning to this site. ',
-      'Initial Screen Body Text Option': 1,
-      'Publisher Name': 'Campfire',
-      'Display UI': 'always',
-      'Publisher Logo': 'https://firebasestorage.googleapis.com/v0/b/campfire-640d7.appspot.com/o/Campfire%20Logo.png?alt=media&amp;token=d61df8a4-0b47-4c48-9a1b-ec412616bece',
-      'Publisher Purpose IDs': [
-        1, 2
-      ],
-      'Post Consent Page': 'https://google.com',
-      'Publisher Purpose Legitimate Interest IDs': [
-        1, 2
-      ],
-      'Display Persistent Consent Link': false
-    });
-
-  </script>
-  <!-- End Quantcast Choice. Consent Manager Tag -->
-  <style>
-    .qc-cmp-button {
-      background-color: #8520f7 !important;
-      border-color: #8520f7 !important;
-    }
-
-    .qc-cmp-button:hover {
-      background-color: transparent !important;
-      border-color: #8520f7 !important;
-    }
-
-    .qc-cmp-alt-action,
-    .qc-cmp-link {
-      color: #8520f7 !important;
-    }
-
-    .qc-cmp-button.qc-cmp-secondary-button:hover {
-      border-color: transparent !important;
-      background-color: #8520f7 !important;
-    }
-
-    .qc-cmp-button {
-      color: #ffffff !important;
-    }
-
-    .qc-cmp-button.qc-cmp-secondary-button {
-      border-color: #eee !important;
-      background-color: #eee !important;
-    }
-
-#particles-js {
-
-height: 100vh;
-width: 100hw;
-z-index: 2000;
-position: fixed;
-top: 0;
-left: 0;
-pointer-events: none;
-
-  </style>
-
-  <script data-ad-client="ca-pub-8273089746646834" async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-</head>
-
-<body>
-
-<div id="particles-js"></div> 
-  <app-root></app-root>
-
-<script>
-
-particlesJS("particles-js", {"particles":{"number":{"value":400,"density":{"enable":true,"value_area":800}},"color":{"value":"#fff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.5,"random":true,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":10,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":false,"distance":500,"color":"#ffffff","opacity":0.4,"width":2},"move":{"enable":true,"speed":6,"direction":"bottom","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"bubble"},"onclick":{"enable":true,"mode":"repulse"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":0.5}},"bubble":{"distance":400,"size":4,"duration":0.3,"opacity":1,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
-</script>
-</body>
-
+  </body>
 </html>
