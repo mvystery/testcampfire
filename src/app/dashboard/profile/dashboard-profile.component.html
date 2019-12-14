@@ -1,0 +1,102 @@
+<app-nav type="is-primary mer" fixed="true"></app-nav>
+<app-side-nav></app-side-nav>
+<div style="height: 88px" class="is-hidden-touch"></div>
+<div style="height: 62px" class="is-hidden-desktop"></div>
+<section class="hero is-link is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-2 has-text-right-desktop avatarHolder is-hidden-touch">
+          <img src="{{ avatar }}" class="is-rounded" width="125px" />
+        </div>
+        <div class="column">
+          <h1 class="title is-size-3">Profile Customiser</h1>
+          <p class="subtitle is-size-4">Here you can customise your profile</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="spacer"></div>
+
+<div class="container has-text-centered">
+  <div class="columns">
+    <div class="column"></div>
+    <div class="column is-5">
+      <div class="box cf-border" [style.border-color]="color">
+        <div class="columns">
+          <div class="column has-text-left" style="padding-top: 3px;">
+            <p class="has-text-weight-bold">{{ name }}</p>
+
+            <p>{{ bio }}</p>
+
+            <div class="columns">
+              <div class="column">
+                <p style="color: #72767d">Tickets</p>
+                <p>{{ balance }}</p>
+              </div>
+              <div class="column">
+                <p style="color: #72767d">XP</p>
+                <p>{{ xp }}</p>
+              </div>
+              <div class="column">
+                <p style="color: #72767d">Nationality</p>
+                <p><i class="twa twa-{{ flag }}"></i></p>
+              </div>
+            </div>
+
+            <div class="columns">
+              <div class="column is-4">
+                <p style="color: #72767d">Reputation</p>
+                <p>{{ reputation }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="column has-text-right">
+            <img src="{{ avatar }}" width="100px" alt="Avatar" style="border-radius: 4px;">
+          </div>
+        </div>
+      </div>
+      <a (click)="openModal()" class="button is-fullwidth is-link"><i class="fas fa-pencil-alt"></i> Edit</a>
+    </div>
+    <div class="column"></div>
+  </div>
+</div>
+
+<div class="modal" id="updateProfile">
+  <div class="modal-background animated fadeIn" (click)="closeModal()"></div>
+  <div class="modal-card animated fadeInUp">
+    <header class="modal-card-head">
+      <p class="modal-card-title"><i class="fas fa-pencil-alt"></i> Edit profile</p>
+      <button class="delete" (click)="closeModal()" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <form (ngSubmit)="updateProfile(profileFormData)" #profileFormData="ngForm">
+        <div id="errorArea"></div>
+        <div class="field">
+          <label class="label">Colour<span class="has-text-danger">*</span></label>
+          <input name="colour" readonly minlength="1" placeholder=":flag_gb:" class="button is-primary" [value]="color"
+            [(colorPicker)]="color" [style.background]="color" [cpAlphaChannel]="'disabled'" [cpOutputFormat]="'hex'">
+        </div>
+
+        <div class="field">
+          <label class="label">Bio<span class="has-text-danger">*</span></label>
+          <textarea name="bio" required minlength="1" class="textarea"
+            placeholder="Write something sweet about yourself here!" ngModel="{{ bio }}"></textarea>
+        </div>
+
+        <div class="field">
+          <label class="label">Nationality<span class="has-text-danger">*</span></label>
+          <input name="nationality" ngModel="{{ nationality }}" required minlength="1" maxlength="9" placeholder=":flag_gb:"
+            class="input">
+        </div>
+
+        <div class="buttons">
+          <button class="button is-success" [disabled]="!profileFormData.form.valid" type="submit">Save changes</button>
+          <a class="button" (click)="closeModal()">Cancel</a>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>

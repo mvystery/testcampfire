@@ -1,0 +1,46 @@
+nav.menu {
+  width: 80px;
+  background: #463460;
+  box-sizing: border-box;
+  color: white;
+  left: 0;
+  height: calc(100% - 88px);
+  overflow-y: auto;
+  padding: 10px 0 0;
+  position: fixed;
+  top: 88px;
+  z-index: 10;
+}
+
+nav.menu div.menu-item {
+  color: white;
+  text-align: center;
+  font-size: 9px;
+  text-transform: uppercase;
+  width: 100%;
+  padding: 15px 0;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 0px;
+  cursor: pointer;
+}
+
+nav.menu div.menu-item:hover span.icon {
+  font-size: 41px;
+  transition: font-size 0.1s linear;
+}
+
+nav.menu div.menu-item.is-active:hover span.icon {
+  font-size: 36px;
+  transition: font-size 0.1s linear;
+}
+
+
+nav.menu div.menu-item span.icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+  transition: font-size 0.1s linear;
+  width: 100%;
+}
+
+nav.menu div.menu-item.is-active {
+  background: #6414db;
+}

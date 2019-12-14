@@ -24,6 +24,7 @@ interface UserData {
 export class DashboardComponent implements OnInit {
   user: firebase.User;
   balance: number;
+  deposit: number;
   level: number;
   bubbles: number;
   avatar: string;
@@ -55,6 +56,11 @@ export class DashboardComponent implements OnInit {
               this.balance = doc.data().balance.toLocaleString();
               this.bubbles = doc.data().bubbles_popped.toLocaleString();
               this.level = doc.data().level;
+              if (doc.data().deposited === true) {
+                this.deposit = doc.data().deposit.toLocaleString();
+              } else {
+                this.deposit = 0;
+              }
             }
           });
         this.avatar = localStorage.getItem('avatar');

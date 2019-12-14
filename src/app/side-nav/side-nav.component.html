@@ -1,0 +1,25 @@
+<nav class="menu is-hidden-touch">
+  <div class="menu-item" routerLink="/dashboard" routerLinkActive="is-active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+    Dashboard
+  </div>
+
+  <div class="menu-item" routerLink="/dashboard/profile" routerLinkActive="is-active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    <span class="icon"><i class="fas fa-user"></i></span>
+    Profile
+  </div>
+
+  <div class="menu-item" routerLink="/dashboard/guilds" routerLinkActive="is-active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    <span class="icon"><i class="fas fa-server"></i></span>
+    Guilds
+  </div>
+
+  <div class="menu-item" routerLink="/dashboard/stats" routerLinkActive="is-active"
+  [routerLinkActiveOptions]="{ exact: true }">
+    <span class="icon"><i class="fas fa-memory"></i></span>
+    Bot Stats
+  </div>
+</nav>

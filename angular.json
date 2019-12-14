@@ -24,7 +24,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/tooltip.css"
+              "src/tooltip.css",
+              "src/twemoji.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -79,7 +80,7 @@
             "styles": [
               "src/styles.css",
               "src/tooltip.css",
-              "src/animate.css"
+              "src/twemoji.css"
             ],
             "scripts": [],
             "assets": [

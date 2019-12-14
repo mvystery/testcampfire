@@ -8,9 +8,9 @@ import { ModerationComponent } from './commands/moderation/moderation.component'
 import { FunComponent } from './commands/fun/fun.component';
 import { CommandsIndexComponent } from './commands/commands-index/commands-index.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardProfileComponent } from './dashboard/dashboard-profile/dashboard-profile.component';
-import { DashboardGuildsComponent } from './dashboard/dashboard-guilds/dashboard-guilds.component';
-import { DashboardGuildManageComponent } from './dashboard/dashboard-guild-manage/dashboard-guild-manage.component';
+import { DashboardProfileComponent } from './dashboard/profile/dashboard-profile.component';
+import { DashboardGuildsComponent } from './dashboard/guilds/dashboard-guilds.component';
+import { DashboardGuildManageComponent } from './dashboard/manage/dashboard-guild-manage.component';
 import { MarabouComponent } from './marabou/marabou.component';
 import { MaradashComponent } from './marabou/maradash/maradash.component';
 import { InterviewsComponent } from './marabou/interviews/interviews.component';
@@ -21,6 +21,8 @@ import { ViewProfileComponent } from './presence/presence-manager/view-profile/v
 import { VerifyComponent } from './verify/verify.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { CloverComponent } from './clover/clover.component';
+import { StatsComponent } from './dashboard/stats/stats.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,19 +33,21 @@ const routes: Routes = [
   { path: 'commands/moderation', component: ModerationComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'dashboard/profile', component: DashboardProfileComponent },
+  { path: 'dashboard/stats', component: StatsComponent },
   { path: 'dashboard/guilds', component: DashboardGuildsComponent },
   { path: 'commands/fun', component: FunComponent },
   { path: 'dashboard/guilds/:id', component: DashboardGuildManageComponent },
   // { path: 'marabou', component: MarabouComponent },
   // { path: 'marabou/maradash', component: MaradashComponent },
   { path: 'marabou/interviews', component: InterviewsComponent },
-  { path: 'presence', component: PresenceComponent },
-  { path: 'presence/:id', component: PresenceFrontendComponent },
-  { path: 'presence/:id/manage', component: PresenceManagerComponent },
-  { path: 'presence/:id/manage/:userId', component: ViewProfileComponent },
-  { path: 'verify', component: VerifyComponent },
+  // { path: 'presence', component: PresenceComponent },
+  // { path: 'presence/:id', component: PresenceFrontendComponent },
+  // { path: 'presence/:id/manage', component: PresenceManagerComponent },
+  // { path: 'presence/:id/manage/:userId', component: ViewProfileComponent },
+  // { path: 'verify', component: VerifyComponent },
   { path: 'thank-you', component: ThankYouComponent },
-  { path: 'clover', component: CloverComponent }
+  // { path: 'clover', component: CloverComponent },
+  {path: '**', component: ErrorComponent}
 ];
 
 @NgModule({

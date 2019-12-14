@@ -16,8 +16,17 @@
   <img src="../../../assets/spinner.svg" *ngIf="loading" alt="Loading" width="100px"
     style="margin: auto; display: block;">
   <p *ngIf="loading" class="has-text-centered">Just a quickie</p>
+  <div class="spacer"></div>
   <div class="columns" [class.is-hidden]="loading">
     <div class="column is-2">
+      <div class="box">
+        <img src="https://www.roblox.com/headshot-thumbnail/image?userId={{robloxId}}&width=100&height=100&format=png"
+          alt="" width="100px" class="is-rounded"
+          style="margin-top: -70px; margin-left: -30px; box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1); margin-bottom: 10px;">
+        <h1 class="title is-size-5">Welcome to Presence!</h1>
+        <a class="button is-fullwidth is-link" (click)="openTimeOff()"><i class="fas fa-user-clock"></i> Request time
+          off</a>
+      </div>
       <div class="list">
         <a href="https://www.roblox.com/my/groupadmin.aspx?gid={{id}}" target="_blank" class="list-item">
           <i class="fas fa-cogs"></i>
@@ -31,6 +40,15 @@
         <a routerLink="manage" *ngIf="isMod" class="list-item">
           <i class="fas fa-user-shield"></i>
           Manager</a>
+      </div>
+
+      <div class="box">
+        <h1 class="title is-size-5" style="margin-bottom: 5px;">Celebrations</h1>
+        <hr>
+        <img src="https://www.roblox.com/headshot-thumbnail/image?userId={{robloxId}}&width=100&height=100&format=png"
+          alt="" width="30px" class="is-rounded">
+        <p>Eythereal's Birthday</p>
+        <hr>
       </div>
     </div>
     <div class="column is-10">
@@ -208,5 +226,91 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="modal" [class.is-active]="timeOffFormVisible">
+    <div class="modal-background animated fadeIn" (click)="closeTimeOff()"></div>
+    <div class="modal-card animated fadeInUp">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Request time off</p>
+        <button class="delete" aria-label="close" (click)="closeTimeOff()"></button>
+      </header>
+      <section class="modal-card-body">
+        <form (ngSubmit)="inactivityForm(inactivityFormData)" #inactivityFormData="ngForm">
+          <div class="field">
+            <label class="label">Time off type</label>
+            <div class="dropdown" [class.is-active]="timeoffDropped">
+              <div class="dropdown-trigger">
+                <a class="button" aria-haspopup="true" aria-controls="dropdown-menu" (click)="toggleTimeoff()">
+                  <span *ngIf="!ddSelected">Select type</span>
+                  <span *ngIf="ddSelected">{{ ddSelection }}</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <a (click)="ddSelect('Holiday/Vacation')" [class.is-active]="ddSelection === 'Holiday/Vacation'"
+                    class="dropdown-item">
+                    Holiday/Vacation
+                  </a>
+                  <a (click)="ddSelect('Funeral')" [class.is-active]="ddSelection === 'Funeral'" class="dropdown-item">
+                    Funeral
+                  </a>
+                  <a (click)="ddSelect('Medical')" [class.is-active]="ddSelection === 'Medical'" class="dropdown-item">
+                    Medical
+                  </a>
+                  <a (click)="ddSelect('Education')" [class.is-active]="ddSelection === 'Education'"
+                    class="dropdown-item">
+                    Education
+                  </a>
+                  <a (click)="ddSelect('Issues with Family/Personal')"
+                    [class.is-active]="ddSelection === 'Issues with Family/Personal'" class="dropdown-item">
+                    Issues with Family/Personal
+                  </a>
+                  <a (click)="ddSelect('Device/Hardware Related Issues')"
+                    [class.is-active]="ddSelection === 'Device/Hardware Related Issues'" class="dropdown-item">
+                    Device/Hardware Related Issues
+                  </a>
+                  <a (click)="ddSelect('Prefer Not to Say')" [class.is-active]="ddSelection === 'Prefer Not to Say'"
+                    class="dropdown-item">
+                    Prefer Not to Say
+                  </a>
+                  <hr class="dropdown-divider">
+                  <a (click)="ddSelect('Other')" [class.is-active]="ddSelection === 'Other'" class="dropdown-item">
+                    Other
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Start Date</label>
+            <input type="date" required ngModel class="input" name="start" min="{{ todayDatePick }}">
+          </div>
+
+          <div class="field">
+            <label class="label">End Date</label>
+            <input type="date" required ngModel class="input" name="end" min="{{ todayDatePick }}">
+          </div>
+
+          <p>You've used {{ inactiveDaysOff }} inactive days out of {{ maxGroupInactivityDays }} this {{ inactiveType }}
+          </p>
+
+          <div class="field">
+            <label class="label">Note</label>
+            <textarea class="textarea" ngModel required minlength="1" name="note"></textarea>
+          </div>
+          <div class="buttons">
+            <button class="button is-success" [disabled]="!ddSelected || !inactivityFormData.form.valid" type="submit"
+              [class.is-loading]="loadingInactivityPush">Save
+              changes</button>
+            <button class="button" (click)="toggleTimeoff()">Cancel</button>
+          </div>
+        </form>
+      </section>
     </div>
   </div>

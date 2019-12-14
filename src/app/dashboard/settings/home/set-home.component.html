@@ -1,0 +1,104 @@
+<br>
+<div class="container" *ngIf="loadingData">
+  <div class="notification is-success has-text-centered">Just a second...</div>
+</div>
+<div class="container animated zoomInUp" [class.is-hidden]="loadingData">
+  <h1 class="title is-size-4 has-text-centered">Let's take a look at this week</h1>
+  <div class="notification" *ngIf="noData">We don't have any data for this guild, so we're showing you sample data instead.</div>
+  <div class="columns">
+    <div class="column">
+      <div class="box has-text-centered has-background-warning has-text-danger animated zoomIn delay-1s">
+        <p class="is-size-5">Messages Sent</p>
+        <p class="is-size-4">{{messagesSent}}</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="box has-text-centered has-background-danger has-text-warning animated zoomIn delay-1s">
+        <p class="is-size-5">Users Banned</p>
+        <p class="is-size-4">{{usersBanned}}</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="box has-text-centered has-background-warning has-text-danger animated zoomIn delay-1s">
+        <p class="is-size-5">Users Joined</p>
+        <p class="is-size-4">{{usersJoined}}</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="box has-text-centered has-background-danger has-text-warning animated zoomIn delay-1s">
+        <p class="is-size-5">Users Left</p>
+        <p class="is-size-4">{{usersLeft}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <h1 class="title is-size-4 has-text-centered animated fadeInUp delay-2s">Here's when your community chat</h1>
+  <div style="width: 60%; margin: auto;" class="animated fadeInUp delay-2s">
+    <canvas id="communityDays"></canvas>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="columns has-text-centered wow fadeIn">
+    <div class="column">
+      <div class="box">
+        <p class="is-size-5">Campfire Commands Ran</p>
+        <p class="is-size-4">{{commandsRan}}</p>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="box">
+        <p class="is-size-5">% of messages which were commands</p>
+        <p class="is-size-4">{{percentileOfCommands}}<small>%</small></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns has-text-centered">
+    <div class="column">
+      <div class="box">
+        <p class="is-size-5">Most active day</p>
+        <p class="is-size-4">{{ mostActiveDay }}</p>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="box">
+        <p class="is-size-5">Most active hour</p>
+        <p class="is-size-4">{{mostActiveHour}}:00 <small>GMT</small></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="columns">
+    <div class="column is-5">
+      <h1 class="title is-size-4" style="margin-bottom: 0;">Recent events</h1>
+      <p>Showing the last 20 events</p>
+      <div class="box">
+        <div *ngFor="let event of events; let i=index">
+          <div *ngIf="i<21">
+            <p>{{ event }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <h1 class="title is-size-4" style="margin-bottom: 0;">Hourly breakdown</h1>
+      <p>Message Counts over the last 24 hours</p>
+      <br>
+      <canvas id="communityHours"></canvas>
+    </div>
+  </div>
+  <div class="has-text-right">
+    <a href="https://community.campfirebot.xyz/t/what-is-gravity/50" target="_blank">
+      <img src="../../../../assets/gravity.svg" alt="Powered by Gravity: A Campfire Company" class="hoverGrayscale"
+        width="250px">
+    </a>
+  </div>
+</div>

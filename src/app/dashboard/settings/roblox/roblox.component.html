@@ -1,0 +1,52 @@
+<br>
+<div class="container" *ngIf="loadingData">
+  <div class="notification is-success has-text-centered">Just a second...</div>
+</div>
+<div class="container animated zoomInUp" [class.is-hidden]="loadingData">
+  <h1 class="title is-size-4 has-text-centered">Campfire x Roblox</h1>
+  <form (ngSubmit)="setPrefix(prefixForm)" #prefixForm="ngForm">
+    <div class="field">
+      <div class="control">
+        <label class="label">Verified Role Name</label>
+        <input class="input is-fullwidth is-large" ngModel="{{prefix}}" required minlength="1" name="prefix" type="text"
+          placeholder="Verified">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <label class="label">Group ID</label>
+        <input class="input is-fullwidth is-large" ngModel="{{prefix}}" required minlength="1" name="prefix"
+          type="number" placeholder="4328731">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="field">
+      <div class="control">
+        <label class="label">Group Role Number</label>
+        <input class="input is-fullwidth is-large" ngModel="{{prefix}}" required minlength="1" name="prefix"
+          type="number" placeholder="255">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <label class="label">Discord Role Name</label>
+        <input class="input is-fullwidth is-large" ngModel="{{prefix}}" required minlength="1" name="prefix"
+          type="text" placeholder="Chief Executive Officer">
+      </div>
+    </div>
+
+    <div *ngFor="let role of roles">
+      <p><b>{{ role.id }}:</b> {{ role.name }} <a class="button is-small is-danger"
+          (click)="delBind(role.id)">Delete</a>
+      </p>
+    </div>
+
+    <hr>
+
+  <button class="button is-link is-large" (click)="saveBinds()" type="submit">Save</button>
+  </form>
+</div>

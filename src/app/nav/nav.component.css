@@ -1,1 +1,8 @@
+.is-primary.darker {
+  background-color: #5816a5;
+}
 
+.is-primary.mer {
+  background-color: #291e38;
+  border-top: 10px #8520f7 solid;
+}

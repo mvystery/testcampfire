@@ -1,0 +1,6 @@
+.stats-frame {
+    width: 100%;
+    height: calc(100vh - 99px);
+    position: relative;
+    top: -30px;
+}

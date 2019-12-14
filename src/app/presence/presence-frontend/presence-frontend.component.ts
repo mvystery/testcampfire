@@ -23,7 +23,7 @@ export class PresenceFrontendComponent implements OnInit {
 
   id: number;
   greeting: string;
-  robloxUsername: string;
+  robloxId: string;
   groupName: string;
   cta: string;
   ctaVisible: boolean;
@@ -65,8 +65,19 @@ export class PresenceFrontendComponent implements OnInit {
   inactiveDaysOff: number;
   today = new Date();
 
+  todayDatePick = new Date().toISOString().split('T')[0];
+
   discordLink: string;
   handbookLink: string;
+
+  timeoffDropped = false;
+  ddSelected = false;
+  ddSelection: string;
+
+  timeOffFormVisible: boolean;
+  loadingInactivityPush: boolean;
+
+  maxGroupInactivityDays: number;
 
   ngOnInit() {
     document.addEventListener('contextmenu', event => event.preventDefault());
@@ -135,6 +146,8 @@ export class PresenceFrontendComponent implements OnInit {
 
             this.discordLink = data.presence.group.discordLink;
             this.handbookLink = data.presence.group.handbook;
+
+            this.robloxId = data.userId;
 
             if (data.presence.user.warnings === 1) {
               this.warning1 = data.presence.user.warning1;
@@ -477,6 +490,8 @@ export class PresenceFrontendComponent implements OnInit {
               }
             });
 
+            this.maxGroupInactivityDays = data.presence.group.maxInactiveDays;
+
             if (data.presence.group.maxInactiveTypeYear === 'month') {
               if (
                 data.presence.user[
@@ -646,5 +661,78 @@ export class PresenceFrontendComponent implements OnInit {
           }
         }
       });
+  }
+
+  toggleTimeoff() {
+    if (this.timeoffDropped === false) {
+      this.timeoffDropped = true;
+    } else {
+      this.timeoffDropped = false;
+    }
+  }
+
+  ddSelect(selection) {
+    this.timeoffDropped = false;
+    this.ddSelected = true;
+    this.ddSelection = selection;
+  }
+
+  inactivityForm(data) {
+    this.loadingInactivityPush = true;
+    console.log(data.value);
+    const startDate = new Date(data.value.start);
+    const endDate = new Date(data.value.end);
+    const note = data.value.note;
+    const inactivityType = this.ddSelection;
+
+    const difference =
+      (endDate.getHours() - startDate.getHours()) / (1000 * 3600 * 24);
+
+    if (difference >= 0) {
+      this.loadingInactivityPush = false;
+      Swal.fire({
+        type: 'error',
+        text:
+          // tslint:disable-next-line: quotemark
+          "You can't request a day off or less, please select a date range that is 1 day or more",
+        title: 'Error'
+      });
+    } else {
+      this.http
+        .post<any>(
+          `https://api.campfirebot.xyz/presence/${this.id}/inactivity-request`,
+          {
+            type: inactivityType,
+            start: startDate,
+            end: startDate,
+            reason: note
+          },
+          {
+            headers: {
+              Authorization: localStorage.getItem('auth')
+            }
+          }
+        )
+        .subscribe(callback => {
+          if (callback.allowed === false) {
+            Swal.fire({
+              type: 'error',
+              text:
+                // tslint:disable-next-line: quotemark
+                callback.reason,
+              title: 'Error'
+            });
+          } else {
+          }
+        });
+    }
+  }
+
+  openTimeOff() {
+    this.timeOffFormVisible = true;
+  }
+
+  closeTimeOff() {
+    this.timeOffFormVisible = false;
   }
 }

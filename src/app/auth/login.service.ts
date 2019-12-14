@@ -4,6 +4,8 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { AngularFireFunctions } from '@angular/fire/functions';
+import Swal from 'sweetalert2';
 
 interface UserData {
   username: string;
@@ -19,15 +21,19 @@ export class LoginService {
   userToken: string;
   userAvatar: string;
 
+  DiscordUsername: string;
+  DiscordId: number;
+  DiscordAvatar: string;
+
   private userSource = new BehaviorSubject('');
   currentUser = this.userSource.asObservable();
 
-  constructor(private afAuth: AngularFireAuth, private http: HttpClient) {}
+  constructor(private afAuth: AngularFireAuth, private http: HttpClient, private func: AngularFireFunctions) { }
 
   login() {
     window.open(
       // tslint:disable-next-line: max-line-length
-      'https://discordapp.com/oauth2/authorize?client_id=579415199979798539&redirect_uri=https%3A%2F%2Fapi.campfirebot.xyz%2Flogin&response_type=code&scope=identify%20guilds',
+      'https://discordapp.com/oauth2/authorize?client_id=579415199979798539&redirect_uri=https://us-central1-campfire-640d7.cloudfunctions.net/login&response_type=code&scope=identify%20guilds',
       'Campfire',
       'menubar=no,width=500,height=720,location=no,resizable=no,scrollbars=yes,status=no'
     );
@@ -39,18 +45,15 @@ export class LoginService {
       this.afAuth.auth.signInWithCustomToken(tokenData.auth).then(
         res => {
           localStorage.setItem('auth', tokenData.token);
-          this.http
-            .get<UserData>('https://api.campfirebot.xyz/users/me', {
-              headers: {
-                Authorization: `${tokenData.token}`
-              }
-            })
-            .subscribe(data => {
-              this.userSource.next(data.username);
-            });
           resolve(res);
         },
-        err => reject(err)
+        err => {
+          if (err.code === 'auth/user-disabled') {
+            Swal.fire('Account Disabled', 'Your account seems to have been disabled. Please join our Support Server for assistance', 'info');
+          } else {
+            reject(err);
+          }
+        }
       );
     });
   }
@@ -73,12 +76,24 @@ export class LoginService {
 
   updateUser(token: string) {
     this.http
-      .get<UserData>('https://api.campfirebot.xyz/users/me', {
+      .get<UserData>('https://k2.campfirebot.xyz/auth/me', {
         headers: {
           Authorization: `${token}`
         }
       })
       .subscribe(data => {
+        this.userSource.next(data.username);
+      });
+
+    const call = this.func.httpsCallable('userData');
+    call({ auth: localStorage.getItem('auth') })
+      .subscribe(data => {
+        localStorage.setItem('id', data.id);
+        localStorage.setItem(
+          'avatar',
+          `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}`
+        );
+        localStorage.setItem('username', data.username);
         this.userSource.next(data.username);
       });
   }

@@ -18,39 +18,43 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { NgForm } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UpdatesComponent } from './updates/updates.component';
-import { DashboardProfileComponent } from './dashboard/dashboard-profile/dashboard-profile.component';
+import { DashboardProfileComponent } from './dashboard/profile/dashboard-profile.component';
 
 import { ColorPickerModule } from 'ngx-color-picker';
 import { NgxLinkifyjsModule } from 'ngx-linkifyjs';
 import * as Sentry from '@sentry/browser';
-import { DashboardGuildsComponent } from './dashboard/dashboard-guilds/dashboard-guilds.component';
-import { DashboardGuildManageComponent } from './dashboard/dashboard-guild-manage/dashboard-guild-manage.component';
-import { SettingsHandlerComponent } from './dashboard/dashboard-guild-manage/settings-handler/settings-handler.component';
-import { SetPrefixComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-prefix/set-prefix.component';
-import { SetWelcomerComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-welcomer/set-welcomer.component';
-import { SetRobloxComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-roblox/set-roblox.component';
+import { DashboardGuildsComponent } from './dashboard/guilds/dashboard-guilds.component';
+import { DashboardGuildManageComponent } from './dashboard/manage/dashboard-guild-manage.component';
 import { MarabouComponent } from './marabou/marabou.component';
 import { MaradashComponent } from './marabou/maradash/maradash.component';
 import { InterviewsComponent } from './marabou/interviews/interviews.component';
 import { NgxLinkifyOptions } from 'ngx-linkifyjs';
 import { MarabouNavComponent } from './marabou/marabou-nav/marabou-nav.component';
-import { SetRobloxBindsComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-roblox-binds/set-roblox-binds.component';
-import { SetRobloxAssetComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-roblox-asset/set-roblox-asset.component';
-import { SetRobloxPresenceComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-roblox-presence/set-roblox-presence.component';
 import { PresenceComponent } from './presence/presence.component';
 import { PresenceFrontendComponent } from './presence/presence-frontend/presence-frontend.component';
 import { PresenceManagerComponent } from './presence/presence-manager/presence-manager.component';
-import { ProTrialComponent } from './pro-trial/pro-trial.component';
 import { ViewProfileComponent } from './presence/presence-manager/view-profile/view-profile.component';
 import { VerifyComponent } from './verify/verify.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { CloverComponent } from './clover/clover.component';
-import { SetGroupComponent } from './dashboard/dashboard-guild-manage/settings-handler/set-group/set-group.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
+
+import { EmojifyModule, EmojifyPipe } from 'angular-emojify';
+import { SideNavGuildsComponent } from './side-nav-guilds/side-nav-guilds.component';
+import { SetHomeComponent } from './dashboard/settings/home/set-home.component';
+import { StatsComponent } from './dashboard/stats/stats.component';
+import { PrefixComponent } from './dashboard/settings/prefix/prefix.component';
+import { WelcomerComponent } from './dashboard/settings/welcomer/welcomer.component';
+import { LoggingComponent } from './dashboard/settings/logging/logging.component';
+import { ModeratorComponent } from './dashboard/settings/moderator/moderator.component';
+import { RobloxComponent } from './dashboard/settings/roblox/roblox.component';
+import { ErrorComponent } from './error/error.component';
 
 const options: NgxLinkifyOptions = {
   attributes: null,
@@ -72,6 +76,19 @@ const options: NgxLinkifyOptions = {
   validate: true
 };
 
+Sentry.init({
+  dsn: 'https://d1da4184595a45159753da7531546696@sentry.io/1488124'
+});
+
+@Injectable()
+export class SentryErrorHandler implements ErrorHandler {
+  constructor() {}
+  handleError(error) {
+    const eventId = Sentry.captureEvent(error.originalError || error);
+    // Sentry.showReportDialog({eventId});
+  }
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,41 +106,47 @@ const options: NgxLinkifyOptions = {
     DashboardProfileComponent,
     DashboardGuildsComponent,
     DashboardGuildManageComponent,
-    SettingsHandlerComponent,
-    SetPrefixComponent,
-    SetWelcomerComponent,
-    SetRobloxComponent,
     MarabouComponent,
     MaradashComponent,
     InterviewsComponent,
     MarabouNavComponent,
-    SetRobloxBindsComponent,
-    SetRobloxAssetComponent,
-    SetRobloxPresenceComponent,
     PresenceComponent,
     PresenceFrontendComponent,
     PresenceManagerComponent,
-    ProTrialComponent,
     ViewProfileComponent,
     VerifyComponent,
     CheckoutComponent,
     ThankYouComponent,
     CloverComponent,
-    SetGroupComponent
+    SideNavComponent,
+    SideNavGuildsComponent,
+    SetHomeComponent,
+    StatsComponent,
+    PrefixComponent,
+    WelcomerComponent,
+    LoggingComponent,
+    ModeratorComponent,
+    RobloxComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFireFunctionsModule,
     HttpClientModule,
     AngularFirestoreModule,
     ColorPickerModule,
     NgxLinkifyjsModule.forRoot(),
     FormsModule,
-    BrowserModule
+    BrowserModule,
+    EmojifyModule
   ],
-  providers: [],
+  providers: [
+    EmojifyPipe,
+    {provide: ErrorHandler, useClass: SentryErrorHandler}
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

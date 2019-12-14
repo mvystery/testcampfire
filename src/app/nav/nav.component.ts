@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { LoginService } from '../auth/login.service';
 import { Router, NavigationStart } from '@angular/router';
 
@@ -13,20 +13,27 @@ export class NavComponent implements OnInit {
   theme: string;
 
   constructor(private service: LoginService, private router: Router) {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        document.getElementById('campfireMenu').classList.remove('is-active');
-      }
-    });
   }
 
+  @Input() type: string;
+  @Input() fixed: boolean;
+
   ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        try {
+          document.getElementById('campfireMenu').classList.remove('is-active');
+        } catch {
+        }
+      }
+    });
+
     this.service.getLoggedInUser().subscribe(user => {
       this.user = user;
     });
 
     window.onmessage = e => {
-      if (e.origin === 'https://api.campfirebot.xyz') {
+      if (e.origin === 'https://us-central1-campfire-640d7.cloudfunctions.net') {
         this.service.pushToken(e.data);
       }
     };
@@ -42,6 +49,10 @@ export class NavComponent implements OnInit {
     } else {
       this.theme = theme;
       document.body.className = `${theme}-theme`;
+    }
+
+    if (!this.type) {
+      this.type = 'is-primary';
     }
   }
 

@@ -1,0 +1,28 @@
+<app-nav type="is-primary mer" fixed="true"></app-nav>
+<app-side-nav-guilds></app-side-nav-guilds>
+<div style="height: 88px" class="is-hidden-touch"></div>
+<div style="height: 62px" class="is-hidden-desktop"></div>
+<section class="hero is-primary is-small">
+  <div class="hero-body">
+    <div class="container animated fadeIn" *ngIf="name">
+      <div class="columns">
+        <div class="column is-2 has-text-right avatarHolder is-hidden-touch">
+          <img src="https://cdn.discordapp.com/icons/{{ id }}/{{ icon }}.webp?size=128" class="is-rounded">
+        </div>
+        <div class="column">
+          <h1 class="title is-size-3">{{ name }}</h1>
+          <p class="subtitle is-size-4">Manage your Campfire guild settings</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="app-holder">
+  <app-set-home *ngIf="tab == 'home'" id="{{ id }}"></app-set-home>
+  <app-prefix *ngIf="tab == 'prefix'" id="{{ id }}"></app-prefix>
+  <app-welcomer *ngIf="tab == 'welcomer'" id="{{ id }}"></app-welcomer>
+  <app-logging *ngIf="tab == 'logging'" id="{{ id }}"></app-logging>
+  <app-moderator *ngIf="tab == 'moderator'" id="{{ id }}"></app-moderator>
+  <app-roblox *ngIf="tab == 'roblox'" id="{{ id }}"></app-roblox>
+</div>

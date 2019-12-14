@@ -1,0 +1,19 @@
+<br>
+<div class="container" *ngIf="loadingData">
+  <div class="notification is-success has-text-centered">Just a second...</div>
+</div>
+<div class="container animated zoomInUp" [class.is-hidden]="loadingData">
+  <h1 class="title is-size-4 has-text-centered">Prefix for Campfire</h1>
+  <form (ngSubmit)="setPrefix(prefixForm)" #prefixForm="ngForm">
+    <div class="field has-addons">
+      <div class="control" style="flex: 1;">
+        <input class="input is-fullwidth is-large" ngModel="{{prefix}}" required minlength="1" name="prefix" type="text" placeholder="c!">
+      </div>
+      <div class="control">
+        <button [disabled]="!prefixForm.form.valid" class="button is-large is-link" [class.is-loading]="settingPrefix">
+          Set
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

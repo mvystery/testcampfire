@@ -1,0 +1,39 @@
+<app-nav type="is-primary mer" fixed="true"></app-nav>
+<app-side-nav></app-side-nav>
+<div style="height: 88px" class="is-hidden-touch"></div>
+<div style="height: 62px" class="is-hidden-desktop"></div>
+<section class="hero is-primary is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-2 has-text-right avatarHolder is-hidden-touch">
+          <h1 class="is-size-2 nomarg"><i class="fas fa-user-friends"></i></h1>
+        </div>
+        <div class="column">
+          <h1 class="title is-size-3">Select a guild</h1>
+          <p class="subtitle is-size-4">Select a guild from the guilds you manage below!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+        <img src="../../../assets/mag.svg" alt="Loading" class="has-background-light has-text-centered" *ngIf="!guilds">
+        <p *ngIf="!guilds">Grabbing the magnifying glass...</p>
+      <div class="columns" style="flex-wrap: wrap;">
+        <div class="column animated fadeInUp" *ngFor="let guild of guilds">
+          <img src="https://cdn.discordapp.com/icons/{{ guild.id }}/{{ guild.icon }}.webp?size=1024" *ngIf="guild.icon" class="is-rounded"
+            width="120px">
+            <img src="../../../assets/cogs-solid.svg" *ngIf="!guild.icon" class="is-rounded"
+            width="120px">
+          <p class="is-size-5">{{ guild.name }}</p>
+          <br>
+          <a class="button is-dark is-outlined is-rounded is-small" (click)="selectGuild(guild.id)">Manage ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

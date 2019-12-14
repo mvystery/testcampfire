@@ -1,0 +1,44 @@
+<br>
+<div class="container" *ngIf="loadingData">
+  <div class="notification is-success has-text-centered">Just a second...</div>
+</div>
+<div class="container animated zoomInUp" [class.is-hidden]="loadingData">
+  <h1 class="title is-size-4 has-text-centered">Welcomer</h1>
+  <div class="tooltip-holder tooltip" data-tooltip="Click to toggle">
+    <a class="button is-large is-fullwidth is-success" [class.is-loading]="welcomeSetLoading" *ngIf="postsWelcomes" (click)="disableWelcomer()"><i class="fas fa-power-off"></i> Enabled</a>
+    <a class="button is-large is-fullwidth is-danger" [class.is-loading]="welcomeSetLoading" *ngIf="!postsWelcomes" (click)="enableWelcomer()"><i class="fas fa-power-off"></i> Disabled</a>
+  </div>
+  <br>
+  <form (ngSubmit)="updateWelcomer(welocomerForm)" class="animated fadeInUp" #welocomerForm="ngForm" *ngIf="postsWelcomes">
+    <label class="label">Channel name</label>
+    <div class="tooltip-holder tooltip" data-tooltip="Channel name - Don't include the #">
+      <div class="field has-addons">
+        <p class="control">
+          <a class="button is-static is-large">
+            #
+          </a>
+        </p>
+        <div class="control" style="flex: 1;">
+          <input class="input is-fullwidth is-large" ngModel="{{welcomeChannelName}}" required minlength="1" name="channelName"
+            type="text" placeholder="general">
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="field">
+      <label class="label">Message</label>
+      <div class="control">
+        <textarea class="textarea is-fullwidth is-large" required minlength="1" name="prefix" type="text"
+          placeholder="Welcome to my server!" ngModel="{{welcomeMessage}}"></textarea>
+      </div>
+      <p>
+        <small>
+          You can use <code>$user$</code> to display the username of the user<br>
+          You can use <code>$server$</code> to display the name of the server
+        </small>
+      </p>
+    </div>
+
+    <button class="button is-link is-large is-fullwidth" type="submit">Save</button>
+  </form>
+</div>

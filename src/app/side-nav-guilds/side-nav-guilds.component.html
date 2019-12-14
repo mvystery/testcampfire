@@ -1,0 +1,42 @@
+<nav class="menu is-hidden-touch">
+  <div class="menu-item" routerLink="/dashboard/guilds" routerLinkActive="is-active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    <span class="icon"><i class="fas fa-arrow-left"></i></span>
+    Go back
+  </div>
+
+  <div class="menu-item" (click)="changeView('home')" [class.is-active]="viewing === 'home'">
+    <span class="icon"><i class="fas fa-home"></i></span>
+    Home
+  </div>
+
+  <div class="menu-item"  (click)="changeView('prefix')" [class.is-active]="viewing === 'prefix'">
+    <span class="icon"><i class="fas fa-exclamation"></i></span>
+    Prefix
+  </div>
+
+  <div class="menu-item" (click)="changeView('welcomer')" [class.is-active]="viewing === 'welcomer'">
+    <span class="icon"><i class="fas fa-handshake"></i></span>
+    Welcomer
+  </div>
+  
+  <div class="menu-item" (click)="changeView('logging')" [class.is-active]="viewing === 'logging'">
+    <span class="icon"><i class="fas fa-warehouse"></i></span>
+    Logging
+  </div>
+
+  <div class="menu-item" (click)="changeView('moderator')" [class.is-active]="viewing === 'moderator'">
+    <span class="icon"><i class="fas fa-shield-alt"></i></span>
+    Moderator
+  </div>
+
+  <div class="menu-item" (click)="changeView('roblox')" [class.is-active]="viewing === 'roblox'">
+    <span class="icon"><i class="fas fa-gamepad"></i></span>
+    Roblox
+  </div>
+
+  <div class="menu-item" disabled [class.is-active]="viewing === 'presence'">
+    <span class="icon"><i class="fas fa-chart-pie"></i></span>
+    Presence
+  </div>
+</nav>
