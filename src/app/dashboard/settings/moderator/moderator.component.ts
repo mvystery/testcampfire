@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-moderator',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./moderator.component.css']
 })
 export class ModeratorComponent implements OnInit {
+  @Input() id: number;
+  loadingData = true;
 
   constructor() { }
 
