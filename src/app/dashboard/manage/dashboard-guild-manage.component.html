@@ -14,6 +14,15 @@
           <p class="subtitle is-size-4">Manage your Campfire guild settings</p>
         </div>
       </div>
+      <div class="buttons is-hidden-desktop">
+        <a class="button is-light is-outlined" (click)="changeTab('home')"><i class="fas fa-home"></i> Home</a>
+        <a class="button is-light is-outlined" (click)="changeTab('prefix')"><i class="fas fa-exclamation"></i> Prefix</a>
+        <a class="button is-light is-outlined" (click)="changeTab('welcomer')"><i class="fas fa-handshake"></i> Welcomer</a>
+        <a class="button is-light is-outlined" (click)="changeTab('logging')"><i class="fas fa-warehouse"></i> Logging</a>
+        <a class="button is-light is-outlined" disabled><i class="fas fa-shield-alt"></i> Moderator</a>
+        <a class="button is-light is-outlined" disabled><i class="fas fa-gamepad"></i> Roblox</a>
+        <a class="button is-light is-outlined" disabled><i class="fas fa-chart-pie"></i> Presence</a>
+      </div>
     </div>
   </div>
 </section>
