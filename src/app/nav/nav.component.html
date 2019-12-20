@@ -127,9 +127,9 @@
       </div>
 
       <div class="navbar-end">
-        <a class="navbar-item" *ngIf="theme === 'halloween'" (click)="changeTheme('light')">
+        <a class="navbar-item" *ngIf="theme === 'christmas'" (click)="changeTheme('light')">
           <span class="icon">
-            <i class="fas fa-ghost"></i>
+            <i class="fas fa-snowflake"></i>
           </span>
         </a>
         <a class="navbar-item" *ngIf="theme === 'light'" (click)="changeTheme('dark')">
@@ -138,7 +138,7 @@
           </span>
         </a>
 
-        <a class="navbar-item" *ngIf="theme === 'dark'" (click)="changeTheme('halloween')">
+        <a class="navbar-item" *ngIf="theme === 'dark'" (click)="changeTheme('christmas')">
           <span class="icon">
             <i class="fas fa-moon"></i>
           </span>
