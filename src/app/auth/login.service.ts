@@ -49,6 +49,7 @@ export class LoginService {
         },
         err => {
           if (err.code === 'auth/user-disabled') {
+            // tslint:disable-next-line: max-line-length
             Swal.fire('Account Disabled', 'Your account seems to have been disabled. Please join our Support Server for assistance', 'info');
           } else {
             reject(err);

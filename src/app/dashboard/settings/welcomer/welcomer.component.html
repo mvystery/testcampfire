@@ -28,7 +28,7 @@
     <div class="field">
       <label class="label">Message</label>
       <div class="control">
-        <textarea class="textarea is-fullwidth is-large" required minlength="1" name="prefix" type="text"
+        <textarea class="textarea is-fullwidth is-large" required minlength="1" name="message" type="text"
           placeholder="Welcome to my server!" ngModel="{{welcomeMessage}}"></textarea>
       </div>
       <p>
@@ -39,6 +39,6 @@
       </p>
     </div>
 
-    <button class="button is-link is-large is-fullwidth" type="submit">Save</button>
+    <button [disabled]="!welocomerForm.valid" class="button is-link is-large is-fullwidth" [class.is-loading]="welcomeSaving" type="submit">Save</button>
   </form>
 </div>

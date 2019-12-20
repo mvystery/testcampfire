@@ -25,12 +25,12 @@
     Logging
   </div>
 
-  <div class="menu-item" (click)="changeView('moderator')" [class.is-active]="viewing === 'moderator'">
+  <div class="menu-item" disabled [class.is-active]="viewing === 'moderator'">
     <span class="icon"><i class="fas fa-shield-alt"></i></span>
     Moderator
   </div>
 
-  <div class="menu-item" (click)="changeView('roblox')" [class.is-active]="viewing === 'roblox'">
+  <div class="menu-item" disabled [class.is-active]="viewing === 'roblox'">
     <span class="icon"><i class="fas fa-gamepad"></i></span>
     Roblox
   </div>

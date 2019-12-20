@@ -14,9 +14,6 @@ export class SetHomeComponent implements OnInit {
   loadingData = true;
   communityDays: any;
   communityHours: any;
-  events: Array<any>;
-  commandsRan: number;
-  percentileOfCommands: number;
   mostActiveDay: string;
   mostActiveHour: string;
   messagesSent: number;
@@ -52,33 +49,15 @@ export class SetHomeComponent implements OnInit {
             ],
             datasets: [
               {
-                label: 'Last week',
-                data: [
-                  data.messagesLastWeek[0],
-                  data.messagesLastWeek[1],
-                  data.messagesLastWeek[2],
-                  data.messagesLastWeek[3],
-                  data.messagesLastWeek[4],
-                  data.messagesLastWeek[5],
-                  data.messagesLastWeek[6],
-                ],
-                fill: false,
-                lineTension: 0.3,
-                backgroundColor: '#d0adf7',
-                borderColor: '#d0adf7',
-                borderWidth: 3,
-                pointRadius: 3
-              },
-              {
                 label: 'This week',
                 data: [
-                  data.messagesThisWeek[0],
                   data.messagesThisWeek[1],
                   data.messagesThisWeek[2],
                   data.messagesThisWeek[3],
                   data.messagesThisWeek[4],
                   data.messagesThisWeek[5],
                   data.messagesThisWeek[6],
+                  data.messagesThisWeek[7],
                 ],
                 fill: false,
                 lineTension: 0.3,
@@ -91,7 +70,7 @@ export class SetHomeComponent implements OnInit {
           },
           options: {
             legend: {
-              display: true,
+              display: false,
               position: 'bottom'
             },
             title: {
@@ -118,13 +97,13 @@ export class SetHomeComponent implements OnInit {
         });
 
         const resultDays = Math.max(
-          data.messagesThisWeek[0],
           data.messagesThisWeek[1],
           data.messagesThisWeek[2],
           data.messagesThisWeek[3],
           data.messagesThisWeek[4],
           data.messagesThisWeek[5],
-          data.messagesThisWeek[6]);
+          data.messagesThisWeek[6],
+          data.messagesThisWeek[7]);
 
         const resultHours = Math.max(
           data.hourBreakdown[0],
@@ -152,13 +131,10 @@ export class SetHomeComponent implements OnInit {
           data.hourBreakdown[22],
           data.hourBreakdown[23]);
 
-        this.events = data.events;
         this.messagesSent = data.messagesSent;
-        this.commandsRan = data.commandsRan;
         this.usersBanned = data.usersBanned;
         this.usersJoined = data.usersJoined;
         this.usersLeft = data.usersLeft;
-        this.percentileOfCommands = Math.round((data.commandsRan / data.messagesSent) * 100);
 
         if (data.hourBreakdown[0] === resultHours) {
           this.mostActiveHour = '00';

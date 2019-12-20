@@ -1,0 +1,35 @@
+<br>
+<div class="container" *ngIf="loadingData">
+    <div class="notification is-success has-text-centered">Just a second...</div>
+</div>
+<div class="container animated zoomInUp" [class.is-hidden]="loadingData">
+    <h1 class="title is-size-4 has-text-centered">Moderator</h1>
+    <form (ngSubmit)="setPrefix(prefixForm)" #prefixForm="ngForm">
+        <div class="field">
+            <label class="checkbox">
+                <input type="checkbox">
+                Auto Word Filter
+                <small>This is a list of words that we classify as offensive, innappropriate or profane.</small>
+            </label>
+        </div>
+
+        <div class="field">
+            <label class="label">Action Logs Channel Name</label>
+            <small>This channel is used to log the <code>c!ban</code> and <code>c!kick</code> commands</small>
+            <div class="tooltip-holder tooltip" data-tooltip="Channel name - Don't include the #">
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button is-static is-large">
+                            #
+                        </a>
+                    </p>
+                    <div class="control" style="flex: 1;">
+                        <input class="input is-fullwidth is-large" ngModel="{{welcomeChannelName}}" required
+                            minlength="1" name="channelName" type="text" placeholder="action-logs">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="button is-link is-large is-fullwidth" type="submit">Save</button>
+    </form>

@@ -16,6 +16,7 @@ export class WelcomerComponent implements OnInit {
   welcomeMessage: string;
   welcomeChannelName: string;
   welcomeSetLoading: boolean;
+  welcomeSaving: boolean;
 
 
   constructor(private func: AngularFireFunctions, private http: HttpClient) { }
@@ -66,6 +67,29 @@ export class WelcomerComponent implements OnInit {
       if (data.success === true) {
         this.welcomeSetLoading = false;
         this.postsWelcomes = false;
+      }
+    });
+  }
+
+  updateWelcomer(formData){
+    this.welcomeSaving = true;
+    const call = this.func.httpsCallable('updateWelcome');
+    call({auth: localStorage.getItem('auth'), server: this.id, message: formData.value.message, channel: formData.value.channelName})
+    .subscribe(data => {
+      if (data.success === true) {
+        this.welcomeSaving = false;
+        Swal.fire({
+          title: 'Sweet!',
+          position: 'bottom',
+          // tslint:disable-next-line: quotemark
+          text: 'That\'s all done! Welcomer updated',
+          type: 'success',
+          toast: true,
+          showConfirmButton: false,
+          timer: 5000
+        });
+      } else {
+        Swal.fire('Whoops!', 'This server is broken. Ask support for help in our Discord server', 'error');
       }
     });
   }

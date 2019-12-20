@@ -15,11 +15,13 @@ export class HomeComponent implements OnInit {
   infernoBill: boolean;
 
   user: firebase.User;
+  username: string;
 
   ngOnInit() {
     this.service.getLoggedInUser().subscribe(user => {
       if (user) {
         this.user = user;
+        this.username = localStorage.getItem('username');
       }
     });
 

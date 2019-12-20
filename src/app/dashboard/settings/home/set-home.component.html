@@ -41,22 +41,6 @@
 
   <div class="spacer"></div>
 
-  <div class="columns has-text-centered wow fadeIn">
-    <div class="column">
-      <div class="box">
-        <p class="is-size-5">Campfire Commands Ran</p>
-        <p class="is-size-4">{{commandsRan}}</p>
-      </div>
-    </div>
-
-    <div class="column">
-      <div class="box">
-        <p class="is-size-5">% of messages which were commands</p>
-        <p class="is-size-4">{{percentileOfCommands}}<small>%</small></p>
-      </div>
-    </div>
-  </div>
-
   <div class="columns has-text-centered">
     <div class="column">
       <div class="box">
@@ -77,14 +61,17 @@
 
   <div class="columns">
     <div class="column is-5">
-      <h1 class="title is-size-4" style="margin-bottom: 0;">Recent events</h1>
-      <p>Showing the last 20 events</p>
+      <h1 class="title is-size-4" style="margin-bottom: 0;">Updates</h1>
+      <p>From Team Campfire</p>
       <div class="box">
+        <!--
         <div *ngFor="let event of events; let i=index">
           <div *ngIf="i<21">
             <p>{{ event }}</p>
           </div>
         </div>
+        -->
+        <p>No updates right now. Check back soon.</p>
       </div>
     </div>
 
@@ -97,8 +84,9 @@
   </div>
   <div class="has-text-right">
     <a href="https://community.campfirebot.xyz/t/what-is-gravity/50" target="_blank">
-      <img src="../../../../assets/gravity.svg" alt="Powered by Gravity: A Campfire Company" class="hoverGrayscale"
+      <img src="../../../../assets/gravity.png" alt="Powered by Gravity: A Campfire Company" class="hoverGrayscale"
         width="250px">
     </a>
+    <p>Data resets Monday 04:05am Europe/London</p>
   </div>
 </div>

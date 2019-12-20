@@ -1,13 +1,12 @@
-<app-nav></app-nav>
-<div class="hero is-primary is-fullheight-with-navbar cf-shadow-bg">
+<app-nav type="is-primary"></app-nav>
+<div class="hero is-primary is-fullheight-with-navbar cf-shadow-bg" *ngIf="!user">
   <div class="hero-body">
     <div class="container animated fadeInUp">
       <div class="columns">
         <div class="column">
-          <h1 class="title is-size-1 is-size-1-touch">More
-            {{ randomMessage }}</h1>
-          <p class="subtitle">Invite Campfire to your server and improve how much your community socialises with tickets
-            and XP</p>
+          <h1 class="title is-size-1 is-size-1-touch">We're Campfire</h1>
+          <p class="subtitle">The all-in-one Discord bot dedicated to social features, economy and moderation. Nice to
+            meet you!</p>
           <a href="https://campfirebot.xyz/links/invite" class="button is-rounded is-light is-outlined"
             style="margin-right: 5px;">
             <i class="fas fa-paper-plane" style="margin-right: 5px;"></i>Invite Campfire</a>
@@ -18,103 +17,21 @@
   </div>
 </div>
 
-<div class="hero is-danger is-medium">
+<div class="hero is-primary is-fullheight-with-navbar cf-shadow-bg" *ngIf="user">
   <div class="hero-body">
-    <div class="container">
-      <h1 class="title is-size-2 is-size-2-touch">Why Campfire?</h1>
-      <h1 class="subtitle is-size-5 is-size-5-touch">Here's why you should be using Campfire</h1>
-      <div class="spacer"></div>
+    <div class="container animated fadeInUp">
       <div class="columns">
         <div class="column">
-          <div class="box has-background-warning">
-            <h1 class="title is-size-4 is-size-4-touch has-text-warning-inverted">
-              Community
-            </h1>
-            <div class="content">
-              <p class="has-text-warning-inverted">
-                We'll bring features to your guild that encourages people to use it.
-                For example, our best-in-class tickets system.
-              </p>
-            </div>
-          </div>
-        </div>
+          <h1 class="title is-size-1 is-size-1-touch">Hey {{ username }}</h1>
+          <p class="subtitle">I hope you're having a nice day! Thanks for dropping by.</p>
+          <div class="buttons">
+            <a href="https://campfirebot.xyz/links/invite" class="button is-rounded is-light is-outlined"
+              style="margin-right: 5px;">
+              <i class="fas fa-paper-plane" style="margin-right: 5px;"></i>Invite Campfire</a>
 
-        <div class="column">
-          <div class="box" style="background-color: #ff6d4f;">
-            <h1 class="title is-size-4 has-text-warning-inverted">
-              Fun
-            </h1>
-            <p class="has-text-warning-inverted">
-              We'll bring heaps of fun, social features for you and your community to play about with.
-              Our favourite is the magic 8ball.
-            </p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="box has-background-warning">
-            <h1 class="title is-size-4 is-size-4-touch has-text-warning-inverted">
-              Moderator
-            </h1>
-            <p class="has-text-warning-inverted">We'll keep your guild safe with fancy moderation
-              features that are fully customisable and work to keep you in control <small>- Coming soon</small>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="hero is-link is-small">
-  <div class="hero-body">
-    <div class="container">
-      <br>
-      <h1 class="title is-size-3 is-size-3-touch">Don't take our word for it</h1>
-      <h1 class="subtitle is-size-5 is-size-5-touch">Trusted by great people</h1>
-
-      <div class="columns">
-        <div class="column has-text-centered"><img
-            src="https://discordbots.org/api/widget/servers/579415199979798539.svg?noavatar=true&leftcolor=ffffff&rightcolor=38005b&lefttextcolor=1a1718&righttextcolor=ffffff"
-            alt="Server Counter">
-        </div>
-        <div class="column has-text-centered"><img
-            src="https://discordbots.org/api/widget/upvotes/579415199979798539.svg?noavatar=true&leftcolor=ffffff&rightcolor=38005b&lefttextcolor=1a1718&righttextcolor=ffffff"
-            alt="Server Counter">
-        </div>
-        <div class="column has-text-centered"><img
-            src="https://discordbots.org/api/widget/status/579415199979798539.svg?noavatar=true&leftcolor=ffffff&rightcolor=38005b&lefttextcolor=1a1718&righttextcolor=ffffff"
-            alt="Server Counter">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="hero is-dark is-medium" style="background-color: var(--dark-primary);">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title is-size-2 is-size-2-touch">See it in action</h1>
-      <div class="columns is-vcentered">
-        <div class="column">
-          <img src="../../assets/1IuK6hjfwm.gif" style="border-radius: 6px;">
-        </div>
-        <div class="column">
-          <div class="box">
-            <h1 class="title is-size-4 is-size-4-touch">Campfire is built, for you</h1>
-            <div class="content">
-              <p>
-                When we built Campfire, we built it around the sole idea of simplicity and getting things done.
-              </p>
-              <p>
-                Today, this ideaology is still heavily present throughout all of our products, as we continue our
-                mission to build the greatest Discord bot, for you.
-              </p>
-              <p>
-                We not only built Campfire for ease, but we built it with you (the user) in mind. That's why we pioneer
-                to make everything controllable via our web dashboard.
-              </p>
-            </div>
+              <a routerLink="/dashboard" class="button is-rounded is-light is-outlined"
+            style="margin-right: 5px;">
+            <i class="fas fa-chart-line" style="margin-right: 5px;"></i>Dashboard</a>
           </div>
         </div>
       </div>
@@ -232,6 +149,110 @@
   </div>
 </div>
 
+<div class="hero is-danger is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-2 is-size-2-touch">Why Campfire?</h1>
+      <h1 class="subtitle is-size-5 is-size-5-touch">Here's why you should be using Campfire</h1>
+      <div class="spacer"></div>
+      <div class="columns">
+        <div class="column">
+          <div class="box has-background-warning">
+            <h1 class="title is-size-4 is-size-4-touch has-text-warning-inverted">
+              Community
+            </h1>
+            <div class="content">
+              <p class="has-text-warning-inverted">
+                We'll bring features to your guild that encourages people to use it.
+                For example, our best-in-class tickets system.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="box" style="background-color: #ff6d4f;">
+            <h1 class="title is-size-4 has-text-warning-inverted">
+              Fun
+            </h1>
+            <p class="has-text-warning-inverted">
+              We'll bring heaps of fun, social features for you and your community to play about with.
+              Our favourite is the magic 8ball.
+            </p>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="box has-background-warning">
+            <h1 class="title is-size-4 is-size-4-touch has-text-warning-inverted">
+              Moderator
+            </h1>
+            <p class="has-text-warning-inverted">We'll keep your guild safe with fancy moderation
+              features that are fully customisable and work to keep you in control <small>- Coming soon</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hero is-link is-small">
+  <div class="hero-body">
+    <div class="container">
+      <br>
+      <h1 class="title is-size-3 is-size-3-touch">Don't take our word for it</h1>
+      <h1 class="subtitle is-size-5 is-size-5-touch">Trusted by great people</h1>
+
+      <div class="columns">
+        <div class="column has-text-centered"><img
+            src="https://discordbots.org/api/widget/servers/579415199979798539.svg?noavatar=true&leftcolor=ffffff&rightcolor=38005b&lefttextcolor=1a1718&righttextcolor=ffffff"
+            alt="Server Counter">
+        </div>
+        <div class="column has-text-centered"><img
+            src="https://discordbots.org/api/widget/upvotes/579415199979798539.svg?noavatar=true&leftcolor=ffffff&rightcolor=38005b&lefttextcolor=1a1718&righttextcolor=ffffff"
+            alt="Server Counter">
+        </div>
+        <div class="column has-text-centered"><img
+            src="https://discordbots.org/api/widget/status/579415199979798539.svg?noavatar=true&leftcolor=ffffff&rightcolor=38005b&lefttextcolor=1a1718&righttextcolor=ffffff"
+            alt="Server Counter">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hero is-dark is-medium" style="background-color: var(--dark-primary);">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-size-2 is-size-2-touch">See it in action</h1>
+      <div class="columns is-vcentered">
+        <div class="column">
+          <img src="../../assets/1IuK6hjfwm.gif" style="border-radius: 6px;">
+        </div>
+        <div class="column">
+          <div class="box">
+            <h1 class="title is-size-4 is-size-4-touch">Campfire is built, for you</h1>
+            <div class="content">
+              <p>
+                When we built Campfire, we built it around the sole idea of simplicity and getting things done.
+              </p>
+              <p>
+                Today, this ideaology is still heavily present throughout all of our products, as we continue our
+                mission to build the greatest Discord bot, for you.
+              </p>
+              <p>
+                We not only built Campfire for ease, but we built it with you (the user) in mind. That's why we pioneer
+                to make everything controllable via our web dashboard.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="hero is-link is-medium">
   <div class="hero-body">
     <div class="container">
@@ -281,7 +302,7 @@
       <p>© Campfire 2019 - All Rights Reserved</p>
       <p class="is-size-7">The AWS (Amazon Web Services) logo are trademarks of AWS, registered in the U.S. and other
         countries</p>
-      <p class="is-size-7">Created with ❤ in Great Britain by Sam.</p>
+      <p class="is-size-7">Created with <i class="twa twa-yellow_heart"></i> in Great Britain by Sam.</p>
       <p class="is-size-7">All data stored within United States of America</p>
     </div>
   </div>
