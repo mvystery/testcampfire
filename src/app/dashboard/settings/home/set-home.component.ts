@@ -57,7 +57,7 @@ export class SetHomeComponent implements OnInit {
                   data.messagesThisWeek[4],
                   data.messagesThisWeek[5],
                   data.messagesThisWeek[6],
-                  data.messagesThisWeek[7],
+                  data.messagesThisWeek[0],
                 ],
                 fill: false,
                 lineTension: 0.3,
@@ -103,7 +103,7 @@ export class SetHomeComponent implements OnInit {
           data.messagesThisWeek[4],
           data.messagesThisWeek[5],
           data.messagesThisWeek[6],
-          data.messagesThisWeek[7]);
+          data.messagesThisWeek[0]);
 
         const resultHours = Math.max(
           data.hourBreakdown[0],
