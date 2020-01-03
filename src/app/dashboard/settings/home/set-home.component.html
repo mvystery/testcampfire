@@ -64,14 +64,12 @@
       <h1 class="title is-size-4" style="margin-bottom: 0;">Updates</h1>
       <p>From Team Campfire</p>
       <div class="box">
-        <!--
+        <p *ngIf="!events">No updates right now. Check back later.</p>
         <div *ngFor="let event of events; let i=index">
           <div *ngIf="i<21">
             <p>{{ event }}</p>
           </div>
         </div>
-        -->
-        <p>No updates right now. Check back soon.</p>
       </div>
     </div>
 

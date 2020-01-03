@@ -29,6 +29,7 @@ export class SetHomeComponent implements OnInit {
   usersJoined: number;
   usersLeft: number;
   noData: boolean;
+  events: Array<any>;
 
   constructor(private http: HttpClient, private db: AngularFirestore, private service: LoginService, ) { }
 
@@ -111,13 +112,13 @@ export class SetHomeComponent implements OnInit {
                   });
 
                   const resultDays = Math.max(
+                    data.messagesThisWeek[0],
                     data.messagesThisWeek[1],
                     data.messagesThisWeek[2],
                     data.messagesThisWeek[3],
                     data.messagesThisWeek[4],
                     data.messagesThisWeek[5],
-                    data.messagesThisWeek[6],
-                    data.messagesThisWeek[7]);
+                    data.messagesThisWeek[6]);
 
                   const resultHours = Math.max(
                     data.hourBreakdown[0],
