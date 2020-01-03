@@ -3,6 +3,8 @@ import { LoginService } from 'src/app/auth/login.service';
 import { HttpClient } from '@angular/common/http';
 import { AngularFireFunctions } from '@angular/fire/functions';
 
+declare var Chargebee: any;
+
 interface UserData {
   username: string;
   id: string;
@@ -23,28 +25,17 @@ export class LoggedInComponent implements OnInit {
   constructor(private service: LoginService, private http: HttpClient, private func: AngularFireFunctions) { }
 
   ngOnInit() {
+    Chargebee.registerAgain();
     this.service.getLoggedInUser().subscribe(user => {
       this.user = user;
-      if (user) {
-        const token = localStorage.getItem('auth');
-        if (localStorage.getItem('username') === null) {
-          const call = this.func.httpsCallable('userData');
-          call({ auth: localStorage.getItem('auth') })
-            .subscribe(data => {
-              localStorage.setItem('username', data.username);
-              localStorage.setItem('id', data.id);
-              localStorage.setItem(
-                'avatar',
-                `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}`
-              );
-
-              this.DiscordUser = data.username;
-              this.DiscordAvatar = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}`;
-            });
-        } else {
-          this.DiscordUser = localStorage.getItem('username');
-          this.DiscordAvatar = localStorage.getItem('avatar');
+      localStorage.setItem('fs_userdeta', this.user.displayName);
+      localStorage.setItem('fs_useridea', this.user.uid);
+      if (localStorage.getItem('lapse')) {
+        if ((parseFloat(localStorage.getItem('lapse')) + 6.048e+8) < new Date().getTime()) {
+          this.service.logout();
         }
+      } else {
+        localStorage.setItem('lapse', new Date().getTime().toString());
       }
     });
   }

@@ -44,7 +44,7 @@ export class LoginService {
       this.userToken = tokenData.token;
       this.afAuth.auth.signInWithCustomToken(tokenData.auth).then(
         res => {
-          localStorage.setItem('auth', tokenData.token);
+          // localStorage.setItem('auth', tokenData.token);
           resolve(res);
         },
         err => {
@@ -65,37 +65,12 @@ export class LoginService {
 
   logout() {
     this.afAuth.auth.signOut();
-    localStorage.removeItem('auth');
-    localStorage.removeItem('username');
-    localStorage.removeItem('avatar');
-    localStorage.removeItem('id');
+    localStorage.removeItem('fs_useridea');
+    localStorage.removeItem('fs_userdeta');
+    localStorage.removeItem('lapse');
   }
 
   getToken() {
     return this.userToken;
-  }
-
-  updateUser(token: string) {
-    this.http
-      .get<UserData>('https://k2.campfirebot.xyz/auth/me', {
-        headers: {
-          Authorization: `${token}`
-        }
-      })
-      .subscribe(data => {
-        this.userSource.next(data.username);
-      });
-
-    const call = this.func.httpsCallable('userData');
-    call({ auth: localStorage.getItem('auth') })
-      .subscribe(data => {
-        localStorage.setItem('id', data.id);
-        localStorage.setItem(
-          'avatar',
-          `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}`
-        );
-        localStorage.setItem('username', data.username);
-        this.userSource.next(data.username);
-      });
   }
 }

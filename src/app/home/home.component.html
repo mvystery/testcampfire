@@ -22,16 +22,15 @@
     <div class="container animated fadeInUp">
       <div class="columns">
         <div class="column">
-          <h1 class="title is-size-1 is-size-1-touch">Hey {{ username }}</h1>
+          <h1 class="title is-size-1 is-size-1-touch">Hey {{ user.displayName }}</h1>
           <p class="subtitle">I hope you're having a nice day! Thanks for dropping by.</p>
           <div class="buttons">
             <a href="https://campfirebot.xyz/links/invite" class="button is-rounded is-light is-outlined"
               style="margin-right: 5px;">
               <i class="fas fa-paper-plane" style="margin-right: 5px;"></i>Invite Campfire</a>
 
-              <a routerLink="/dashboard" class="button is-rounded is-light is-outlined"
-            style="margin-right: 5px;">
-            <i class="fas fa-chart-line" style="margin-right: 5px;"></i>Dashboard</a>
+            <a routerLink="/dashboard" class="button is-rounded is-light is-outlined" style="margin-right: 5px;">
+              <i class="fas fa-chart-line" style="margin-right: 5px;"></i>Dashboard</a>
           </div>
         </div>
       </div>
@@ -39,111 +38,56 @@
   </div>
 </div>
 
-<div class="hero is-warning is-medium" *ngIf="user">
+<div class="hero is-warning is-medium" [class.is-hidden]="!user">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title is-size-2 is-size-2-touch">Three, simple plans</h1>
-      <h1 class="subtitle is-size-5 is-size-5-touch has-text-weight-bold">Donate to Campfire, pick the best one for you
+      <h1 class="title is-size-2 is-size-2-touch">Help out Campfire</h1>
+      <h1 class="subtitle is-size-5 is-size-5-touch has-text-weight-bold">Your donations to Campfire go towards server costs, domain costs and general running costs
       </h1>
+
+      <br>
+      <h1 class="title is-size-3 is-size-3-touch">$2.50<span class="is-size-5">/month <small>when billed annually</small></span></h1>
+      <hr style="background-color: #b51d1d">
+      <div class="columns">
+        <div class="column">
+          <h1 class="title is-size-4 is-size-4-touch">50 Daily Tickets</h1>
+          <h1 class="subtitle is-size-6 is-size-6-touch">That's 40 more than usual!</h1>
+        </div>
+
+        <div class="column">
+          <h1 class="title is-size-4 is-size-4-touch">No cooldowns</h1>
+          <h1 class="subtitle is-size-6 is-size-6-touch">Use commands rapid fast</h1>
+        </div>
+
+        <div class="column">
+          <h1 class="title is-size-4 is-size-4-touch">PRO Badge</h1>
+          <h1 class="subtitle is-size-6 is-size-6-touch">Rep your support</h1>
+        </div>
+      </div>
 
       <div class="columns">
         <div class="column">
-          <div class="box has-text-centered">
-            <h1 class="title is-size-4 is-size-4-touch">Ember</h1>
-            <h1 class="subtitle is-size-6 is-size-6-touch has-text-weight-bold">Free forever</h1>
-            <p>Core Features of Campfire</p>
-            <hr class="darker">
-            <p>Web Dashboard</p>
-            <hr class="darker">
-            <p>10 Daily Tickets</p>
-            <hr class="darker">
-            <p>Access to Presence</p>
-            <hr class="darker">
-            <p>5 Second cooldowns</p>
-            <hr class="darker">
-            <a href="https://campfirebot.xyz/links/invite" target="_blank"
-              class="button is-fullwidth is-success is-outlined is-rounded has-text-weight-bold">Invite</a>
-          </div>
+          <h1 class="title is-size-4 is-size-4-touch">PRO Role</h1>
+          <h1 class="subtitle is-size-6 is-size-6-touch">Available in our server, Campfire HQ</h1>
         </div>
 
         <div class="column">
-          <div class="box has-text-centered">
-            <h1 class="title is-size-4 is-size-4-touch">Spark</h1>
-            <h1 class="subtitle is-size-6 has-text-weight-bold is-size-6-touch">£2.50/month</h1>
-            <p>Core Features of Campfire</p>
-            <hr class="darker">
-            <p>Web Dashboard</p>
-            <hr class="darker">
-            <p>50 Daily Tickets</p>
-            <hr class="darker">
-            <p>Access to Presence</p>
-            <hr class="darker">
-            <p>No cooldowns</p>
-            <hr class="darker">
-            <p>Grid view on Presence</p>
-            <hr class="darker">
-            <p>Priority Support</p>
-            <hr class="darker">
-            <p>Guided Support for intergrating Presence</p>
-            <hr class="darker">
-            <p>PRO badge on Campfire Profile</p>
-            <hr class="darker">
-            <p>Spark Role in Campfire HQ</p>
-            <hr class="darker">
-            <p>Early access to Canary</p>
-            <hr class="darker">
-            <a class="button is-fullwidth is-success is-outlined is-rounded has-text-weight-bold"
-              (click)="startBillingSpark()">Purchase for
-              £2.50</a>
-
-            <a href="https://www.patreon.com/campfirebot" target="_blank"
-              class="button is-fullwidth is-patreon is-rounded has-text-weight-bold">Purchase via Patreon
-              for $3.00</a>
-          </div>
+          <h1 class="title is-size-4 is-size-4-touch">Priority Support</h1>
+          <h1 class="subtitle is-size-6 is-size-6-touch">Get priority over other customers</h1>
         </div>
 
         <div class="column">
-          <div class="box has-text-centered">
-            <h1 class="title is-size-4 is-size-4-touch">Inferno</h1>
-            <h1 class="subtitle is-size-6 has-text-weight-bold is-size-6-touch">£5.00/month</h1>
-            <p>Core Features of Campfire</p>
-            <hr class="darker">
-            <p>Web Dashboard</p>
-            <hr class="darker">
-            <p>100 Daily Tickets</p>
-            <hr class="darker">
-            <p>Access to Presence</p>
-            <hr class="darker">
-            <p>No cooldowns</p>
-            <hr class="darker">
-            <p>Grid view on Presence</p>
-            <hr class="darker">
-            <p>Priority Support</p>
-            <hr class="darker">
-            <p>Guided Support for intergrating Presence</p>
-            <hr class="darker">
-            <p>PRO badge on Campfire Profile</p>
-            <hr class="darker">
-            <p>Inferno Role in Campfire HQ</p>
-            <hr class="darker">
-            <p>Early access to Canary</p>
-            <hr class="darker">
-            <p>Integration with Presence API</p>
-            <hr class="darker">
-            <p>Whitelabel Campfire under your own name</p>
-            <hr class="darker">
-            <p>Dedicated Support Team member</p>
-            <hr class="darker">
-            <p>Request a feature, we'll add it the same month</p>
-            <hr class="darker">
-            <a class="button is-fullwidth is-success is-outlined is-rounded has-text-weight-bold"
-              (click)="startBillingInferno()">Purchase for
-              £5.00</a>
-            <a href="https://www.patreon.com/campfirebot" target="_blank"
-              class="button is-fullwidth is-patreon is-rounded has-text-weight-bold">Purchase via Patreon
-              for $5.50</a>
-          </div>
+          <h1 class="title is-size-4 is-size-4-touch">Early access</h1>
+          <h1 class="subtitle is-size-6 is-size-6-touch">Get access to features before other customers</h1>
         </div>
+      </div>
+
+      <hr style="background-color: #b51d1d">
+
+      <div class="buttons">
+        <a class="button is-danger is-fullwidth" (click)="annualBill()">Buy for $2.50/month anually</a>
+        <a class="button is-danger is-fullwidth" (click)="monthlyBill()">Buy for $3.00/month monthly</a>
+        <a href="https://paypal.me/campfirebot" class="button is-outlined is-danger is-small is-fullwidth">Pay via PayPal</a>
       </div>
     </div>
   </div>

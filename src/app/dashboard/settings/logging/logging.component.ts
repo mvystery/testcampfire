@@ -22,7 +22,7 @@ export class LoggingComponent implements OnInit {
 
   ngOnInit() {
     const call = this.func.httpsCallable('loggingLoad');
-    call({ auth: localStorage.getItem('auth'), server: this.id })
+    call({ server: this.id })
       .subscribe(data => {
         if (data.auth === true) {
           if (data.logging === true) {
@@ -51,7 +51,7 @@ export class LoggingComponent implements OnInit {
     this.savingFormData = true;
     console.log(data.form.value);
     const call = this.func.httpsCallable('loggingSet');
-    call({ auth: localStorage.getItem('auth'), server: this.id, data: data.form.value }).subscribe(returned => {
+    call({ server: this.id, data: data.form.value }).subscribe(returned => {
       if (returned.success === true) {
         this.savingFormData = false;
         Swal.fire({

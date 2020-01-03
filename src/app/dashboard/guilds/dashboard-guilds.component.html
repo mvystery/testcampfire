@@ -24,7 +24,7 @@
         <img src="../../../assets/mag.svg" alt="Loading" class="has-background-light has-text-centered" *ngIf="!guilds">
         <p *ngIf="!guilds">Grabbing the magnifying glass...</p>
       <div class="columns" style="flex-wrap: wrap;">
-        <div class="column animated fadeInUp" *ngFor="let guild of guilds">
+        <div class="column is-2 animated fadeInUp" *ngFor="let guild of guilds">
           <img src="https://cdn.discordapp.com/icons/{{ guild.id }}/{{ guild.icon }}.webp?size=1024" *ngIf="guild.icon" class="is-rounded"
             width="120px">
             <img src="../../../assets/cogs-solid.svg" *ngIf="!guild.icon" class="is-rounded"

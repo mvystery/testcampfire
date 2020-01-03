@@ -28,12 +28,7 @@ export class DashboardGuildsComponent implements OnInit {
   selectGuild(guildId) {
     this.http
       .get<GuildData>(
-        `https://root.campfirebot.xyz/api/check/${guildId}`,
-        {
-          headers: {
-            Authorization: localStorage.getItem('auth')
-          }
-        }
+        `https://root.campfirebot.xyz/api/check/${guildId}`
       )
       .subscribe(data => {
         console.log(data);

@@ -27,7 +27,7 @@
       <div class="box cf-border" [style.border-color]="color">
         <div class="columns">
           <div class="column has-text-left" style="padding-top: 3px;">
-            <p class="has-text-weight-bold">{{ name }}</p>
+            <p class="has-text-weight-bold">{{ user.displayName }}</p>
 
             <p>{{ bio }}</p>
 
@@ -54,7 +54,7 @@
             </div>
           </div>
           <div class="column has-text-right">
-            <img src="{{ avatar }}" width="100px" alt="Avatar" style="border-radius: 4px;">
+            <img src="{{ user.photoURL }}" width="100px" alt="Avatar" style="border-radius: 4px;">
           </div>
         </div>
       </div>
@@ -114,7 +114,7 @@
         </div>
 
         <div class="buttons">
-          <button class="button is-success" [disabled]="!profileFormData.form.valid" type="submit">Save changes</button>
+          <button class="button is-success" [disabled]="!profileFormData.form.valid" [class.is-loading]="submittingData" type="submit">Save changes</button>
           <a class="button" (click)="closeModal()">Cancel</a>
         </div>
       </form>

@@ -1,9 +1,13 @@
 <a class="navbar-link">
-  <img src="{{ DiscordAvatar }}" class="is-rounded" /> Hi, {{ DiscordUser }}
+  <img src="{{ user.photoURL }}" class="is-rounded" /> Hi, {{ user.displayName }}
 </a>
 <div class="navbar-dropdown">
   <a routerLink="/dashboard" class="navbar-item">
     Dashboard
+  </a>
+
+  <a class="navbar-item" href="javascript:void(0)" data-cb-type="portal">
+    Manage Billing
   </a>
 
   <!--

@@ -30,6 +30,9 @@ export class DashboardProfileComponent implements OnInit {
   bio: string;
   formattedNat: string;
   flag: string;
+  user: firebase.User;
+  authToken: string;
+  submittingData = false;
 
   constructor(
     private service: LoginService,
@@ -43,31 +46,31 @@ export class DashboardProfileComponent implements OnInit {
     this.service.getLoggedInUser().subscribe(user => {
       if (!user) {
         this.router.navigate(['/']);
+      } else if (user) {
+        this.user = user;
+        this.db
+          .collection('users')
+          .doc(this.user.uid)
+          .ref.onSnapshot(doc => {
+            if (doc.exists) {
+              this.color = doc.data().favColor;
+              this.balance = doc.data().balance;
+              this.color = doc.data().favColor;
+              this.level = doc.data().level;
+              this.reputation = doc.data().reputation;
+              this.xp = doc.data().xp;
+              let country = doc.data().country;
+              country = country.replace(/_/g, '-');
+              const takenAwayColon = country.replace(/:/g, '');
+              this.nationality = doc.data().country;
+              this.formattedNat = this.emojify.transform(country);
+              this.flag = takenAwayColon.replace('flag-', '');
+              this.bio = doc.data().userDescription;
+              this.authToken = doc.data().authToken;
+            }
+          });
       }
     });
-    this.avatar = localStorage.getItem('avatar');
-    this.name = localStorage.getItem('username');
-
-    this.db
-      .collection('users')
-      .doc(localStorage.getItem('id'))
-      .ref.onSnapshot(doc => {
-        if (doc.exists) {
-          this.color = doc.data().favColor;
-          this.balance = doc.data().balance;
-          this.color = doc.data().favColor;
-          this.level = doc.data().level;
-          this.reputation = doc.data().reputation;
-          this.xp = doc.data().xp;
-          let country = doc.data().country;
-          country = country.replace(/_/g, '-');
-          const takenAwayColon = country.replace(/:/g, '');
-          this.nationality = doc.data().country;
-          this.formattedNat = this.emojify.transform(country);
-          this.flag = takenAwayColon.replace('flag-', '');
-          this.bio = doc.data().userDescription;
-        }
-      });
   }
 
   openModal() {
@@ -79,6 +82,7 @@ export class DashboardProfileComponent implements OnInit {
   }
 
   updateProfile(data) {
+    this.submittingData = true;
     const nationality = data.value.nationality;
     const bio = data.value.bio;
     console.log(this.color);
@@ -109,7 +113,7 @@ export class DashboardProfileComponent implements OnInit {
         packagedData,
         {
           headers: {
-            Authorization: localStorage.getItem('auth'),
+            Authorization: this.authToken,
             'Content-Type': 'application/json'
           }
         }
