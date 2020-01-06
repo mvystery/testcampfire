@@ -111,14 +111,19 @@ export class SetHomeComponent implements OnInit {
                     }
                   });
 
+                  this.messagesSent = data.messagesSent;
+                  this.usersBanned = data.usersBanned;
+                  this.usersJoined = data.usersJoined;
+                  this.usersLeft = data.usersLeft;
+
                   const resultDays = Math.max(
-                    data.messagesThisWeek[0],
                     data.messagesThisWeek[1],
                     data.messagesThisWeek[2],
                     data.messagesThisWeek[3],
                     data.messagesThisWeek[4],
                     data.messagesThisWeek[5],
-                    data.messagesThisWeek[6]);
+                    data.messagesThisWeek[6],
+                    data.messagesThisWeek[0]);
 
                   const resultHours = Math.max(
                     data.hourBreakdown[0],
@@ -145,11 +150,6 @@ export class SetHomeComponent implements OnInit {
                     data.hourBreakdown[21],
                     data.hourBreakdown[22],
                     data.hourBreakdown[23]);
-
-                  this.messagesSent = data.messagesSent;
-                  this.usersBanned = data.usersBanned;
-                  this.usersJoined = data.usersJoined;
-                  this.usersLeft = data.usersLeft;
 
                   if (data.hourBreakdown[0] === resultHours) {
                     this.mostActiveHour = '00';
@@ -201,19 +201,19 @@ export class SetHomeComponent implements OnInit {
                     this.mostActiveHour = '23';
                   }
 
-                  if (data.messagesThisWeek[0] === resultDays) {
+                  if (data.messagesThisWeek[1] === resultDays) {
                     this.mostActiveDay = 'Monday';
-                  } else if (data.messagesThisWeek[1] === resultDays) {
-                    this.mostActiveDay = 'Tuesday';
                   } else if (data.messagesThisWeek[2] === resultDays) {
-                    this.mostActiveDay = 'Wednesday';
+                    this.mostActiveDay = 'Tuesday';
                   } else if (data.messagesThisWeek[3] === resultDays) {
-                    this.mostActiveDay = 'Thursday';
+                    this.mostActiveDay = 'Wednesday';
                   } else if (data.messagesThisWeek[4] === resultDays) {
-                    this.mostActiveDay = 'Friday';
+                    this.mostActiveDay = 'Thursday';
                   } else if (data.messagesThisWeek[5] === resultDays) {
-                    this.mostActiveDay = 'Saturday';
+                    this.mostActiveDay = 'Friday';
                   } else if (data.messagesThisWeek[6] === resultDays) {
+                    this.mostActiveDay = 'Saturday';
+                  } else if (data.messagesThisWeek[0] === resultDays) {
                     this.mostActiveDay = 'Sunday';
                   }
 
@@ -317,5 +317,4 @@ export class SetHomeComponent implements OnInit {
       }
     });
   }
-
 }
