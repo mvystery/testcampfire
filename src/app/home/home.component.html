@@ -1,5 +1,6 @@
 <app-nav type="is-primary"></app-nav>
 <div class="hero is-primary is-fullheight-with-navbar cf-shadow-bg" *ngIf="!user">
+  <div class="cf-bg is-hidden-touch"></div>
   <div class="hero-body">
     <div class="container animated fadeInUp">
       <div class="columns">
@@ -18,11 +19,12 @@
 </div>
 
 <div class="hero is-primary is-fullheight-with-navbar cf-shadow-bg" *ngIf="user">
+  <div class="cf-bg is-hidden-touch"></div>
   <div class="hero-body">
     <div class="container animated fadeInUp">
       <div class="columns">
         <div class="column">
-          <h1 class="title is-size-1 is-size-1-touch">Hey {{ user.displayName }}</h1>
+          <h1 class="title is-size-1 is-size-1-touch">Hey {{ user.displayName }}!</h1>
           <p class="subtitle">I hope you're having a nice day! Thanks for dropping by.</p>
           <div class="buttons">
             <a href="https://campfirebot.xyz/links/invite" class="button is-rounded is-light is-outlined"
@@ -197,7 +199,7 @@
   </div>
 </div>
 
-<div class="hero is-link is-medium">
+<div class="hero is-info is-medium">
   <div class="hero-body">
     <div class="container">
       <h1 class="title is-size-2 is-size-2-touch">Always online</h1>

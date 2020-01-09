@@ -18,24 +18,24 @@
   --background: #ffffff;
   --background-surface: #ffffff;
   --text-color: #1a1718;
-  --primary: #6012b9;
+  --primary: #631dc2;
   --primary-text: #ffffff;
-  --primary-hover: #6f1eca;
+  --primary-hover: rgb(133, 52, 226);
   --primary-gradient: linear-gradient(141deg, #4500e4 0%, #8520f7 71%, #b433fd 100%);
-  --danger: #a20c34;
-  --danger-text: #ff7c61;
-  --danger-hover: #700a25;
+  --danger: #6a001c;
+  --danger-text: #ff6d4f;
+  --danger-hover: #5c0119;
   --danger-gradient: linear-gradient(141deg, #790236 0%, #a20c34 71%, #bf091b 100%);
   --dark-primary: #38005b;
   --dark-primary-text: #ffffff;
   --dark-primay-hover: #210035;
   --warning: #ffc911;
-  --warning-text: #b51d1d;
+  --warning-text: #6a001c;
   --warning-hover: #b68f10;
   --warning-gradient: linear-gradient(141deg, #dd8600 0%, #ffc911 71%, #fff22b 100%);
   --success: #00d99a;
-  --success-text: #01805b;
-  --success-hover: #028b64;
+  --success-text: #03373d;
+  --success-hover: #01956b;
   --success-gradient: linear-gradient(141deg, #00a65a 0%, #00d99a 71%, #00f3d5 100%);
   --dark: #1a1718;
   --dark-text: #ffffff;
@@ -45,9 +45,9 @@
   --light-text: #1a1718;
   --light-hover: #cacaca;
   --light-gradient: linear-gradient(141deg, #dfd8d9 0%, #f5f5f5 71%, white 100%);
-  --info: #6dcff6;
-  --info-text: #2a35a6;
-  --info-hover: #5297b3;
+  --info: #ff6d4f;
+  --info-text: #6a001c;
+  --info-hover: #c85038;
   --info-gradient: linear-gradient(141deg, #33e5fd 0%, #6dcff6 71%, #82c4fb 100%);
   --link: #763ad6;
   --link-hover: #6031aa;
@@ -3089,7 +3089,7 @@ fieldset[disabled] .button.is-warning.is-inverted.is-outlined {
 
 .button.is-danger:hover,
 .button.is-danger.is-hovered {
-  background-color: #960b30;
+  background-color: var(--danger-hover);
   border-color: transparent;
   color: var(--danger-text);
 }
@@ -5624,7 +5624,7 @@ fieldset[disabled] .select select:hover {
 
 .file.is-danger:hover .file-cta,
 .file.is-danger.is-hovered .file-cta {
-  background-color: #960b30;
+  background-color: var(--danger-hover);
   border-color: transparent;
   color: var(--danger-text);
 }
@@ -11790,7 +11790,7 @@ print {
 }
 
 .hero.is-warning .subtitle {
-  color: rgba(181, 29, 29, 0.9);
+  color: var(--warning-text);
 }
 
 .hero.is-warning .subtitle a:not(.button),

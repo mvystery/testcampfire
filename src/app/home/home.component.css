@@ -7,10 +7,21 @@
 }
 
 .cf-shadow-bg {
-  background-image: url(../../assets/Shadow-BG.png);
+  background: url(../../assets/bg-stars-rolling-hills.svg), var(--primary);
   background-size: cover;
-  background-position: center;
+  background-position: right;
   background-repeat: no-repeat;
+}
+
+.cf-bg {
+  height: 80vh;
+  width: 60%;
+  background: url(../../assets/hero-bg-splash-2020-dark.svg);
+  background-position: right;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 10px;
+  bottom: 50px;
 }
 
 .cf-circular-pfp {
