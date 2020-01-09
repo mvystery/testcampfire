@@ -48,7 +48,7 @@ export class NavComponent implements OnInit {
       localStorage.setItem('theme', 'light');
     } else {
       this.theme = theme;
-      document.body.className = `${theme}-theme`;
+      document.body.className = `light-theme`;
     }
 
     if (!this.type) {
@@ -58,6 +58,7 @@ export class NavComponent implements OnInit {
 
   expand() {
     document.getElementById('campfireMenu').classList.toggle('is-active');
+    document.querySelector('.navbar-burger').classList.toggle('is-active');
   }
 
   login() {

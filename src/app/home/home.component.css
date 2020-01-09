@@ -7,7 +7,7 @@
 }
 
 .cf-shadow-bg {
-  background: url(../../assets/bg-stars-rolling-hills.svg), var(--primary);
+  background: url(../../assets/bg-stars-rolling-hills.svg), url(../../assets/bg-splash.svg);
   background-size: cover;
   background-position: right;
   background-repeat: no-repeat;
