@@ -49,6 +49,9 @@ export class LoginService {
             .subscribe(data => {
               if (data.success === true) {
                 window.location.reload();
+              } else {
+                // tslint:disable-next-line: max-line-length
+                Swal.fire('This is embarrassing', 'We hit an error grabbing your gorgeous username and avatar. Try again.\nIf this error persists, join our Support Server.', 'error');
               }
             });
           resolve(res);
