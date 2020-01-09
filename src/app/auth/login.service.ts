@@ -44,7 +44,12 @@ export class LoginService {
       this.userToken = tokenData.token;
       this.afAuth.auth.signInWithCustomToken(tokenData.auth).then(
         res => {
-          // localStorage.setItem('auth', tokenData.token);
+          const call = this.func.httpsCallable('updateUserProfile');
+          call({})
+            .subscribe(data => {
+              if (data.success === true) {
+              }
+            });
           resolve(res);
         },
         err => {

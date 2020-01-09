@@ -28,8 +28,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.service.getLoggedInUser().subscribe(user => {
       if (user) {
         this.user = user;
-        this.username = localStorage.getItem('username');
-        console.log(user);
+      } else {
+        this.user = null;
       }
     });
 
