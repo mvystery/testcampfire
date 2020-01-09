@@ -48,6 +48,7 @@ export class LoginService {
           call({})
             .subscribe(data => {
               if (data.success === true) {
+                window.location.reload();
               }
             });
           resolve(res);
