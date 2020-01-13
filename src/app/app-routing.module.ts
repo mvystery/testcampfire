@@ -40,13 +40,13 @@ const routes: Routes = [
   // { path: 'marabou', component: MarabouComponent },
   // { path: 'marabou/maradash', component: MaradashComponent },
   { path: 'marabou/interviews', component: InterviewsComponent },
-  // { path: 'presence', component: PresenceComponent },
-  // { path: 'presence/:id', component: PresenceFrontendComponent },
-  // { path: 'presence/:id/manage', component: PresenceManagerComponent },
-  // { path: 'presence/:id/manage/:userId', component: ViewProfileComponent },
+  { path: 'presence', component: PresenceComponent },
+  { path: 'presence/:id', component: PresenceFrontendComponent },
+  { path: 'presence/:id/manage', component: PresenceManagerComponent },
+  { path: 'presence/:id/manage/:userId', component: ViewProfileComponent },
   // { path: 'verify', component: VerifyComponent },
   { path: 'thank-you', component: ThankYouComponent },
-  // { path: 'clover', component: CloverComponent },
+  { path: 'clover', component: CloverComponent },
   {path: '**', component: ErrorComponent}
 ];
 

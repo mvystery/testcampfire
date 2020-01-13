@@ -35,8 +35,12 @@ export class DashboardGuildsComponent implements OnInit {
         if (data.valid === true) {
           this.router.navigate([`/dashboard/guilds/${guildId}`]);
         } else {
-          window.location.href =
-            `https://discordapp.com/oauth2/authorize?client_id=579415199979798539&scope=bot&permissions=8&guild_id=${guildId}`;
+          window.open(
+            // tslint:disable-next-line: max-line-length
+            `https://discordapp.com/oauth2/authorize?client_id=579415199979798539&scope=bot&permissions=8&guild_id=${guildId}`,
+            'Campfire | Add Guild',
+            'menubar=no,width=500,height=720,location=no,resizable=no,scrollbars=yes,status=no'
+          );
         }
       // tslint:disable-next-line: max-line-length
       }, error => { Swal.fire('Oh noes!', 'Looks like we\'re having some server errors. We\'ll work on fixing them! Bear with us!', 'error'); });

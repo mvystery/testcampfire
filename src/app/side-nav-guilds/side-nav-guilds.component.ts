@@ -15,8 +15,6 @@ export class SideNavGuildsComponent implements OnInit {
   }
 
   changeView(view) {
-    console.log(this.viewing);
-    console.log(view);
     this.viewing = view;
     this.GuildMan.changeTab(view);
   }

@@ -1,0 +1,31 @@
+<nav class="navbar is-dark is-spaced has-text-centered-touch" [class.is-fixed-top]="fixed">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" routerLink="/clover">
+        <img src="../../../assets/Clover-White-Filled.png" alt="Clover Logo" width="145px">
+      </a>
+      <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="campfireMenu" role="button"
+        (click)="expand()">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="campfireMenu">
+      <div class="navbar-start">
+        <a class="navbar-item" routerLink="/">Back to Campfire</a>
+      </div>
+      <div class="navbar-end">
+        <form (ngSubmit)="searchAction(searchForm)" #searchForm="ngForm">
+          <div class="field">
+            <input type="number" required ngModel id="search" name="search" class="input is-fullwidth" placeholder="Search">
+            <div class="searchDrop" *ngIf="searchForm.dirty && searchForm.valid">
+              <a class="button is-fullwidth">Search users for {{ searchForm.form.value.search }}</a>
+              <a class="button is-fullwidth">Search servers for {{ searchForm.form.value.search }}</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>

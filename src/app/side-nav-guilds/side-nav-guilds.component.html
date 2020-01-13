@@ -30,7 +30,7 @@
     Moderator
   </div>
 
-  <div class="menu-item" disabled [class.is-active]="viewing === 'roblox'">
+  <div class="menu-item" (click)="changeView('roblox')" [class.is-active]="viewing === 'roblox'">
     <span class="icon"><i class="fas fa-gamepad"></i></span>
     Roblox
   </div>

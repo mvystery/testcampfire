@@ -35,7 +35,8 @@
           <h1 class="subtitle is-size-2 nomarg animated fadedInUp">
             <i class="fas fa-piggy-bank"></i>
           </h1>
-          <h1 class="subtitle is-size-4 animated fadeInUp nomarg">{{ deposit }}</h1>
+          <h1 class="subtitle is-size-4 animated fadeInUp nomarg" *ngIf="deposit">{{ deposit }}</h1>
+          <h1 class="subtitle is-size-4 animated fadeInUp nomarg" *ngIf="!deposit">0</h1>
           <h1 class="subtitle is-size-5 animated fadeInUp">Deposit</h1>
         </div>
 
@@ -43,7 +44,8 @@
           <h1 class="subtitle is-size-2 nomarg animated fadedInUp">
             <i class="fas fa-trophy"></i>
           </h1>
-          <h1 class="subtitle is-size-4 animated fadeInUp nomarg">{{ level }}</h1>
+          <h1 class="subtitle is-size-4 animated fadeInUp nomarg" *ngIf="level">{{ level }}</h1>
+          <h1 class="subtitle is-size-4 animated fadeInUp nomarg" *ngIf="!level">0</h1>
           <h1 class="subtitle is-size-5 animated fadeInUp">Level</h1>
         </div>
 
@@ -51,7 +53,8 @@
           <h1 class="subtitle is-size-2 nomarg animated fadedInUp">
             <i class="far fa-circle"></i>
           </h1>
-          <h1 class="subtitle is-size-4 animated fadeInUp nomarg">{{ bubbles }}</h1>
+          <h1 class="subtitle is-size-4 animated fadeInUp nomarg" *ngIf="bubbles">{{ bubbles }}</h1>
+          <h1 class="subtitle is-size-4 animated fadeInUp nomarg" *ngIf="!bubbles">0</h1>
           <h1 class="subtitle is-size-5 animated fadeInUp">Bubbles Popped</h1>
         </div>
       </div>

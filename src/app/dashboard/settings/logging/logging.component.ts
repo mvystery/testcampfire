@@ -47,7 +47,7 @@ export class LoggingComponent implements OnInit {
       });
   }
 
-  updateLogger(data) {
+  updateLogging(data) {
     this.savingFormData = true;
     console.log(data.form.value);
     const call = this.func.httpsCallable('loggingSet');

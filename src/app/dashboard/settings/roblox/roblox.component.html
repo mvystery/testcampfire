@@ -1,0 +1,85 @@
+<br>
+<div class="container" *ngIf="loadingData">
+  <div class="notification is-success has-text-centered">Just a second...</div>
+</div>
+<div class="container animated zoomInUp" [class.is-hidden]="loadingData">
+  <h1 class="title is-size-4 has-text-centered">Roblox</h1>
+
+  <a (click)="enabledVerification()" *ngIf="!verificationEnabled" class="button is-large is-danger is-fullwidth"><i class="fas fa-power-off"></i>&nbsp;Disabled</a>
+
+  <form (ngSubmit)="updateVerification(verificationForm)" *ngIf="verificationEnabled" #verificationForm="ngForm">
+    <a (click)="disableVerification()" class="button is-large is-success is-fullwidth" [class.is-loading]="disablingVerification"><i class="fas fa-power-off"></i>&nbsp;Enabled</a>
+    <label class="label">Group ID</label>
+    <div class="tooltip-holder tooltip" data-tooltip="Group ID">
+      <div class="field">
+        <div class="control" style="flex: 1;">
+          <input class="input is-fullwidth is-large" ngModel="{{groupId}}" required minlength="1" name="groupId"
+            type="number" placeholder="3141352">
+        </div>
+      </div>
+    </div>
+    <br>
+    <label class="label">Verified Role</label>
+    <div class="tooltip-holder tooltip" data-tooltip="The name of your Verified role">
+      <div class="field">
+        <div class="control" style="flex: 1;">
+          <input class="input is-fullwidth is-large" ngModel="{{verifiedRole}}" required minlength="1" name="verifiedRole"
+            type="text" placeholder="Verified">
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <a class="button is-link is-large is-fullwidth" (click)="openBindsModal()">View Binds</a>
+
+    <br>
+
+    <button [disabled]="!verificationForm.valid" class="button is-link is-large is-fullwidth" [class.is-loading]="savingVerifyData" type="submit">Save</button>
+  </form>
+  <br>
+</div>
+
+<div class="modal" [class.is-active]="bindsModal" *ngIf="verificationEnabled">
+  <div class="modal-background animated fadeIn" (click)="closeBindsModal()"></div>
+  <div class="modal-card animated fadeInUp">
+    <header class="modal-card-head">
+      <p class="modal-card-title"><i class="fas fa-pencil-alt"></i> Edit profile</p>
+      <button class="delete" (click)="closeBindsModal()" aria-label="close"></button>
+    </header>
+
+    <section class="modal-card-body">
+      <form (ngSubmit)="updateBinds(bindsForm)" #bindsForm="ngForm">
+        <div class="field">
+          <label class="label">Group Role Number</label>
+          <input type="number" required minlength="1" ngModel name="groupRole" class="input is-fullwidth is-large">
+        </div>
+    
+        <div class="field">
+          <label class="label">Discord Role Name</label>
+          <input type="text" required minlength="1" ngModel name="roleName" class="input is-fullwidth is-large">
+        </div>
+    
+        <div class="field">
+          <button class="button is-link is-large is-fullwidth" [disabled]="!bindsForm.valid" [class.is-loading]="savingBindFormData" type="submit">Add Bind</button>
+        </div>
+      </form>
+    
+      <hr>
+    
+      <div *ngFor="let bind of binds">
+        <p>
+          <b>{{ bind.id }}:</b>
+          {{ bind.name }}
+          <a class="button is-small is-danger" (click)="deleteBind(bind.id)">Delete</a>
+        </p>
+      </div>
+
+      <br>
+
+      <div class="field">
+        <button class="button is-link is-large is-fullwidth" (click)="closeBindsModal()">Close</button>
+      </div>
+    </section>
+  </div>
+</div>

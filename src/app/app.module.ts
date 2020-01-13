@@ -53,8 +53,9 @@ import { PrefixComponent } from './dashboard/settings/prefix/prefix.component';
 import { WelcomerComponent } from './dashboard/settings/welcomer/welcomer.component';
 import { LoggingComponent } from './dashboard/settings/logging/logging.component';
 import { ModeratorComponent } from './dashboard/settings/moderator/moderator.component';
-import { RobloxComponent } from './dashboard/settings/roblox/roblox.component';
 import { ErrorComponent } from './error/error.component';
+import { CloverNavComponent } from './clover/clover-nav/clover-nav.component';
+import { RobloxComponent } from './dashboard/settings/roblox/roblox.component';
 
 const options: NgxLinkifyOptions = {
   attributes: null,
@@ -126,8 +127,9 @@ export class SentryErrorHandler implements ErrorHandler {
     WelcomerComponent,
     LoggingComponent,
     ModeratorComponent,
-    RobloxComponent,
-    ErrorComponent
+    ErrorComponent,
+    CloverNavComponent,
+    RobloxComponent
   ],
   imports: [
     BrowserModule,

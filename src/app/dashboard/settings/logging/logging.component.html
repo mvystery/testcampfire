@@ -3,59 +3,57 @@
     <div class="notification is-success has-text-centered">Just a second...</div>
 </div>
 <div class="container animated zoomInUp" [class.is-hidden]="loadingData">
-    <h1 class="title is-size-4 has-text-centered">Logging</h1>
-    <form (ngSubmit)="updateLogger(loggingForm)" #loggingForm="ngForm">
-        <div class="field">
-            <label class="checkbox">
-                <input type="checkbox" [(ngModel)]="kickBan" name="kickBan">
-                Ban Logging
-            </label>
-        </div>
+	<h1 class="title is-size-4 has-text-centered">Logging</h1>
+	<form (ngSubmit)="updateLogging(loggerForm)" #loggerForm="ngForm">
+		<div class="field">
+			<label class="checkbox">
+				<input type="checkbox" [(ngModel)]="kickBan" name="kickBan">
+				Ban Logging
+			</label>
+		</div>
 
-        <div class="field">
-            <label class="checkbox">
-                <input type="checkbox" [(ngModel)]="voice" name="voice">
-                Voice Channel
-            </label>
-        </div>
+		<div class="field">
+			<label class="checkbox">
+				<input type="checkbox" [(ngModel)]="voice" name="voice">
+				Voice Channel
+			</label>
+		</div>
 
-        <div class="field">
-            <label class="checkbox">
-                <input type="checkbox" [(ngModel)]="joinLeave" name="joinLeave">
-                Sever Join/Leave
-            </label>
-        </div>
+		<div class="field">
+			<label class="checkbox">
+				<input type="checkbox" [(ngModel)]="joinLeave" name="joinLeave">
+				Sever Join/Leave
+			</label>
+		</div>
 
-        <div class="field">
-            <label class="checkbox">
-                <input type="checkbox" [(ngModel)]="editMessage" name="editMessage">
-                Edit Message
-            </label>
-        </div>
+		<div class="field">
+			<label class="checkbox">
+				<input type="checkbox" [(ngModel)]="editMessage" name="editMessage">
+				Edit Message
+			</label>
+		</div>
 
-        <div class="field">
-            <label class="checkbox">
-                <input type="checkbox" [(ngModel)]="deletionOfMessage" name="deletionOfMessage">
-                Deletion of Message
-            </label>
-        </div>
+		<div class="field">
+			<label class="checkbox">
+				<input type="checkbox" [(ngModel)]="deletionOfMessage" name="deletionOfMessage">
+				Deletion of Message
+			</label>
+		</div>
 
-        <div class="field">
-            <label class="label">Channel name</label>
-            <div class="tooltip-holder tooltip" data-tooltip="Channel name - Don't include the #">
-                <div class="field has-addons">
-                    <p class="control">
-                        <a class="button is-static is-large">
-                            #
-                        </a>
-                    </p>
-                    <div class="control" style="flex: 1;">
-                        <input class="input is-fullwidth is-large" ngModel="{{channelName}}" required
-                            minlength="1" name="channelName" type="text" placeholder="logs">
-                    </div>
-                </div>
-            </div>
-        </div>
+		<div class="field">
+			<label class="label">Channel name</label>
+			<div class="tooltip-holder tooltip" data-tooltip="Channel name - Don't include the #">
+				<div class="field has-addons">
+					<p class="control">
+						<a class="button is-static is-large">#</a>
+					</p>
+					<div class="control" style="flex: 1;">
+						<input class="input is-fullwidth is-large" ngModel="{{channelName}}" required minlength="1" name="channelName" type="text" placeholder="logs">
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <button class="button is-link is-large is-fullwidth" [disabled]="!loggingForm.valid" [class.is-loading]="savingFormData" type="submit">Save</button>
-    </form>
+		<button class="button is-link is-large is-fullwidth" [disabled]="!loggerForm.valid" [class.is-loading]="savingFormData" type="submit">Save</button>
+	</form>
+</div>
