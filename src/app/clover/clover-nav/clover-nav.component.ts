@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clover-nav.component.css']
 })
 export class CloverNavComponent implements OnInit {
+  fixed: boolean;
 
   constructor() { }
 
