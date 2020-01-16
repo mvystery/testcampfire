@@ -56,6 +56,11 @@ import { ModeratorComponent } from './dashboard/settings/moderator/moderator.com
 import { ErrorComponent } from './error/error.component';
 import { CloverNavComponent } from './clover/clover-nav/clover-nav.component';
 import { RobloxComponent } from './dashboard/settings/roblox/roblox.component';
+import { CloverUserComponent } from './clover/clover-user/clover-user.component';
+import { CloverUnavComponent } from './clover/clover-user/clover-unav/clover-unav.component';
+import { ClProfileComponent } from './clover/clover-user/components/cl-profile/cl-profile.component';
+import { ClDataComponent } from './clover/clover-user/components/cl-data/cl-data.component';
+import { ClActivityComponent } from './clover/clover-user/components/cl-activity/cl-activity.component';
 
 const options: NgxLinkifyOptions = {
   attributes: null,
@@ -129,7 +134,12 @@ export class SentryErrorHandler implements ErrorHandler {
     ModeratorComponent,
     ErrorComponent,
     CloverNavComponent,
-    RobloxComponent
+    RobloxComponent,
+    CloverUserComponent,
+    CloverUnavComponent,
+    ClProfileComponent,
+    ClDataComponent,
+    ClActivityComponent,
   ],
   imports: [
     BrowserModule,

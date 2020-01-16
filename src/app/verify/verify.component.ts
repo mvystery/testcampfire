@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import ClipboardJS from 'clipboard';
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 @Component({
   selector: 'app-verify',
@@ -10,6 +11,7 @@ import ClipboardJS from 'clipboard';
 export class VerifyComponent implements OnInit {
   step = 1;
 
+  loadingSystem = true;
   robloxUsername: string;
   readyForRoblox: boolean;
   error: boolean;
@@ -18,7 +20,7 @@ export class VerifyComponent implements OnInit {
 
   finalStepError: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private func: AngularFireFunctions) {}
 
   ngOnInit() {
     const clipboard = new ClipboardJS('.clip-button');
@@ -28,14 +30,10 @@ export class VerifyComponent implements OnInit {
       e.trigger.innerHTML = '<i class="far fa-clipboard"></i> Copied';
     });
 
-    this.http
-      .get<any>('https://api.campfirebot.xyz/verify/create', {
-        headers: {
-          Authorization: localStorage.getItem('auth')
-        }
-      })
-      .subscribe(data => {
-        if (data.ready === true) {
+    const call = this.func.httpsCallable('verifyOnline');
+    call({}).subscribe(data => {
+      this.loadingSystem = false;
+      if (data.ready === true) {
           this.readyForRoblox = true;
           console.log(data.code);
           this.code = data.code;
@@ -43,7 +41,7 @@ export class VerifyComponent implements OnInit {
           this.readyForRoblox = false;
           this.error = true;
         }
-      });
+    });
   }
 
   usernameForm(data) {
@@ -54,12 +52,8 @@ export class VerifyComponent implements OnInit {
   forceVerify() {
     this.step = 1;
     this.error = false;
-    this.http
-      .get<any>('https://api.campfirebot.xyz/verify/create/force', {
-        headers: {
-          Authorization: localStorage.getItem('auth')
-        }
-      })
+    const call = this.func.httpsCallable('verifyOnlineForce');
+    call({})
       .subscribe(data => {
         if (data.ready === true) {
           this.readyForRoblox = true;
@@ -74,15 +68,8 @@ export class VerifyComponent implements OnInit {
 
   verifyCodeDone() {
     this.loadingSubmit = true;
-    this.http
-      .get<any>(
-        `https://api.campfirebot.xyz/verify/complete/${this.robloxUsername}`,
-        {
-          headers: {
-            Authorization: localStorage.getItem('auth')
-          }
-        }
-      )
+    const call = this.func.httpsCallable('verifyOnlineComplete');
+    call({robloxUsername: this.robloxUsername})
       .subscribe(data => {
         if (data.success) {
           this.loadingSubmit = false;

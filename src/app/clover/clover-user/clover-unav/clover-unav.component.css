@@ -1,0 +1,14 @@
+.cl-sub-nav {
+    background-color: #6b6b6b;
+}
+
+.cl-sub-nav a.navbar-item:hover {
+    background-color: #494949;
+}
+
+@media screen and (max-width: 1024px) {
+    .cl-sub-nav a.navbar-item:hover {
+        background-color: #fafafa;
+        color: var(--link);
+    }
+}

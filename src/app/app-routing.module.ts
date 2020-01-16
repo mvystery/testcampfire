@@ -23,6 +23,7 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
 import { CloverComponent } from './clover/clover.component';
 import { StatsComponent } from './dashboard/stats/stats.component';
 import { ErrorComponent } from './error/error.component';
+import { CloverUserComponent } from './clover/clover-user/clover-user.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -44,9 +45,10 @@ const routes: Routes = [
   { path: 'presence/:id', component: PresenceFrontendComponent },
   { path: 'presence/:id/manage', component: PresenceManagerComponent },
   { path: 'presence/:id/manage/:userId', component: ViewProfileComponent },
-  // { path: 'verify', component: VerifyComponent },
+  { path: 'verify', component: VerifyComponent },
   { path: 'thank-you', component: ThankYouComponent },
   { path: 'clover', component: CloverComponent },
+  { path: 'clover/user/:id', component: CloverUserComponent },
   {path: '**', component: ErrorComponent}
 ];
 

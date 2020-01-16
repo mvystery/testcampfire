@@ -35,6 +35,16 @@
 
     <br>
 
+    <div class="field tooltip-holder tooltip" data-tooltip="If this is enabled, we will inform users who use !verify to use your prefix">
+			<label class="checkbox">
+				<input type="checkbox" [(ngModel)]="catchVerify" name="catchVerify">
+				Catch users trying to use !verify
+			</label>
+    </div>
+    <p class="has-text-link"><i class="fas fa-info-circle"></i> If you're using Campfire for verification we <b>strongly suggest enabling catching users trying to use !verify</b></p>
+
+    <br>
+
     <button [disabled]="!verificationForm.valid" class="button is-link is-large is-fullwidth" [class.is-loading]="savingVerifyData" type="submit">Save</button>
   </form>
   <br>

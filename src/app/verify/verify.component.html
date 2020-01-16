@@ -1,6 +1,9 @@
 <app-nav></app-nav>
 <section class="hero is-fullheight-with-navbar is-primary">
   <div class="hero-body">
+    <div class="container has-text-centered" *ngIf="loadingSystem">
+      <h1 class="title is-size-3">Just a moment...</h1>
+    </div>
     <div class="container has-text-centered" *ngIf="readyForRoblox">
       <h1 class="title is-size-3">Let's get you verified!</h1>
       <div class="columns">
