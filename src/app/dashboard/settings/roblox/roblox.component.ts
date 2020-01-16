@@ -17,6 +17,7 @@ export class RobloxComponent implements OnInit {
   savingVerifyData: boolean;
   verificationEnabled: boolean;
   disablingVerification: boolean;
+  catchVerify: boolean;
 
   bindsModal: boolean;
 
@@ -32,6 +33,7 @@ export class RobloxComponent implements OnInit {
             this.verificationEnabled = true;
             this.groupId = data.groupId;
             this.verifiedRole = data.verifiedRole;
+            this.catchVerify = data.robloxCatch
             if (data.bindsSetup === true) {
               Object.keys(data.binds).forEach(key => {
                 this.binds.push({
