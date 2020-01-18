@@ -1,0 +1,80 @@
+<br>
+<div class="container" *ngIf="loadingData">
+    <div class="notification is-success has-text-centered">Just a second...</div>
+</div>
+<div class="container animated zoomInUp" [class.is-hidden]="loadingData">
+  <h1 class="title is-size-4 has-text-centered">Ticketing</h1>
+  <a (click)="enableTicketing()" *ngIf="!ticketingEnabled" class="button is-large is-danger is-fullwidth"><i class="fas fa-power-off"></i>&nbsp;Disabled</a>
+  <br>
+	<form (ngSubmit)="updateTicketing(ticketForm)" *ngIf="ticketingEnabled" #ticketForm="ngForm">
+    <div class="field">
+			<label class="label">Agent Role</label>
+			<div class="tooltip-holder tooltip" data-tooltip="The role of agents who can control tickets">
+				<div class="field">
+					<div class="control" style="flex: 1;">
+						<input class="input is-fullwidth is-large" ngModel="{{agentRole}}" required minlength="1" name="agentRole" type="text" placeholder="Support">
+					</div>
+				</div>
+			</div>
+    </div>
+    
+    <div class="field">
+			<label class="label">Category</label>
+			<div class="tooltip-holder tooltip" data-tooltip="The category we'll put the tickets in">
+				<div class="field">
+					<div class="control" style="flex: 1;">
+						<input class="input is-fullwidth is-large" ngModel="{{category}}" required minlength="1" name="category" type="text" placeholder="Tickets">
+					</div>
+				</div>
+			</div>
+    </div>
+
+    <a class="button is-link is-large is-fullwidth" (click)="openTicketModal()">View Support Categories</a>
+
+    <br>
+
+		<button class="button is-link is-large is-fullwidth" [disabled]="!ticketForm.valid" [class.is-loading]="savingFormData" type="submit">Save</button>
+  </form>
+</div>
+
+<div class="modal" [class.is-active]="categoriesModal" *ngIf="ticketingEnabled">
+  <div class="modal-background animated fadeIn" (click)="closeTicketModal()"></div>
+  <div class="modal-card animated fadeInUp">
+    <header class="modal-card-head">
+      <p class="modal-card-title"><i class="fas fa-pencil-alt"></i> Edit Categories</p>
+      <button class="delete" (click)="closeTicketModal()" aria-label="close"></button>
+    </header>
+
+    <section class="modal-card-body">
+      <form (ngSubmit)="updateCategories(categoriesForm)" #categoriesForm="ngForm">
+        <div class="field">
+          <label class="label">Category Name</label>
+          <input type="text" required minlength="1" ngModel name="categoryName" class="input is-fullwidth is-large">
+        </div>
+        
+        <div class="field">
+          <button class="button is-link is-large is-fullwidth" [disabled]="!categoriesForm.valid" type="submit">Add Category</button>
+        </div>
+      </form>
+    
+      <hr>
+    
+      <div *ngFor="let category of categories">
+        <p>
+          <b>{{ category }}</b> 
+          <a class="button is-small is-danger" (click)="deleteCategory(category)">Delete</a>
+        </p>
+      </div>
+
+      <br>
+
+      <p class="has-text-link"><i class="fas fa-info-circle"></i> <b>Make sure to save your settings after clicking Close</b></p>
+
+      <br>
+
+      <div class="field">
+        <button class="button is-link is-large is-fullwidth" (click)="closeTicketModal()">Close</button>
+      </div>
+    </section>
+  </div>
+</div>
