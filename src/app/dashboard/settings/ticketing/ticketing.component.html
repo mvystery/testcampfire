@@ -29,7 +29,7 @@
 			</div>
     </div>
 
-    <a class="button is-link is-large is-fullwidth" (click)="openTicketModal()">View Support Categories</a>
+    <a class="button is-link is-large is-fullwidth" (click)="openTicketModal()">View Support Sections</a>
 
     <br>
 
@@ -41,19 +41,19 @@
   <div class="modal-background animated fadeIn" (click)="closeTicketModal()"></div>
   <div class="modal-card animated fadeInUp">
     <header class="modal-card-head">
-      <p class="modal-card-title"><i class="fas fa-pencil-alt"></i> Edit Categories</p>
+      <p class="modal-card-title"><i class="fas fa-pencil-alt"></i> Edit Sections</p>
       <button class="delete" (click)="closeTicketModal()" aria-label="close"></button>
     </header>
 
     <section class="modal-card-body">
       <form (ngSubmit)="updateCategories(categoriesForm)" #categoriesForm="ngForm">
         <div class="field">
-          <label class="label">Category Name</label>
+          <label class="label">Section Name</label>
           <input type="text" required minlength="1" ngModel name="categoryName" class="input is-fullwidth is-large">
         </div>
         
         <div class="field">
-          <button class="button is-link is-large is-fullwidth" [disabled]="!categoriesForm.valid" type="submit">Add Category</button>
+          <button class="button is-link is-large is-fullwidth" [disabled]="!categoriesForm.valid" type="submit">Add Section</button>
         </div>
       </form>
     
