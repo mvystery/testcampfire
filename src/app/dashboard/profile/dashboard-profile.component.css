@@ -16,5 +16,6 @@
 }
 
 .cf-border {
+  border: none;
   border-left: 4px solid #975999;
 }

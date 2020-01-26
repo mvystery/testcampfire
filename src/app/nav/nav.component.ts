@@ -23,6 +23,7 @@ export class NavComponent implements OnInit {
       if (event instanceof NavigationStart) {
         try {
           document.getElementById('campfireMenu').classList.remove('is-active');
+          window['dataLayer'].push({'event': 'optimize.activate'});
         } catch {
         }
       }
