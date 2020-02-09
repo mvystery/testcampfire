@@ -7,7 +7,7 @@ import { DashboardGuildManageComponent } from '../dashboard/manage/dashboard-gui
   styleUrls: ['./side-nav-guilds.component.css']
 })
 export class SideNavGuildsComponent implements OnInit {
-  viewing = 'home';
+  viewing = 'prefix';
 
   constructor(private GuildMan: DashboardGuildManageComponent) { }
 

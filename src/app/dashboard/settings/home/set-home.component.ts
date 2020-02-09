@@ -46,7 +46,7 @@ export class SetHomeComponent implements OnInit {
                 }
               }).subscribe(data => {
                 if (data.auth === false) {
-                  Swal.fire('Whoops!', 'Looks like we messed up a little. Try logging out and logging back in', 'error');
+                  // Swal.fire('Whoops!', 'Looks like we messed up a little. Try logging out and logging back in', 'error');
                 } else {
                   this.loadingData = false;
                   if (data.exists === false) { this.noData = true; }
