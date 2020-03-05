@@ -53,7 +53,7 @@ export class NavComponent implements OnInit {
     }
 
     if (!this.type) {
-      this.type = 'is-primary';
+      this.type = 'is-light';
     }
   }
 

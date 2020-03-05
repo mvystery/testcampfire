@@ -15,48 +15,47 @@
 }
 
 .light-theme {
-  --background: #010101;
-  --background-surface: #010101;
-  --text-color: #f6f6f6;
-  --primary: #631dc2;
+  --background: #ffffff;
+  --background-surface: #ffffff;
+  --text-color: #1a1718;
+  --primary: #39007c;
   --primary-text: #ffffff;
-  --primary-hover: rgb(133, 52, 226);
+  --primary-hover: #280055;
   --primary-gradient: linear-gradient(141deg, #4500e4 0%, #8520f7 71%, #b433fd 100%);
-  --danger: #6a001c;
-  --danger-text: #ff6d4f;
-  --danger-hover: #5c0119;
+  --danger: #a20c34;
+  --danger-text: #ff7c61;
+  --danger-hover: #700a25;
   --danger-gradient: linear-gradient(141deg, #790236 0%, #a20c34 71%, #bf091b 100%);
   --dark-primary: #38005b;
   --dark-primary-text: #ffffff;
   --dark-primay-hover: #210035;
-  --warning: #ffc911;
-  --warning-text: #6a001c;
-  --warning-hover: #b68f10;
+  --warning: #ffa619;
+  --warning-text: #ffffff;
+  --warning-hover: #d48b16;
   --warning-gradient: linear-gradient(141deg, #dd8600 0%, #ffc911 71%, #fff22b 100%);
   --success: #00d99a;
-  --success-text: #03373d;
-  --success-hover: #01956b;
+  --success-text: #01805b;
+  --success-hover: #028b64;
   --success-gradient: linear-gradient(141deg, #00a65a 0%, #00d99a 71%, #00f3d5 100%);
-  --dark: #010101;
+  --dark: #110229;
   --dark-text: #ffffff;
-  --dark-hover: #0c0a0b;
+  --dark-hover: rgb(15, 13, 14);
   --dark-gradient: linear-gradient(141deg, black 0%, #1a1718 71%, #292122 100%);
-  --light: #010101;
-  --light-text: #f3f3f3;
+  --light: #f5f5f5;
+  --light-text: #1a1718;
   --light-hover: #cacaca;
   --light-gradient: linear-gradient(141deg, #dfd8d9 0%, #f5f5f5 71%, white 100%);
-  --info: #ff6d4f;
-  --info-text: #6a001c;
-  --info-hover: #c85038;
+  --info: #0165ff;
+  --info-text: #ffffff;
+  --info-hover: #004fc5;
   --info-gradient: linear-gradient(141deg, #33e5fd 0%, #6dcff6 71%, #82c4fb 100%);
-  --link: #763ad6;
-  --link-hover: #6031aa;
+  --link: #25034e;
+  --link-hover: #1b0338;
   --link-text: #ffffff;
   --link-gradient: linear-gradient(141deg, #3f1bc2 0%, #763ad6 71%, #9c4ae0 100%);
   --font-family: 'Montserrat', sans-serif;
   --title-font: "Nexa Bold";
   --light-stripe: #ededed;
-  transition: all .3s ease;
 }
 
 .legacy-light-theme {
@@ -7285,7 +7284,7 @@ print {
 }
 
 .navbar.is-dark {
-  background-color: #1a1718;
+  background-color: var(--dark);
   color: #f5f5f5;
 }
 
