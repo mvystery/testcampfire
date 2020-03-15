@@ -1,0 +1,22 @@
+.cf-bot-grid {
+    flex-direction: row;
+}
+
+.bot-icon {
+    margin-right: 10px;
+}
+
+.cf-content-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cf-content-aaa {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    flex: 1;
+}

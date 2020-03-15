@@ -1,0 +1,38 @@
+<app-nav type="is-primary solid-black" fixed="true"></app-nav>
+<app-side-nav></app-side-nav>
+<div style="height: 88px" class="is-hidden-touch"></div>
+<div style="height: 62px" class="is-hidden-desktop"></div>
+<section class="hero is-primary is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-2 has-text-right">
+          <h1 class="is-size-2 nomarg"><i class="fas fa-robot"></i></h1>
+        </div>
+        <div class="column">
+          <h1 class="title is-size-3">Select your bot</h1>
+          <p class="subtitle is-size-4">Select the bot you wish to edit the settings of</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="spacer"></div>
+
+<div class="container">
+  <div class="bots" *ngFor="let bot of bots">
+    <div class="box animated fadeInUp">
+      <div class="is-flex cf-bot-grid">
+        <img src="{{ bot.data.icon }}" class="is-rounded bot-icon" width="60px" alt="Bot Icon">
+        <div class="cf-content-meta">
+          <p>{{ bot.data.name }}</p>
+        </div>
+
+        <div class="cf-content-aaa">
+          <a (click)="manageBot(bot.id)" class="button is-rounded is-primary"><span class="icon"><i class="fas fa-cog"></i></span><span>Manage</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

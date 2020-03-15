@@ -44,3 +44,8 @@ nav.menu div.menu-item span.icon {
 nav.menu div.menu-item.is-active {
   background: #6414db;
 }
+
+nav.menu div.menu-item[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

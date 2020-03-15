@@ -62,6 +62,7 @@ import { ClProfileComponent } from './clover/clover-user/components/cl-profile/c
 import { ClDataComponent } from './clover/clover-user/components/cl-data/cl-data.component';
 import { ClActivityComponent } from './clover/clover-user/components/cl-activity/cl-activity.component';
 import { TicketingComponent } from './dashboard/settings/ticketing/ticketing.component';
+import { BotsComponent } from './dashboard/bots/bots.component';
 
 const options: NgxLinkifyOptions = {
   attributes: null,
@@ -142,6 +143,7 @@ export class SentryErrorHandler implements ErrorHandler {
     ClDataComponent,
     ClActivityComponent,
     TicketingComponent,
+    BotsComponent,
   ],
   imports: [
     BrowserModule,

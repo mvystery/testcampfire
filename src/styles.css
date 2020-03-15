@@ -1912,7 +1912,6 @@ print {
   box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.08), 0 0px 0 1px rgba(10, 10, 10, 0.12);
   display: block;
   padding: 1.25rem;
-  border: 1px solid var(--text-color);
 }
 
 .box-no-border {

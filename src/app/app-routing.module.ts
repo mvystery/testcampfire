@@ -24,6 +24,7 @@ import { CloverComponent } from './clover/clover.component';
 import { StatsComponent } from './dashboard/stats/stats.component';
 import { ErrorComponent } from './error/error.component';
 import { CloverUserComponent } from './clover/clover-user/clover-user.component';
+import { BotsComponent } from './dashboard/bots/bots.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'dashboard/profile', component: DashboardProfileComponent },
   { path: 'dashboard/stats', component: StatsComponent },
   { path: 'dashboard/guilds', component: DashboardGuildsComponent },
+  { path: 'dashboard/bots', component: BotsComponent },
   { path: 'commands/fun', component: FunComponent },
   { path: 'dashboard/guilds/:id', component: DashboardGuildManageComponent },
   // { path: 'marabou', component: MarabouComponent },
