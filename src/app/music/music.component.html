@@ -1,0 +1,83 @@
+<app-nav></app-nav>
+<div class="spacer"></div>
+<div class="container">
+  <p>{{ lists.length }}</p>
+  <div class="box" *ngFor="let list of lists">
+    <h1 class="title is-size-3">{{ list.name }}</h1>
+    <div class="music-list">
+      <div class="box" *ngFor="let song of list.songs" [style.background-color]="convertRGBToRGBString(song.bg, 1)">
+        <div class="is-flex">
+          <div>
+            <h1 class="title is-size-4" [style.color]="convertRGBToRGBString(song.accent, 1)">{{ song.name }}</h1>
+            <h1 class="subtitle is-size-5" [style.color]="convertRGBToRGBString(song.accent, 0.8)">{{ song.artist }}
+            </h1>
+          </div>
+
+          <div class="destroy-holder">
+            <div class="buttons" style="justify-content: flex-end;">
+              <a class="button is-danger is-small" (click)="removeItem(list.id, song)">
+                <i class="fas fa-trash-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <a (click)="openAddSong(list.id)" class="button is-fullwidth is-link">Add Song</a>
+  </div>
+</div>
+
+<div class="modal is-active" id="updateProfile" *ngIf="songAddModal">
+  <div class="modal-background animated fadeIn" (click)="closeAddSong()"></div>
+  <div class="modal-card animated fadeInUp">
+    <header class="modal-card-head">
+      <p class="modal-card-title"><i class="fas fa-pencil-alt"></i> Add Song</p>
+      <button class="delete" (click)="closeAddSong()" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <form (ngSubmit)="addSong(addsongform)" #addsongform="ngForm">
+        <div id="errorArea"></div>
+        <div class="field">
+          <label class="label">Background<span class="has-text-danger">*</span></label>
+          <input name="colour" readonly minlength="1" placeholder=":flag_gb:" class="button is-primary" [value]="bg"
+            [(colorPicker)]="bg" [style.background]="bg" [cpAlphaChannel]="'disabled'" [cpOutputFormat]="'hex'">
+        </div>
+
+        <div class="field">
+          <label class="label">Text<span class="has-text-danger">*</span></label>
+          <input name="colour" readonly minlength="1" placeholder=":flag_gb:" class="button is-primary" [value]="accent"
+            [(colorPicker)]="accent" [style.background]="accent" [cpAlphaChannel]="'disabled'" [cpOutputFormat]="'hex'">
+        </div>
+
+        <div class="box" [style.background-color]="bg">
+          <h1 class="title is-size-4" [style.color]="accent">{{ addsongform.value.name }}</h1>
+          <h1 class="subtitle is-size-5" [style.color]="accent" style="opacity: 0.8">{{ addsongform.value.artist }}</h1>
+        </div>
+
+        <div class="field">
+          <label class="label">Song Name<span class="has-text-danger">*</span></label>
+          <input name="name" ngModel required minlength="1" maxlength="100"
+            class="input">
+        </div>
+
+        <div class="field">
+          <label class="label">Artist<span class="has-text-danger">*</span></label>
+          <input name="artist" ngModel required minlength="1" maxlength="100"
+            class="input">
+        </div>
+
+        <div class="field">
+          <label class="label">ID<span class="has-text-danger">*</span></label>
+          <input name="id" type="number" ngModel required minlength="1" maxlength="100"
+            class="input">
+        </div>
+
+        <div class="buttons">
+          <button class="button is-success" [disabled]="!addsongform.form.valid" [class.is-loading]="submittingData" type="submit">Save changes</button>
+          <a class="button" (click)="closeAddSong()">Cancel</a>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>

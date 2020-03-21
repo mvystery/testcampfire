@@ -12130,7 +12130,7 @@ hr.darker {
 }
 
 .box .title {
-  color: var(--text-color) !important;
+  color: var(--text-color);
 }
 
 .box.bolder {

@@ -25,6 +25,7 @@ import { StatsComponent } from './dashboard/stats/stats.component';
 import { ErrorComponent } from './error/error.component';
 import { CloverUserComponent } from './clover/clover-user/clover-user.component';
 import { BotsComponent } from './dashboard/bots/bots.component';
+import { MusicComponent } from './music/music.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -51,6 +52,7 @@ const routes: Routes = [
   { path: 'thank-you', component: ThankYouComponent },
   { path: 'clover', component: CloverComponent },
   { path: 'clover/user/:id', component: CloverUserComponent },
+  { path: 'music', component: MusicComponent },
   {path: '**', component: ErrorComponent}
 ];
 
