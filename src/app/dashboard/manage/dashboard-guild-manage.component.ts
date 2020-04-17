@@ -30,7 +30,7 @@ export class DashboardGuildManageComponent implements OnInit {
   auth: boolean;
   name: string;
   icon: string;
-  tab = 'home';
+  tab = 'prefix';
 
   ngOnInit() {
     this.route.params.subscribe(params => {
