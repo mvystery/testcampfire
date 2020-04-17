@@ -85,7 +85,7 @@ export class RobloxComponent implements OnInit {
     }, {});
 
     // tslint:disable-next-line: max-line-length
-    call({ server: this.id, verifiedRole: data.value.verifiedRole, groupId: data.value.groupId, binds: result, robloxCatch: data.value.catchVerify })
+    call({ server: this.id, verifiedRole: data.value.verifiedRole, groupId: parseInt(data.value.groupId), binds: result, robloxCatch: data.value.catchVerify })
       .subscribe(callback => {
         if (callback.success === true) {
           this.savingVerifyData = false;
